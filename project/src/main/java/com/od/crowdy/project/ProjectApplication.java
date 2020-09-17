@@ -12,13 +12,13 @@ import java.time.LocalDateTime;
 @Log4j2
 public class ProjectApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ProjectApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ProjectApplication.class, args);
+    }
 
-	@EventListener(ApplicationReadyEvent.class)
-	public void serviceStarted() {
-		log.info("Server has started! {}", LocalDateTime.now());
-	}
+    @EventListener(ApplicationReadyEvent.class)
+    public void serviceStarted() {
+        log.info("Server has started! {}", LocalDateTime.now());
+    }
 
 }
