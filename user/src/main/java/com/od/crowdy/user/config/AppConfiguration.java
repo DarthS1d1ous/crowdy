@@ -18,6 +18,6 @@ public class AppConfiguration {
 
     @Bean
     RouterFunction<ServerResponse> routes() {
-        return route(GET("/hello"), dummyHelloHandler::hello);
+        return route(GET("/user"), dummyHelloHandler::hello);
     }
 }

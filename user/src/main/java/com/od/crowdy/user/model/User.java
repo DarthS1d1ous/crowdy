@@ -11,7 +11,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
@@ -36,10 +35,10 @@ public class User implements UserDetails {
     private List<User> followings;
     private List<User> followers;
     private List<User> blocked;
-    private List<Project> likesProjects;
-    private List<Project> projects;
-    private List<Project> backed;
-    private List<UserTags> likedTags;
+//    private List<Project> likesProjects;
+//    private List<Project> projects;
+//    private List<Project> backed;
+//    private List<UserTags> likedTags;
 
     private UserRole role;
     @Builder.Default

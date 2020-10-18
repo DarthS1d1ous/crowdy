@@ -1,6 +1,6 @@
-package com.od.crowdy.auth.config;
+package com.od.crowdy.project.config;
 
-import com.od.crowdy.auth.handler.AuthHandler;
+import com.od.crowdy.project.handler.DummyHelloHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,10 +14,10 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 @RequiredArgsConstructor
 public class AppConfiguration {
 
-    private final AuthHandler authHandler;
+    private final DummyHelloHandler dummyHelloHandler;
 
     @Bean
     RouterFunction<ServerResponse> routes() {
-        return route(GET("/auth"), authHandler::auth);
+        return route(GET("/project"), dummyHelloHandler::hello);
     }
 }

@@ -1,4 +1,4 @@
-package com.od.crowdy.user.handler;
+package com.od.crowdy.project.handler;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.server.ServerRequest;
@@ -9,6 +9,6 @@ import reactor.core.publisher.Mono;
 public class DummyHelloHandler {
 
     public Mono<ServerResponse> hello(ServerRequest serverRequest) {
-        return ServerResponse.ok().bodyValue("From Users");
+        return ServerResponse.ok().bodyValue("From Project");
     }
 }
