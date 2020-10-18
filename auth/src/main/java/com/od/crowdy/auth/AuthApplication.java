@@ -1,8 +1,8 @@
-package com.od.crowdy.user;
+package com.od.crowdy.auth;
 
-import com.od.crowdy.user.model.User;
-import com.od.crowdy.user.model.UserRole;
-import com.od.crowdy.user.repository.MongoUserRepository;
+import com.od.crowdy.auth.model.User;
+import com.od.crowdy.auth.model.UserRole;
+import com.od.crowdy.auth.repository.MongoUserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.SpringApplication;
@@ -16,12 +16,12 @@ import java.time.LocalDateTime;
 @SpringBootApplication
 @Log4j2
 @RequiredArgsConstructor
-public class UserApplication {
+public class AuthApplication {
 
     private final MongoUserRepository userRepository;
 
     public static void main(String[] args) {
-        SpringApplication.run(UserApplication.class, args);
+        SpringApplication.run(AuthApplication.class, args);
     }
 
     @EventListener(ApplicationReadyEvent.class)
@@ -38,4 +38,5 @@ public class UserApplication {
 
         log.info("Server has started! {}", LocalDateTime.now());
     }
+
 }

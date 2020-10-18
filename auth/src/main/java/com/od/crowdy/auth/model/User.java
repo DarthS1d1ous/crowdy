@@ -1,4 +1,4 @@
-package com.od.crowdy.user.model;
+package com.od.crowdy.auth.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
@@ -11,11 +11,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 @Document("user")
 @Data
@@ -26,21 +23,8 @@ public class User implements UserDetails {
     @Id
     private String id;
     private String username;
-    private String login;
     @JsonIgnore
     private String password;
-    private String fullName;
-    private LocalDate createdAt;
-    private LocalDate birthday;
-    private List<User> likedBy;
-    private List<User> followings;
-    private List<User> followers;
-    private List<User> blocked;
-    private List<Project> likesProjects;
-    private List<Project> projects;
-    private List<Project> backed;
-    private List<UserTags> likedTags;
-
     private UserRole role;
     @Builder.Default
     private boolean accountNonExpired = true;
