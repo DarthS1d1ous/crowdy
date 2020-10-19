@@ -5,19 +5,24 @@
     <parent>
         <groupId>com.od.crowdy</groupId>
         <artifactId>crowdy</artifactId>
-        <version>1.0</version>
+        <version>1.0.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <artifactId>user</artifactId>
-    <version>0.0.1</version>
+    <version>1.0.0</version>
     <name>user</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
-        <java.version>14</java.version>
+        <java.version>15</java.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.od.crowdy</groupId>
+            <artifactId>shared</artifactId>
+            <version>1.0.0</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>

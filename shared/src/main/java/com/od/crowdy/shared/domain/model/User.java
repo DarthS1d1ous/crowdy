@@ -1,4 +1,4 @@
-package com.od.crowdy.user.model;
+package com.od.crowdy.shared.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
@@ -24,6 +24,7 @@ import java.util.List;
 public class User implements UserDetails {
     @Id
     private String id;
+
     private String username;
     private String login;
     @JsonIgnore
@@ -35,10 +36,9 @@ public class User implements UserDetails {
     private List<User> followings;
     private List<User> followers;
     private List<User> blocked;
-//    private List<Project> likesProjects;
-//    private List<Project> projects;
-//    private List<Project> backed;
-//    private List<UserTags> likedTags;
+    private List<Project> likesProjects;
+    private List<Project> projects;
+    private List<Project> backed;
 
     private UserRole role;
     @Builder.Default

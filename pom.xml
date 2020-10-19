@@ -12,11 +12,12 @@
     </parent>
     <groupId>com.od.crowdy</groupId>
     <artifactId>crowdy</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
 
     <modules>
         <module>project</module>
         <module>user</module>
+        <module>shared</module>
     </modules>
 
 
