@@ -7,14 +7,14 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document("categories")
+@Document("user_roles")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Categories {
+public class UserRoles {
     @Id
     private String id;
 
-    private String category;
+    private String role;
 }

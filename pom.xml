@@ -12,7 +12,7 @@
     </parent>
     <groupId>com.od.crowdy</groupId>
     <artifactId>crowdy</artifactId>
-    <version>1.0.0</version>
+    <version>${crowdy.version}</version>
 
     <modules>
         <module>project</module>
@@ -75,5 +75,10 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <crowdy.version>1.0.0</crowdy.version>
+        <java.version>15</java.version>
+    </properties>
 
 </project>
