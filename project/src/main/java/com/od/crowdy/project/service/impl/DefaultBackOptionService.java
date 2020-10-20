@@ -15,13 +15,13 @@ public class DefaultBackOptionService implements BackOptionService {
     private final BackOptionRepository backOptionRepository;
 
     @Override
-    public Mono<BackOption> save(BackOption model) {
-        return this.backOptionRepository.save(model);
+    public Flux<BackOption> saveAll(Flux<BackOption> models) {
+        return this.backOptionRepository.saveAll(models);
     }
 
     @Override
-    public Mono<Void> delete(BackOption model) {
-        return this.backOptionRepository.delete(model);
+    public Mono<Void> deleteAll(Flux<BackOption> models) {
+        return this.backOptionRepository.deleteAll(models);
     }
 
     @Override

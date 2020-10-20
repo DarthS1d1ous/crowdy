@@ -15,13 +15,13 @@ public class DefaultUserService implements UserService {
     private final UserRepository userRepository;
 
     @Override
-    public Mono<User> save(User model) {
-        return this.userRepository.save(model);
+    public Flux<User> saveAll(Flux<User> models) {
+        return this.userRepository.saveAll(models);
     }
 
     @Override
-    public Mono<Void> delete(User model) {
-        return this.userRepository.delete(model);
+    public Mono<Void> deleteAll(Flux<User> models) {
+        return this.userRepository.deleteAll(models);
     }
 
     @Override

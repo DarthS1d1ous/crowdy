@@ -15,13 +15,13 @@ public class DefaultCategoriesService implements CategoriesService {
     private final CategoriesRepository categoriesRepository;
 
     @Override
-    public Mono<Categories> save(Categories model) {
-        return this.categoriesRepository.save(model);
+    public Flux<Categories> saveAll(Flux<Categories> models) {
+        return this.categoriesRepository.saveAll(models);
     }
 
     @Override
-    public Mono<Void> delete(Categories model) {
-        return this.categoriesRepository.delete(model);
+    public Mono<Void> deleteAll(Flux<Categories> models) {
+        return this.categoriesRepository.deleteAll(models);
     }
 
     @Override

@@ -15,13 +15,13 @@ public class DefaultProjectService implements ProjectService {
     private final ProjectRepository projectRepository;
 
     @Override
-    public Mono<Project> save(Project model) {
-        return this.projectRepository.save(model);
+    public Flux<Project> saveAll(Flux<Project> models) {
+        return this.projectRepository.saveAll(models);
     }
 
     @Override
-    public Mono<Void> delete(Project model) {
-        return this.projectRepository.delete(model);
+    public Mono<Void> deleteAll(Flux<Project> models) {
+        return this.projectRepository.deleteAll(models);
     }
 
     @Override

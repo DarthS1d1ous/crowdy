@@ -6,10 +6,8 @@
         <groupId>com.od.crowdy</groupId>
         <artifactId>crowdy</artifactId>
         <version>1.0.0</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <artifactId>shared</artifactId>
-    <version>${crowdy.version}</version>
     <name>shared</name>
     <description>Shared Components</description>
 

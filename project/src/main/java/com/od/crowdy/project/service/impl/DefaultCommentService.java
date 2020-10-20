@@ -15,13 +15,13 @@ public class DefaultCommentService implements CommentService {
     private final CommentRepository commentRepository;
 
     @Override
-    public Mono<Comment> save(Comment model) {
-        return this.commentRepository.save(model);
+    public Flux<Comment> saveAll(Flux<Comment> models) {
+        return this.commentRepository.saveAll(models);
     }
 
     @Override
-    public Mono<Void> delete(Comment model) {
-        return this.commentRepository.delete(model);
+    public Mono<Void> deleteAll(Flux<Comment> models) {
+        return this.commentRepository.deleteAll(models);
     }
 
     @Override

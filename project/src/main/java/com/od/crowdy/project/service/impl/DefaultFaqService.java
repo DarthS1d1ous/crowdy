@@ -15,13 +15,13 @@ public class DefaultFaqService implements FaqService {
     private final FaqRepository faqRepository;
 
     @Override
-    public Mono<Faq> save(Faq model) {
-        return this.faqRepository.save(model);
+    public Flux<Faq> saveAll(Flux<Faq> models) {
+        return this.faqRepository.saveAll(models);
     }
 
     @Override
-    public Mono<Void> delete(Faq model) {
-        return this.faqRepository.delete(model);
+    public Mono<Void> deleteAll(Flux<Faq> models) {
+        return this.faqRepository.deleteAll(models);
     }
 
     @Override
