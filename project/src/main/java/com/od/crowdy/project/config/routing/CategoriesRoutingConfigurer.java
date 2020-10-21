@@ -17,8 +17,8 @@ public class CategoriesRoutingConfigurer implements RoutingConfigurer {
     @Override
     public RouterFunction<ServerResponse> routes() {
         return route(GET("/categories"), categoriesHandler::findAllCategories)
-                .andRoute(GET("/categories/:id"), categoriesHandler::findCategoryById)
+                .andRoute(GET("/categories/{id}"), categoriesHandler::findCategoryById)
                 .andRoute(POST("/categories"), categoriesHandler::saveCategory)
-                .andRoute(DELETE("/categories/:id"), categoriesHandler::deleteCategoryById);
+                .andRoute(DELETE("/categories/{id}"), categoriesHandler::deleteCategoryById);
     }
 }

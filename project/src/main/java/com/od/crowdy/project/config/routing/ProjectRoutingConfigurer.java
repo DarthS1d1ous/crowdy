@@ -17,8 +17,8 @@ public class ProjectRoutingConfigurer implements RoutingConfigurer {
     @Override
     public RouterFunction<ServerResponse> routes() {
         return route(GET("/projects"), projectHandler::findAllProjects)
-                .andRoute(GET("/projects/:id"), projectHandler::findProjectById)
+                .andRoute(GET("/projects/{id}"), projectHandler::findProjectById)
                 .andRoute(POST("/projects"), projectHandler::saveProject)
-                .andRoute(DELETE("/projects/:id"), projectHandler::deleteProjectById);
+                .andRoute(DELETE("/projects/{id}"), projectHandler::deleteProjectById);
     }
 }

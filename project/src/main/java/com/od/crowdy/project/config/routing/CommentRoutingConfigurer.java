@@ -17,8 +17,8 @@ public class CommentRoutingConfigurer implements RoutingConfigurer {
     @Override
     public RouterFunction<ServerResponse> routes() {
         return route(GET("/comments"), commentHandler::findAllComments)
-                .andRoute(GET("/comments/:id"), commentHandler::findCommentById)
+                .andRoute(GET("/comments/{id}"), commentHandler::findCommentById)
                 .andRoute(POST("/comments"), commentHandler::saveComment)
-                .andRoute(DELETE("/comments/:id"), commentHandler::deleteCommentById);
+                .andRoute(DELETE("/comments/{id}"), commentHandler::deleteCommentById);
     }
 }

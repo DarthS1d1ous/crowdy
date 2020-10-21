@@ -17,8 +17,8 @@ public class UserRolesRoutingConfigurer implements RoutingConfigurer {
     @Override
     public RouterFunction<ServerResponse> routes() {
         return route(GET("/userroles"), userRolesHandler::findAllUserRoles)
-                .andRoute(GET("/userroles/:id"), userRolesHandler::findUserRoleById)
+                .andRoute(GET("/userroles/{id}"), userRolesHandler::findUserRoleById)
                 .andRoute(POST("/userroles"), userRolesHandler::saveUserRole)
-                .andRoute(DELETE("/userroles/:id"), userRolesHandler::deleteUserRoleById);
+                .andRoute(DELETE("/userroles/{id}"), userRolesHandler::deleteUserRoleById);
     }
 }

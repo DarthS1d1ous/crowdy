@@ -17,8 +17,8 @@ public class FaqRoutingConfigurer implements RoutingConfigurer {
     @Override
     public RouterFunction<ServerResponse> routes() {
         return route(GET("/faqs"), faqHandler::findAllFaqs)
-                .andRoute(GET("/faqs/:id"), faqHandler::findFaqById)
+                .andRoute(GET("/faqs/{id}"), faqHandler::findFaqById)
                 .andRoute(POST("/faqs"), faqHandler::saveFaq)
-                .andRoute(DELETE("/faqs/:id"), faqHandler::deleteFaqById);
+                .andRoute(DELETE("/faqs/{id}"), faqHandler::deleteFaqById);
     }
 }

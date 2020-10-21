@@ -17,8 +17,8 @@ public class BackOptionRoutingConfigurer implements RoutingConfigurer {
     @Override
     public RouterFunction<ServerResponse> routes() {
         return route(GET("/backoptions"), backOptionHandler::findAllBackOptions)
-                .andRoute(GET("/backoptions/:id"), backOptionHandler::findBackOptionById)
+                .andRoute(GET("/backoptions/{id}"), backOptionHandler::findBackOptionById)
                 .andRoute(POST("/backoptions"), backOptionHandler::saveBackOption)
-                .andRoute(DELETE("/backoptions/:id"), backOptionHandler::deleteBackOptionById);
+                .andRoute(DELETE("/backoptions/{id}"), backOptionHandler::deleteBackOptionById);
     }
 }
