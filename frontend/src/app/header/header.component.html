@@ -1,0 +1,40 @@
+<mat-toolbar>
+  <button (click)="drawer.toggle()" mat-button>
+    <mat-icon>category</mat-icon>
+  </button>
+  <button *ngIf="!signService.isLoggedIn()" mat-button>
+    <mat-icon>library_add</mat-icon>
+  </button>
+  <span class="spacer"></span>
+  <span class="crowdy_font_style" style="font-size: xx-large">Crowdy</span>
+  <span class="spacer"></span>
+  <button *ngIf="!signService.isLoggedIn()" mat-button>
+    <mat-icon>account_box</mat-icon>
+  </button>
+  <button *ngIf="!signService.isLoggedIn()" mat-button>
+    <mat-icon>login</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-drawer-container autosize class="sidenav-container">
+  <mat-drawer #drawer class="sidenav" mode="side">
+    <p>
+      <button mat-button>
+        <mat-icon>architecture</mat-icon>
+        Art
+      </button>
+    </p>
+    <p>
+      <button mat-button>
+        <mat-icon>casino</mat-icon>
+        Games
+      </button>
+    </p>
+    <p>
+      <button mat-button>
+        <mat-icon>location_city</mat-icon>
+        Government
+      </button>
+    </p>
+  </mat-drawer>
+</mat-drawer-container>

@@ -1,0 +1,22 @@
+.spacer {
+  flex: 0.5 0.5 auto;
+}
+
+.sidenav-container {
+  float: left;
+  display: inline-block;
+  height: 500px;
+}
+
+.sidenav {
+  padding: 20px;
+}
+
+@font-face {
+  font-family: lato;
+  src: url(../../assets/static/font/crowdy_font.ttf) format("truetype");
+}
+
+.crowdy_font_style {
+  font-family: 'lato', 'arial', sans-serif;
+}
