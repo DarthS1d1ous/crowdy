@@ -6,22 +6,16 @@
         <groupId>com.od.crowdy</groupId>
         <artifactId>crowdy</artifactId>
         <version>1.0.0</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <artifactId>project</artifactId>
-    <version>1.0.0</version>
     <name>project</name>
     <description>Demo project for Spring Boot</description>
-
-    <properties>
-        <java.version>15</java.version>
-    </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.od.crowdy</groupId>
             <artifactId>shared</artifactId>
-            <version>1.0.0</version>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

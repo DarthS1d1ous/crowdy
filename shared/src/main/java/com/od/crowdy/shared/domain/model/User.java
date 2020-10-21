@@ -40,7 +40,7 @@ public class User implements UserDetails {
     private List<Project> projects;
     private List<Project> backed;
 
-    private UserRole role;
+    private UserRoles role;
     @Builder.Default
     private boolean accountNonExpired = true;
     @Builder.Default
@@ -52,6 +52,6 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority(role.name()));
+        return Collections.singletonList(new SimpleGrantedAuthority(role.getRole()));
     }
 }
