@@ -1,8 +1,8 @@
 package com.od.crowdy.project.service.impl;
 
+import com.od.crowdy.project.domain.model.BackOption;
 import com.od.crowdy.project.repository.BackOptionRepository;
 import com.od.crowdy.project.service.BackOptionService;
-import com.od.crowdy.shared.domain.model.BackOption;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -15,13 +15,13 @@ public class DefaultBackOptionService implements BackOptionService {
     private final BackOptionRepository backOptionRepository;
 
     @Override
-    public Flux<BackOption> saveAll(Flux<BackOption> models) {
-        return this.backOptionRepository.saveAll(models);
+    public Mono<BackOption> save(Mono<BackOption> backOption) {
+        return this.backOptionRepository.save(backOption);
     }
 
     @Override
-    public Mono<Void> deleteAll(Flux<BackOption> models) {
-        return this.backOptionRepository.deleteAll(models);
+    public Mono<Void> deleteById(String backOptionId) {
+        return this.backOptionRepository.deleteById(backOptionId);
     }
 
     @Override

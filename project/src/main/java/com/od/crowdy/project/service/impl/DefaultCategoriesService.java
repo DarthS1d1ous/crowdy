@@ -1,8 +1,8 @@
 package com.od.crowdy.project.service.impl;
 
+import com.od.crowdy.project.domain.model.Categories;
 import com.od.crowdy.project.repository.CategoriesRepository;
 import com.od.crowdy.project.service.CategoriesService;
-import com.od.crowdy.shared.domain.model.Categories;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -15,13 +15,13 @@ public class DefaultCategoriesService implements CategoriesService {
     private final CategoriesRepository categoriesRepository;
 
     @Override
-    public Flux<Categories> saveAll(Flux<Categories> models) {
-        return this.categoriesRepository.saveAll(models);
+    public Mono<Categories> save(Mono<Categories> categories) {
+        return this.categoriesRepository.save(categories);
     }
 
     @Override
-    public Mono<Void> deleteAll(Flux<Categories> models) {
-        return this.categoriesRepository.deleteAll(models);
+    public Mono<Void> deleteById(String categoriesId) {
+        return this.categoriesRepository.deleteById(categoriesId);
     }
 
     @Override

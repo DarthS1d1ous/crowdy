@@ -1,8 +1,8 @@
 package com.od.crowdy.project.facade.impl;
 
+import com.od.crowdy.project.domain.model.Project;
 import com.od.crowdy.project.facade.ProjectFacade;
 import com.od.crowdy.project.service.ProjectService;
-import com.od.crowdy.shared.domain.model.Project;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
@@ -15,12 +15,22 @@ public class DefaultProjectFacade implements ProjectFacade {
     private final ProjectService projectService;
 
     @Override
-    public Mono<Project> findProjectById(String id) {
-        return projectService.findById(id);
+    public Mono<Project> findProjectById(String projectId) {
+        return projectService.findById(projectId);
     }
 
     @Override
-    public Flux<Project> saveAllProjects(Flux<Project> projects) {
-        return projectService.saveAll(projects);
+    public Mono<Project> saveProject(Mono<Project> project) {
+        return projectService.save(project);
+    }
+
+    @Override
+    public Mono<Void> deleteById(String projectId) {
+        return projectService.deleteById(projectId);
+    }
+
+    @Override
+    public Flux<Project> findAllProjects() {
+        return projectService.findAll();
     }
 }

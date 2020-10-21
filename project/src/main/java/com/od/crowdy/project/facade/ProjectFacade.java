@@ -1,11 +1,15 @@
 package com.od.crowdy.project.facade;
 
-import com.od.crowdy.shared.domain.model.Project;
+import com.od.crowdy.project.domain.model.Project;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface ProjectFacade {
-    Mono<Project> findProjectById(String id);
+    Mono<Project> findProjectById(String projectId);
 
-    Flux<Project> saveAllProjects(Flux<Project> projects);
+    Mono<Project> saveProject(Mono<Project> project);
+
+    Mono<Void> deleteById(String projectId);
+
+    Flux<Project> findAllProjects();
 }

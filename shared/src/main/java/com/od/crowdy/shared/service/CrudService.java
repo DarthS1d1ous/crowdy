@@ -4,9 +4,9 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface CrudService<T> {
-    Flux<T> saveAll(Flux<T> models);
+    Mono<T> save(Mono<T> model);
 
-    Mono<Void> deleteAll(Flux<T> models);
+    Mono<Void> deleteById(String id);
 
     Mono<T> findById(String id);
 

@@ -1,8 +1,8 @@
 package com.od.crowdy.project.service.impl;
 
+import com.od.crowdy.project.domain.model.Comment;
 import com.od.crowdy.project.repository.CommentRepository;
 import com.od.crowdy.project.service.CommentService;
-import com.od.crowdy.shared.domain.model.Comment;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -15,13 +15,13 @@ public class DefaultCommentService implements CommentService {
     private final CommentRepository commentRepository;
 
     @Override
-    public Flux<Comment> saveAll(Flux<Comment> models) {
-        return this.commentRepository.saveAll(models);
+    public Mono<Comment> save(Mono<Comment> comment) {
+        return this.commentRepository.save(comment);
     }
 
     @Override
-    public Mono<Void> deleteAll(Flux<Comment> models) {
-        return this.commentRepository.deleteAll(models);
+    public Mono<Void> deleteById(String commentId) {
+        return this.commentRepository.deleteById(commentId);
     }
 
     @Override

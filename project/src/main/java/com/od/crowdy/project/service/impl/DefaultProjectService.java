@@ -1,8 +1,8 @@
 package com.od.crowdy.project.service.impl;
 
+import com.od.crowdy.project.domain.model.Project;
 import com.od.crowdy.project.repository.ProjectRepository;
 import com.od.crowdy.project.service.ProjectService;
-import com.od.crowdy.shared.domain.model.Project;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -15,14 +15,15 @@ public class DefaultProjectService implements ProjectService {
     private final ProjectRepository projectRepository;
 
     @Override
-    public Flux<Project> saveAll(Flux<Project> models) {
-        return this.projectRepository.saveAll(models);
+    public Mono<Project> save(Mono<Project> project) {
+        return this.projectRepository.save(project);
     }
 
     @Override
-    public Mono<Void> deleteAll(Flux<Project> models) {
-        return this.projectRepository.deleteAll(models);
+    public Mono<Void> deleteById(String projectId) {
+        return this.projectRepository.deleteById(projectId);
     }
+
 
     @Override
     public Mono<Project> findById(String id) {

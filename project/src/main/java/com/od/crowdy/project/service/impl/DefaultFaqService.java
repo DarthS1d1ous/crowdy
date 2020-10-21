@@ -1,8 +1,8 @@
 package com.od.crowdy.project.service.impl;
 
+import com.od.crowdy.project.domain.model.Faq;
 import com.od.crowdy.project.repository.FaqRepository;
 import com.od.crowdy.project.service.FaqService;
-import com.od.crowdy.shared.domain.model.Faq;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -15,13 +15,13 @@ public class DefaultFaqService implements FaqService {
     private final FaqRepository faqRepository;
 
     @Override
-    public Flux<Faq> saveAll(Flux<Faq> models) {
-        return this.faqRepository.saveAll(models);
+    public Mono<Faq> save(Mono<Faq> faq) {
+        return this.faqRepository.save(faq);
     }
 
     @Override
-    public Mono<Void> deleteAll(Flux<Faq> models) {
-        return this.faqRepository.deleteAll(models);
+    public Mono<Void> deleteById(String faqId) {
+        return this.faqRepository.deleteById(faqId);
     }
 
     @Override

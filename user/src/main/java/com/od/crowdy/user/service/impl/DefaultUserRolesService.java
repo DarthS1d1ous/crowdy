@@ -1,6 +1,6 @@
 package com.od.crowdy.user.service.impl;
 
-import com.od.crowdy.shared.domain.model.UserRoles;
+import com.od.crowdy.user.domain.model.UserRoles;
 import com.od.crowdy.user.repository.UserRolesRepository;
 import com.od.crowdy.user.service.UserRolesService;
 import lombok.RequiredArgsConstructor;
@@ -11,17 +11,16 @@ import reactor.core.publisher.Mono;
 @Service
 @RequiredArgsConstructor
 public class DefaultUserRolesService implements UserRolesService {
-
     private final UserRolesRepository userRolesRepository;
 
     @Override
-    public Flux<UserRoles> saveAll(Flux<UserRoles> models) {
-        return this.userRolesRepository.saveAll(models);
+    public Mono<UserRoles> save(Mono<UserRoles> userRoles) {
+        return this.userRolesRepository.save(userRoles);
     }
 
     @Override
-    public Mono<Void> deleteAll(Flux<UserRoles> models) {
-        return this.userRolesRepository.deleteAll(models);
+    public Mono<Void> deleteById(String userRolesId) {
+        return this.userRolesRepository.deleteById(userRolesId);
     }
 
     @Override
