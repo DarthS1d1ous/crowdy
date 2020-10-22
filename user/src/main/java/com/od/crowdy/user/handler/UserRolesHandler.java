@@ -20,7 +20,7 @@ public class UserRolesHandler {
 
     public Mono<ServerResponse> saveUserRole(ServerRequest serverRequest) {
         return ServerResponse.ok()
-                .body(defaultUserRolesFacade.saveUserRole(serverRequest.bodyToMono(UserRoles.class)), UserRoles.class);
+                .body(defaultUserRolesFacade.saveAllUserRoles(serverRequest.bodyToFlux(UserRoles.class)), UserRoles.class);
     }
 
     public Mono<ServerResponse> deleteUserRoleById(ServerRequest serverRequest) {

@@ -19,8 +19,8 @@ public class DefaultCategoriesFacade implements CategoriesFacade {
     }
 
     @Override
-    public Mono<Categories> saveCategory(Mono<Categories> category) {
-        return categoriesService.save(category);
+    public Flux<Categories> saveAllCategories(Flux<Categories> category) {
+        return categoriesService.saveAll(category);
     }
 
     @Override

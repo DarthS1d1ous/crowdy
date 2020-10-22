@@ -20,7 +20,7 @@ public class UserHandler {
 
     public Mono<ServerResponse> findUserById(ServerRequest serverRequest) {
         return ServerResponse.ok()
-                .body(userFacade.saveUser(serverRequest.bodyToMono(User.class)), User.class);
+                .body(userFacade.saveAllUsers(serverRequest.bodyToFlux(User.class)), User.class);
     }
 
     public Mono<ServerResponse> saveUser(ServerRequest serverRequest) {

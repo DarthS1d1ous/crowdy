@@ -20,7 +20,7 @@ public class BackOptionHandler {
 
     public Mono<ServerResponse> saveBackOption(ServerRequest serverRequest) {
         return ServerResponse.ok()
-                .body(backOptionFacade.saveBackOption(serverRequest.bodyToMono(BackOption.class)), BackOption.class);
+                .body(backOptionFacade.saveAllBackOptions(serverRequest.bodyToFlux(BackOption.class)), BackOption.class);
     }
 
     public Mono<ServerResponse> deleteBackOptionById(ServerRequest serverRequest) {

@@ -15,8 +15,8 @@ public class DefaultCategoriesService implements CategoriesService {
     private final CategoriesRepository categoriesRepository;
 
     @Override
-    public Mono<Categories> save(Mono<Categories> categories) {
-        return this.categoriesRepository.save(categories);
+    public Flux<Categories> saveAll(Flux<Categories> model) {
+        return categoriesRepository.saveAll(model);
     }
 
     @Override

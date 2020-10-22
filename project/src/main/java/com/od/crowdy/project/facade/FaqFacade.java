@@ -7,7 +7,7 @@ import reactor.core.publisher.Mono;
 public interface FaqFacade {
     Mono<Faq> findFaqById(String id);
 
-    Mono<Faq> saveFaq(Mono<Faq> faq);
+    Flux<Faq> saveAllFaqs(Flux<Faq> faq);
 
     Mono<Void> deleteById(String id);
 

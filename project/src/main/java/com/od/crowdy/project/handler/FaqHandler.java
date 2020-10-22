@@ -20,7 +20,7 @@ public class FaqHandler {
 
     public Mono<ServerResponse> saveFaq(ServerRequest serverRequest) {
         return ServerResponse.ok()
-                .body(faqFacade.saveFaq(serverRequest.bodyToMono(Faq.class)), Faq.class);
+                .body(faqFacade.saveAllFaqs(serverRequest.bodyToFlux(Faq.class)), Faq.class);
     }
 
     public Mono<ServerResponse> deleteFaqById(ServerRequest serverRequest) {

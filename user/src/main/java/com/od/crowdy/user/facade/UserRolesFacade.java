@@ -7,7 +7,7 @@ import reactor.core.publisher.Mono;
 public interface UserRolesFacade {
     Mono<UserRoles> findUserRoleById(String id);
 
-    Mono<UserRoles> saveUserRole(Mono<UserRoles> userRole);
+    Flux<UserRoles> saveAllUserRoles(Flux<UserRoles> userRole);
 
     Mono<Void> deleteById(String id);
 

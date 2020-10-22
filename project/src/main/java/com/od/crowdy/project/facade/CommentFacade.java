@@ -7,7 +7,7 @@ import reactor.core.publisher.Mono;
 public interface CommentFacade {
     Mono<Comment> findCommentById(String id);
 
-    Mono<Comment> saveComment(Mono<Comment> comment);
+    Flux<Comment> saveAllComments(Flux<Comment> comment);
 
     Mono<Void> deleteById(String id);
 

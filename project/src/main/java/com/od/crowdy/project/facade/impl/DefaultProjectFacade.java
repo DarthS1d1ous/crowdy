@@ -20,8 +20,8 @@ public class DefaultProjectFacade implements ProjectFacade {
     }
 
     @Override
-    public Mono<Project> saveProject(Mono<Project> project) {
-        return projectService.save(project);
+    public Flux<Project> saveAllProjects(Flux<Project> project) {
+        return projectService.saveAll(project);
     }
 
     @Override

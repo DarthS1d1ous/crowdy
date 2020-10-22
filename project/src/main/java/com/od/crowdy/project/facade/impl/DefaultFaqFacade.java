@@ -19,8 +19,8 @@ public class DefaultFaqFacade implements FaqFacade {
     }
 
     @Override
-    public Mono<Faq> saveFaq(Mono<Faq> faq) {
-        return faqService.save(faq);
+    public Flux<Faq> saveAllFaqs(Flux<Faq> faq) {
+        return faqService.saveAll(faq);
     }
 
     @Override

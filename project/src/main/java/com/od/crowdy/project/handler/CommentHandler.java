@@ -20,7 +20,7 @@ public class CommentHandler {
 
     public Mono<ServerResponse> saveComment(ServerRequest serverRequest) {
         return ServerResponse.ok()
-                .body(commentFacade.saveComment(serverRequest.bodyToMono(Comment.class)), Comment.class);
+                .body(commentFacade.saveAllComments(serverRequest.bodyToFlux(Comment.class)), Comment.class);
     }
 
     public Mono<ServerResponse> deleteCommentById(ServerRequest serverRequest) {

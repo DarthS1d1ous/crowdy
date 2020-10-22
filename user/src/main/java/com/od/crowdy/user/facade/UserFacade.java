@@ -7,7 +7,7 @@ import reactor.core.publisher.Mono;
 public interface UserFacade {
     Mono<User> findUserById(String id);
 
-    Mono<User> saveUser(Mono<User> user);
+    Flux<User> saveAllUsers(Flux<User> user);
 
     Mono<Void> deleteById(String id);
 

@@ -7,7 +7,7 @@ import reactor.core.publisher.Mono;
 public interface BackOptionFacade {
     Mono<BackOption> findBackOptionById(String id);
 
-    Mono<BackOption> saveBackOption(Mono<BackOption> backOption);
+    Flux<BackOption> saveAllBackOptions(Flux<BackOption> backOption);
 
     Mono<Void> deleteById(String id);
 

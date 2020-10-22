@@ -15,8 +15,8 @@ public class DefaultProjectService implements ProjectService {
     private final ProjectRepository projectRepository;
 
     @Override
-    public Mono<Project> save(Mono<Project> project) {
-        return this.projectRepository.save(project);
+    public Flux<Project> saveAll(Flux<Project> model) {
+        return projectRepository.saveAll(model);
     }
 
     @Override

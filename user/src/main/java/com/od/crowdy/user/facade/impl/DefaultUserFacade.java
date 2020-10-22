@@ -19,8 +19,8 @@ public class DefaultUserFacade implements UserFacade {
     }
 
     @Override
-    public Mono<User> saveUser(Mono<User> user) {
-        return userService.save(user);
+    public Flux<User> saveAllUsers(Flux<User> user) {
+        return userService.saveAll(user);
     }
 
     @Override

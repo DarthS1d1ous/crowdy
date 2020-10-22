@@ -20,7 +20,7 @@ public class ProjectHandler {
 
     public Mono<ServerResponse> saveProject(ServerRequest serverRequest) {
         return ServerResponse.ok()
-                .body(projectFacade.saveProject(serverRequest.bodyToMono(Project.class)), Project.class);
+                .body(projectFacade.saveAllProjects(serverRequest.bodyToFlux(Project.class)), Project.class);
     }
 
     public Mono<ServerResponse> deleteProjectById(ServerRequest serverRequest) {

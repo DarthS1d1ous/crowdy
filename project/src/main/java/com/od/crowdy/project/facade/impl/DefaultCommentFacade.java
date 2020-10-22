@@ -19,8 +19,8 @@ public class DefaultCommentFacade implements CommentFacade {
     }
 
     @Override
-    public Mono<Comment> saveComment(Mono<Comment> comment) {
-        return commentService.save(comment);
+    public Flux<Comment> saveAllComments(Flux<Comment> comment) {
+        return commentService.saveAll(comment);
     }
 
     @Override

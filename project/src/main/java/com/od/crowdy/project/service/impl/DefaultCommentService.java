@@ -15,8 +15,8 @@ public class DefaultCommentService implements CommentService {
     private final CommentRepository commentRepository;
 
     @Override
-    public Mono<Comment> save(Mono<Comment> comment) {
-        return this.commentRepository.save(comment);
+    public Flux<Comment> saveAll(Flux<Comment> model) {
+        return commentRepository.saveAll(model);
     }
 
     @Override

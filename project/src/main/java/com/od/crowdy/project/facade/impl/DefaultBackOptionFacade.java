@@ -19,8 +19,8 @@ public class DefaultBackOptionFacade implements BackOptionFacade {
     }
 
     @Override
-    public Mono<BackOption> saveBackOption(Mono<BackOption> backOption) {
-        return backOptionService.save(backOption);
+    public Flux<BackOption> saveAllBackOptions(Flux<BackOption> backOption) {
+        return backOptionService.saveAll(backOption);
     }
 
     @Override

@@ -14,8 +14,8 @@ public class DefaultUserRolesService implements UserRolesService {
     private final UserRolesRepository userRolesRepository;
 
     @Override
-    public Mono<UserRoles> save(Mono<UserRoles> userRoles) {
-        return this.userRolesRepository.save(userRoles);
+    public Flux<UserRoles> saveAll(Flux<UserRoles> model) {
+        return userRolesRepository.saveAll(model);
     }
 
     @Override

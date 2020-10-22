@@ -15,8 +15,8 @@ public class DefaultFaqService implements FaqService {
     private final FaqRepository faqRepository;
 
     @Override
-    public Mono<Faq> save(Mono<Faq> faq) {
-        return this.faqRepository.save(faq);
+    public Flux<Faq> saveAll(Flux<Faq> model) {
+        return faqRepository.saveAll(model);
     }
 
     @Override

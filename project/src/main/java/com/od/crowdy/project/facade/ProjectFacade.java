@@ -7,7 +7,7 @@ import reactor.core.publisher.Mono;
 public interface ProjectFacade {
     Mono<Project> findProjectById(String projectId);
 
-    Mono<Project> saveProject(Mono<Project> project);
+    Flux<Project> saveAllProjects(Flux<Project> project);
 
     Mono<Void> deleteById(String projectId);
 

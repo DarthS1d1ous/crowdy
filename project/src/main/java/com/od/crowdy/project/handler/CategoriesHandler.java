@@ -20,7 +20,7 @@ public class CategoriesHandler {
 
     public Mono<ServerResponse> saveCategory(ServerRequest serverRequest) {
         return ServerResponse.ok()
-                .body(categoriesFacade.saveCategory(serverRequest.bodyToMono(Categories.class)), Categories.class);
+                .body(categoriesFacade.saveAllCategories(serverRequest.bodyToFlux(Categories.class)), Categories.class);
     }
 
     public Mono<ServerResponse> deleteCategoryById(ServerRequest serverRequest) {

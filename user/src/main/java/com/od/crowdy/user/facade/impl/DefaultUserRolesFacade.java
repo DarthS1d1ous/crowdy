@@ -19,8 +19,8 @@ public class DefaultUserRolesFacade implements UserRolesFacade {
     }
 
     @Override
-    public Mono<UserRoles> saveUserRole(Mono<UserRoles> userRole) {
-        return userRolesService.save(userRole);
+    public Flux<UserRoles> saveAllUserRoles(Flux<UserRoles> userRole) {
+        return userRolesService.saveAll(userRole);
     }
 
     @Override

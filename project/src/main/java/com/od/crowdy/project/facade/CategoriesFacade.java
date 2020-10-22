@@ -7,7 +7,7 @@ import reactor.core.publisher.Mono;
 public interface CategoriesFacade {
     Mono<Categories> findCategoryById(String id);
 
-    Mono<Categories> saveCategory(Mono<Categories> category);
+    Flux<Categories> saveAllCategories(Flux<Categories> category);
 
     Mono<Void> deleteById(String id);
 

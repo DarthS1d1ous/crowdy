@@ -15,8 +15,8 @@ public class DefaultUserService implements UserService {
     private final UserRepository userRepository;
 
     @Override
-    public Mono<User> save(Mono<User> user) {
-        return this.userRepository.save(user);
+    public Flux<User> saveAll(Flux<User> model) {
+        return userRepository.saveAll(model);
     }
 
     @Override
