@@ -15,23 +15,23 @@ public class UserHandler {
 
     public Mono<ServerResponse> findAllUsers(ServerRequest serverRequest) {
         return ServerResponse.ok()
-                .body(userFacade.findUserById(serverRequest.pathVariable("id")), User.class);
+                .body(userFacade.findAllUsers(), User.class);
+
     }
 
     public Mono<ServerResponse> findUserById(ServerRequest serverRequest) {
         return ServerResponse.ok()
-                .body(userFacade.saveAllUsers(serverRequest.bodyToFlux(User.class)), User.class);
+                .body(userFacade.findUserById(serverRequest.pathVariable("id")), User.class);
+
     }
 
     public Mono<ServerResponse> saveUser(ServerRequest serverRequest) {
         return ServerResponse.ok()
-                .body(userFacade.deleteById(serverRequest.pathVariable("id")), Void.class);
-
+                .body(userFacade.saveAllUsers(serverRequest.bodyToFlux(User.class)), User.class);
     }
 
     public Mono<ServerResponse> deleteUserById(ServerRequest serverRequest) {
         return ServerResponse.ok()
-                .body(userFacade.findAllUsers(), User.class);
-
+                .body(userFacade.deleteById(serverRequest.pathVariable("id")), Void.class);
     }
 }
