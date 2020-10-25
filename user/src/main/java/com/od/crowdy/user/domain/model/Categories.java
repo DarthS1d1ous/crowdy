@@ -1,4 +1,4 @@
-package com.od.crowdy.project.domain.model;
+package com.od.crowdy.user.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,12 +10,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document("back_option")
+@Document("categories")
 @Builder
-public class BackOption {
+public class Categories {
     @Id
     private String id;
-    private String pledge;
-    private String reward;
-    private Integer backers;
+    private String category;
 }

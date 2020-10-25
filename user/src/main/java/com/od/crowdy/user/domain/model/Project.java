@@ -1,9 +1,12 @@
-package com.od.crowdy.shared.domain.model;
+package com.od.crowdy.user.domain.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.bson.types.Binary;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -12,9 +15,11 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@Document("project")
 public class Project {
+    @Id
     private String id;
-    private User author;
     private String name;
     private List<User> likes;
     private String description;

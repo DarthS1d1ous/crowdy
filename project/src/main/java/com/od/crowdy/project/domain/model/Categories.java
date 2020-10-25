@@ -1,15 +1,19 @@
 package com.od.crowdy.project.domain.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Document("categories")
 @Builder
-public class Categories extends com.od.crowdy.shared.domain.model.Categories {
+public class Categories {
     @Id
-    @Override
-    public String getId() {
-        return super.getId();
-    }
+    private String id;
+    private String category;
 }

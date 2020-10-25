@@ -1,15 +1,19 @@
 package com.od.crowdy.user.domain.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document("user_roles")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
-public class UserRoles extends com.od.crowdy.shared.domain.model.UserRoles {
+@Document("user_roles")
+public class UserRoles {
     @Id
-    @Override
-    public String getId() {
-        return super.getId();
-    }
+    private String id;
+    private String role;
 }

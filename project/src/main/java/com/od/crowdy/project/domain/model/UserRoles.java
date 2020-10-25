@@ -10,12 +10,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document("back_option")
 @Builder
-public class BackOption {
+@Document("user_roles")
+public class UserRoles {
     @Id
     private String id;
-    private String pledge;
-    private String reward;
-    private Integer backers;
+    private String role;
 }

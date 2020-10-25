@@ -1,15 +1,36 @@
 package com.od.crowdy.project.domain.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.bson.types.Binary;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document("project")
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.List;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
-public class Project extends com.od.crowdy.shared.domain.model.Project {
+@Document("project")
+public class Project {
     @Id
-    @Override
-    public String getId() {
-        return super.getId();
-    }
+    private String id;
+    private User author;
+    private String name;
+    private List<User> likes;
+    private String description;
+    private List<Comment> comments;
+    private List<Faq> faqs;
+    private List<Binary> images;
+    private BigDecimal overallBack;
+    private BigDecimal currentBack;
+    private List<BackOption> backOptions;
+    private LocalDate createdAt;
+    private LocalDate expiredAt;
+    private List<String> categories;
 }

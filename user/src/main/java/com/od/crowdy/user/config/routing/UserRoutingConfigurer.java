@@ -16,9 +16,9 @@ public class UserRoutingConfigurer implements RoutingConfigurer {
 
     @Override
     public RouterFunction<ServerResponse> routes() {
-        return route(GET("/user"), userHandler::findAllUsers)
-                .andRoute(GET("/user/{id}"), userHandler::findUserById)
-                .andRoute(POST("/user"), userHandler::saveUser)
-                .andRoute(DELETE("/user/{id}"), userHandler::deleteUserById);
+        return route(GET("/users"), userHandler::findAllUsers)
+                .andRoute(GET("/users/{id}"), userHandler::findUserById)
+                .andRoute(POST("/users"), userHandler::saveUser)
+                .andRoute(DELETE("/users/{id}"), userHandler::deleteUserById);
     }
 }
