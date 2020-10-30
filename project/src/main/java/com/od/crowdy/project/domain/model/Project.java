@@ -4,33 +4,63 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.bson.types.Binary;
+import org.neo4j.springframework.data.core.schema.GeneratedValue;
+import org.neo4j.springframework.data.core.schema.Node;
+import org.neo4j.springframework.data.core.schema.Relationship;
+import org.neo4j.springframework.data.core.support.UUIDStringGenerator;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
+import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Document("project")
-public class Project {
+@Node("project")
+public class Project implements CurrentBackCalculator {
+
     @Id
+    @GeneratedValue(UUIDStringGenerator.class)
     private String id;
-    private User author;
+
     private String name;
-    private List<User> likes;
-    private String description;
-    private List<Comment> comments;
-    private List<Faq> faqs;
-    private List<Binary> images;
-    private BigDecimal overallBack;
-    private BigDecimal currentBack;
-    private List<BackOption> backOptions;
     private LocalDate createdAt;
-    private LocalDate expiredAt;
-    private List<String> categories;
+    private LocalDate deadline;
+    private List<URL> imagesUrls;
+    private ProjectType projectType;
+
+
+    private BigDecimal overallBack;
+    /**
+     * Dynamic field
+     */
+    private BigDecimal currentBack;
+
+    @Relationship(type = "HAS", direction = Relationship.Direction.OUTGOING)
+    private List<Comment> comments;
+
+    @Relationship(type = "HAS", direction = Relationship.Direction.OUTGOING)
+    private List<Faq> faqs;
+
+    @Relationship(type = "HAS", direction = Relationship.Direction.OUTGOING)
+    private List<BackOption> backOptions;
+
+    @Relationship(type = "RELATED_TO", direction = Relationship.Direction.OUTGOING)
+    private Set<Category> Category;
+
+    @Relationship(type = "LIKES", direction = Relationship.Direction.INCOMING)
+    private List<User> likes;
+
+    @Relationship(type = "PASSED_TO", direction = Relationship.Direction.INCOMING)
+    private List<Payment> payments;
+
+    @Override
+    public BigDecimal calculateAndGetCurrentBack() {
+        // TODO get all payments amount
+        return null;
+    }
 }
