@@ -1,6 +1,6 @@
 package com.od.crowdy.user.config.routing;
 
-import com.od.crowdy.user.handler.UserRolesHandler;
+import com.od.crowdy.user.handler.UserRoleHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.RouterFunction;
@@ -11,14 +11,14 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 
 @Component
 @RequiredArgsConstructor
-public class UserRolesRoutingConfigurer implements RoutingConfigurer {
-    private final UserRolesHandler userRolesHandler;
+public class UserRoleRoutingConfigurer implements RoutingConfigurer {
+    private final UserRoleHandler userRoleHandler;
 
     @Override
     public RouterFunction<ServerResponse> routes() {
-        return route(GET("/userroles"), userRolesHandler::findAllUserRoles)
-                .andRoute(GET("/userroles/{id}"), userRolesHandler::findUserRoleById)
-                .andRoute(POST("/userroles"), userRolesHandler::saveUserRole)
-                .andRoute(DELETE("/userroles/{id}"), userRolesHandler::deleteUserRoleById);
+        return route(GET("/userroles"), userRoleHandler::findAllUserRoles)
+                .andRoute(GET("/userroles/{id}"), userRoleHandler::findUserRoleById)
+                .andRoute(POST("/userroles"), userRoleHandler::saveUserRole)
+                .andRoute(DELETE("/userroles/{id}"), userRoleHandler::deleteUserRoleById);
     }
 }
