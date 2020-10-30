@@ -1,7 +1,7 @@
 package com.od.crowdy.project.handler;
 
-import com.od.crowdy.project.domain.model.Categories;
-import com.od.crowdy.project.facade.CategoriesFacade;
+import com.od.crowdy.project.domain.model.Category;
+import com.od.crowdy.project.facade.CategoryFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
@@ -10,26 +10,26 @@ import reactor.core.publisher.Mono;
 
 @Component
 @RequiredArgsConstructor
-public class CategoriesHandler {
-    private final CategoriesFacade categoriesFacade;
+public class CategoryHandler {
+    private final CategoryFacade CategoryFacade;
 
     public Mono<ServerResponse> findCategoryById(ServerRequest serverRequest) {
         return ServerResponse.ok()
-                .body(categoriesFacade.findCategoryById(serverRequest.pathVariable("id")), Categories.class);
+                .body(CategoryFacade.findCategoryById(serverRequest.pathVariable("id")), Category.class);
     }
 
     public Mono<ServerResponse> saveCategory(ServerRequest serverRequest) {
         return ServerResponse.ok()
-                .body(categoriesFacade.saveAllCategories(serverRequest.bodyToFlux(Categories.class)), Categories.class);
+                .body(CategoryFacade.saveAllCategory(serverRequest.bodyToFlux(Category.class)), Category.class);
     }
 
     public Mono<ServerResponse> deleteCategoryById(ServerRequest serverRequest) {
         return ServerResponse.ok()
-                .body(categoriesFacade.deleteById(serverRequest.pathVariable("id")), Void.class);
+                .body(CategoryFacade.deleteById(serverRequest.pathVariable("id")), Void.class);
     }
 
-    public Mono<ServerResponse> findAllCategories(ServerRequest serverRequest) {
+    public Mono<ServerResponse> findAllCategory(ServerRequest serverRequest) {
         return ServerResponse.ok()
-                .body(categoriesFacade.findAllCategories(), Categories.class);
+                .body(CategoryFacade.findAllCategory(), Category.class);
     }
 }
