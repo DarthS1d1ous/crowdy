@@ -4,18 +4,31 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.neo4j.springframework.data.core.schema.GeneratedValue;
+import org.neo4j.springframework.data.core.schema.Node;
+import org.neo4j.springframework.data.core.schema.Relationship;
+import org.neo4j.springframework.data.core.support.UUIDStringGenerator;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.math.BigDecimal;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document("back_option")
 @Builder
+@Node("back_option")
 public class BackOption {
+
     @Id
+    @GeneratedValue(UUIDStringGenerator.class)
     private String id;
-    private String pledge;
+    private BigDecimal pledge;
     private String reward;
-    private Integer backers;
+
+    @Relationship(type = "WANTS", direction = Relationship.Direction.INCOMING)
+    private Set<User> backers;
+
+    @Relationship(type = "ACTIVATES", direction = Relationship.Direction.INCOMING)
+    private Set<Payment> payments;
 }

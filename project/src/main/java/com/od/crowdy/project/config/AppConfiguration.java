@@ -12,7 +12,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 public class AppConfiguration {
     private final ProjectRoutingConfigurer projectRoutingConfigurer;
     private final FaqRoutingConfigurer faqRoutingConfigurer;
-    private final CategoriesRoutingConfigurer categoriesRoutingConfigurer;
+    private final CategoryRoutingConfigurer CategoryRoutingConfigurer;
     private final CommentRoutingConfigurer commentRoutingConfigurer;
     private final BackOptionRoutingConfigurer backOptionRoutingConfigurer;
 
@@ -20,7 +20,7 @@ public class AppConfiguration {
     RouterFunction<ServerResponse> routes() {
         return projectRoutingConfigurer.routes()
                 .and(faqRoutingConfigurer.routes())
-                .and(categoriesRoutingConfigurer.routes())
+                .and(CategoryRoutingConfigurer.routes())
                 .and(commentRoutingConfigurer.routes())
                 .and(backOptionRoutingConfigurer.routes());
 
