@@ -1,6 +1,7 @@
 package com.od.crowdy.user;
 
 import com.od.crowdy.user.repository.UserRepository;
+import com.od.crowdy.user.repository.UserRoleRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.SpringApplication;
@@ -14,12 +15,13 @@ import org.springframework.context.event.EventListener;
 public class UserApplication {
 
     private final UserRepository userRepository;
+    private final UserRoleRepository userRoleRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(UserApplication.class, args);
     }
 
     @EventListener(ApplicationReadyEvent.class)
-    public void generateUser() {
+    public void generateUserData() {
     }
 }

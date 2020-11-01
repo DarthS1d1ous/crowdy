@@ -7,6 +7,8 @@ services:
     ports:
       - 7474:7474
       - 7687:7687
+    volumes:
+      - "./neo4j/data:/data"
     restart: on-failure
   # --------------- SERVICES  ---------------
   project-service:
@@ -18,6 +20,9 @@ services:
     environment:
       - SERVER_PORT=8082
       - SPRING_APPLICATION_NAME=project-service
+      - USER_SERVICE_NAME=user-service
+      - NEO4J_NAME=neo4j
+      - FRONTEND_SERVICE_NAME=frontend
     restart: always
   user-service:
     build:
@@ -28,4 +33,13 @@ services:
     environment:
       - SERVER_PORT=8081
       - SPRING_APPLICATION_NAME=user-service
+      - PROJECT_SERVICE_NAME=project-service
+      - NEO4J_NAME=neo4j
+      - FRONTEND_SERVICE_NAME=frontend
     restart: always
+#  frontend:
+#    build:
+#      context: frontend
+#    ports:
+#      - 4200:4200
+#    restart: always

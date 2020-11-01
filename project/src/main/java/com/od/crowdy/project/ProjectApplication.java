@@ -1,5 +1,7 @@
 package com.od.crowdy.project;
 
+import com.od.crowdy.project.repository.BackOptionRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,9 +11,11 @@ import org.springframework.context.event.EventListener;
 import java.time.LocalDateTime;
 
 @SpringBootApplication
+@RequiredArgsConstructor
 @Log4j2
 public class ProjectApplication {
 
+    private final BackOptionRepository backOptionRepository;
     public static void main(String[] args) {
         SpringApplication.run(ProjectApplication.class, args);
     }

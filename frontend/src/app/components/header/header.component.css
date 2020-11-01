@@ -14,9 +14,10 @@
 
 @font-face {
   font-family: lato;
-  src: url(../../assets/static/font/crowdy_font.ttf) format("truetype");
+  src: url(src/assets/static/font/crowdy_font.ttf) format("truetype");
 }
 
 .crowdy_font_style {
   font-family: 'lato', 'arial', sans-serif;
+  font-size: xx-large;
 }

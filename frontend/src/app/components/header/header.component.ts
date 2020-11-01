@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SignService} from "../security/sign.service";
+import {SignService} from "../../security/sign.service";
 
 @Component({
   selector: 'app-header',

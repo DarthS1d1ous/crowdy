@@ -9,6 +9,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [],
@@ -21,7 +22,8 @@ import {MatSidenavModule} from "@angular/material/sidenav";
     MatIconModule,
     MatToolbarModule,
     MatMenuModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatCardModule
   ],
   exports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import {MatSidenavModule} from "@angular/material/sidenav";
     MatIconModule,
     MatToolbarModule,
     MatMenuModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: []

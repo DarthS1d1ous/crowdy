@@ -41,22 +41,22 @@ public class Project implements CurrentBackCalculator {
     private BigDecimal currentBack;
 
     @Relationship(type = "HAS", direction = Relationship.Direction.OUTGOING)
-    private List<Comment> comments;
+    private Set<Comment> comments;
 
     @Relationship(type = "HAS", direction = Relationship.Direction.OUTGOING)
-    private List<Faq> faqs;
+    private Set<Faq> faqs;
 
     @Relationship(type = "HAS", direction = Relationship.Direction.OUTGOING)
-    private List<BackOption> backOptions;
+    private Set<BackOption> backOptions;
 
     @Relationship(type = "RELATED_TO", direction = Relationship.Direction.OUTGOING)
     private Set<Category> Category;
 
     @Relationship(type = "LIKES", direction = Relationship.Direction.INCOMING)
-    private List<User> likes;
+    private Set<User> likes;
 
     @Relationship(type = "PASSED_TO", direction = Relationship.Direction.INCOMING)
-    private List<Payment> payments;
+    private Set<Payment> payments;
 
     @Override
     public BigDecimal calculateAndGetCurrentBack() {
