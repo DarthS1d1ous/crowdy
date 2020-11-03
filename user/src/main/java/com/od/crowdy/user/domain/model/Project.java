@@ -20,7 +20,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Node("project")
+@Node("Project")
 public class Project implements CurrentBackCalculator {
 
     @Id
@@ -30,7 +30,7 @@ public class Project implements CurrentBackCalculator {
     private String name;
     private LocalDate createdAt;
     private LocalDate deadline;
-    private List<URL> imagesUrls;
+    private List<URL> imageUrls;
     private ProjectType projectType;
 
 
@@ -50,7 +50,7 @@ public class Project implements CurrentBackCalculator {
     private Set<BackOption> backOptions;
 
     @Relationship(type = "RELATED_TO", direction = Relationship.Direction.OUTGOING)
-    private Set<Category> Category;
+    private Set<Category> category;
 
     @Relationship(type = "LIKES", direction = Relationship.Direction.INCOMING)
     private Set<User> likes;

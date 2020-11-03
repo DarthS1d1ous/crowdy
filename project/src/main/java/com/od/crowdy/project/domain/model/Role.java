@@ -11,7 +11,7 @@ import org.springframework.data.annotation.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Node("role")
+@Node("Role")
 public class Role {
 
     @Id

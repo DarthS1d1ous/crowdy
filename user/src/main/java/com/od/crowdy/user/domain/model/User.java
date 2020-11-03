@@ -15,7 +15,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Node("user")
+@Node("User")
 public class User {
 
     @Id

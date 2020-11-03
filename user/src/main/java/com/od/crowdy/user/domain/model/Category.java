@@ -13,7 +13,7 @@ import org.springframework.data.annotation.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Node("category")
+@Node("Category")
 public class Category {
 
     @Id

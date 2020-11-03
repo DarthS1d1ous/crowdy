@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Node("comment")
+@Node("Comment")
 public class Comment {
 
     @Id

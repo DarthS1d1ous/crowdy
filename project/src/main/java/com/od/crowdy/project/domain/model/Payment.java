@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Node("payment")
+@Node("Payment")
 public class Payment {
 
     @Id

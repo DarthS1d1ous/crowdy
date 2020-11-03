@@ -1,5 +1,6 @@
 package com.od.crowdy.project;
 
+import com.od.crowdy.project.domain.model.BackOption;
 import com.od.crowdy.project.repository.BackOptionRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -8,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @SpringBootApplication
@@ -23,6 +25,11 @@ public class ProjectApplication {
     @EventListener(ApplicationReadyEvent.class)
     public void serviceStarted() {
         log.info("Server has started! {}", LocalDateTime.now());
+        backOptionRepository.save(new BackOption() {{
+            setPledge(BigDecimal.TEN);
+            setReward("reward");
+        }})
+                .subscribe();
     }
 
 }

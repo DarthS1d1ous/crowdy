@@ -1,7 +1,6 @@
 package com.od.crowdy.project.domain.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.neo4j.springframework.data.core.schema.GeneratedValue;
@@ -16,8 +15,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-@Node("back_option")
+@Node("BackOption")
 public class BackOption {
 
     @Id
