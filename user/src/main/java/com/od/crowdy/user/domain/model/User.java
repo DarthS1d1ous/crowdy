@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.neo4j.springframework.data.core.schema.Id;
 import org.neo4j.springframework.data.core.schema.Node;
 
+import java.net.URL;
 import java.time.LocalDate;
 
 @Data
@@ -23,4 +24,5 @@ public class User {
     private String fullName;
     private LocalDate createdAt;
     private LocalDate birthday;
+    private URL avatar;
 }

@@ -1,1 +1,2 @@
-<app-project-item></app-project-item>
+<app-project-item *ngFor="let project of getProjects() | async" [projectItem]="project">
+</app-project-item>

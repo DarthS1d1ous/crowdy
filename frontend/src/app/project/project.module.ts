@@ -4,6 +4,7 @@ import {ProjectListComponent} from './project-list/project-list.component';
 import {ProjectItemComponent} from './project-item/project-item.component';
 import {ProjectDetailsComponent} from './project-details/project-details.component';
 import {MaterialModule} from "../material/material.module";
+import {ProjectService} from "./service/project.service";
 
 
 @NgModule({
@@ -14,6 +15,9 @@ import {MaterialModule} from "../material/material.module";
   imports: [
     CommonModule,
     MaterialModule
+  ],
+  providers: [
+    ProjectService
   ]
 })
 export class ProjectModule {

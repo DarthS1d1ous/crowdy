@@ -10,7 +10,6 @@ import org.neo4j.springframework.data.core.support.UUIDStringGenerator;
 import org.springframework.data.annotation.Id;
 
 import java.math.BigDecimal;
-import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -26,14 +25,16 @@ public class Project implements CurrentBackCalculator {
     private String id;
 
     private String name;
+    private String description;
     private LocalDate createdAt;
     private LocalDate deadline;
-    private List<URL> imageUrls;
+    private List<String> imageUrls;
     private BigDecimal overallBack;
     /**
      * Dynamic field
      */
     private BigDecimal currentBack;
+
     @Override
     public BigDecimal calculateAndGetCurrentBack() {
         // TODO get all payments amount
