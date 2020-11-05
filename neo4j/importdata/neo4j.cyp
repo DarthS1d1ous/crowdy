@@ -1,10 +1,10 @@
-CREATE (admin:Role {name: 'admin'});
+CREATE (admin:Role {name: 'admin'})
 
-CREATE (user:Role {name: 'user'});
+CREATE (user:Role {name: 'user'})
 
-CREATE (just_support:ProjectType {name: 'just_support'});
+CREATE (just_support:ProjectType {name: 'just_support'})
 
-CREATE (kickstarter:ProjectType {name: 'kickstarter'});
+CREATE (kickstarter:ProjectType {name: 'kickstarter'})
 
 CREATE (four_d_chess_1:Project {
   name:        'Board game',
@@ -13,7 +13,7 @@ CREATE (four_d_chess_1:Project {
   imagesUrls:  ['https://pbs.twimg.com/media/ESNpMg_WoAAy8FV.jpg'],
   overallBack: 5456.43,
   currentBack: 2332.67
-});
+})
 
 CREATE (four_d_chess_2:Project {
   name:        'Board game',
@@ -22,7 +22,7 @@ CREATE (four_d_chess_2:Project {
   imagesUrls:  ['https://pbs.twimg.com/media/ESNpMg_WoAAy8FV.jpg'],
   overallBack: 5456.43,
   currentBack: 2332.67
-});
+})
 
 CREATE (four_d_chess_3:Project {
   name:        'Board game',
@@ -31,7 +31,7 @@ CREATE (four_d_chess_3:Project {
   imagesUrls:  ['https://pbs.twimg.com/media/ESNpMg_WoAAy8FV.jpg'],
   overallBack: 5456.43,
   currentBack: 2332.67
-});
+})
 
 CREATE (art_1:Project {
   name:        'Paint',
@@ -41,7 +41,7 @@ CREATE (art_1:Project {
                  'https://images.wallpaperscraft.ru/image/vinsent_van_gog_zvezdnaya_noch_maslo_kholst_117815_1920x1080.jpg'],
   overallBack: 3456.43,
   currentBack: 22.67
-});
+})
 
 CREATE (denis:User {
   id:        '1',
@@ -50,7 +50,7 @@ CREATE (denis:User {
   fullName:  'Denis Borschevsky',
   createdAt: date(),
   birthday:  date({year: 2000, month: 2, day: 16})
-});
+})
 
 CREATE (oleg:User {
   id:        '2',
@@ -134,9 +134,64 @@ CREATE
   (oleg)-[:HAS]->(admin),
   (vlad)-[:HAS]->(user),
 
-@TODO complete this shit please thank you
+  (denis)-[:LIKES]->(oleg),
+  (oleg)-[:LIKES]->(denis),
+  (vlad)-[:LIKES]->(oleg),
+  (vlad)-[:LIKES]->(denis),
 
+  (denis)-[:FOLLOWS]->(oleg),
+  (oleg)-[:FOLLOWS]->(denis),
+  (vlad)-[:FOLLOWS]->(oleg),
+  (vlad)-[:FOLLOWS]->(denis),
+  (oleg)-[:FOLLOWS]->(vlad),
 
+  (denis)-[:OWNS]->(four_d_chess_1),
+  (denis)-[:OWNS]->(four_d_chess_2),
+  (oleg)-[:OWNS]->(four_d_chess_3),
+  (vlad)-[:OWNS]->(art_1),
 
+  (denis)-[:CREATES]->(comment_1),
+  (oleg)-[:CREATES]->(comment_2),
+  (vlad)-[:CREATES]->(comment_3),
 
+  (vlad)-[:MAKES]->(p_1),
+  (oleg)-[:MAKES]->(p_2),
 
+  (four_d_chess_1)-[:HAS]->(comment_1),
+  (four_d_chess_2)-[:HAS]->(comment_2),
+  (four_d_chess_2)-[:HAS]->(comment_3),
+
+  (four_d_chess_1)-[:IS]->(kickstarter),
+  (four_d_chess_2)-[:IS]->(kickstarter),
+  (four_d_chess_3)-[:IS]->(kickstarter),
+  (art_1)-[:IS]->(just_support),
+
+  (four_d_chess_1)-[:HAS]->(faq_1),
+  (four_d_chess_2)-[:HAS]->(faq_2),
+  (four_d_chess_2)-[:HAS]->(faq_3),
+  (four_d_chess_3)-[:HAS]->(faq_3),
+
+  (four_d_chess_1)-[:HAS]->(back_option_1),
+  (four_d_chess_1)-[:HAS]->(back_option_2),
+  (four_d_chess_2)-[:HAS]->(back_option_3),
+  (four_d_chess_3)-[:HAS]->(back_option_4),
+
+  (four_d_chess_1)-[:RELATED_TO]->(board_game),
+  (four_d_chess_2)-[:RELATED_TO]->(board_game),
+  (four_d_chess_3)-[:RELATED_TO]->(board_game),
+  (art_1)-[:RELATED_TO]->(art),
+
+  (four_d_chess_1)<-[:LIKES]-(denis),
+  (four_d_chess_2)<-[:LIKES]-(denis),
+  (four_d_chess_3)<-[:LIKES]-(denis),
+  (four_d_chess_2)<-[:LIKES]-(oleg),
+  (art_1)<-[:LIKES]-(oleg),
+  (four_d_chess_3)<-[:LIKES]-(vlad),
+  (art_1)<-[:LIKES]-(denis),
+
+  (four_d_chess_1)<-[:PASSED_TO]-(p_2),
+  (four_d_chess_2)<-[:PASSED_TO]-(p_1),
+
+  (back_option_3)<-[:WANTS]-(vlad),
+
+  (back_option_3)<-[:WANTS]-(p_1)
