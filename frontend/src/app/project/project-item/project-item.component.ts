@@ -10,22 +10,14 @@ import {UserModel} from "../../user/model/user.model";
 export class ProjectItemComponent implements OnInit {
 
   @Input()
-  private projectItem: ProjectModel;
+  projectItem: ProjectModel;
   @Input()
-  private author: UserModel;
+  author: UserModel;
 
   constructor() {
   }
 
   ngOnInit(): void {
+    console.log(this.projectItem);
   }
-
-  public getProjectItem(): ProjectModel {
-    return this.projectItem;
-  }
-
-  public getAuthor(): UserModel {
-    return this.author;
-  }
-
 }

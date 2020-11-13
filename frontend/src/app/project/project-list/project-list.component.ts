@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectModel} from "../model/project.model";
-import {Observable} from "rxjs";
 import {ProjectService} from "../service/project.service";
 
 @Component({
@@ -10,16 +9,12 @@ import {ProjectService} from "../service/project.service";
 })
 export class ProjectListComponent implements OnInit {
 
-  private projects: Observable<ProjectModel[]>;
+  public projects: ProjectModel[];
 
   constructor(private projectService: ProjectService) {
   }
 
   ngOnInit(): void {
-    this.projects = this.projectService.getAllProjects();
-  }
-
-  public getProjects(): Observable<ProjectModel[]> {
-    return this.projects;
+    this.projectService.getAllProjects().subscribe(projects => this.projects = projects);
   }
 }

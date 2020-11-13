@@ -10,7 +10,6 @@ export class ProjectService {
   }
 
   public getAllProjects(): Observable<ProjectModel[]> {
-    return this.httpClient.get<ProjectModel[]>("http://localhost:8002/projects");
+    return this.httpClient.get<ProjectModel[]>("http://localhost:8082/projects");
   }
 }
-
