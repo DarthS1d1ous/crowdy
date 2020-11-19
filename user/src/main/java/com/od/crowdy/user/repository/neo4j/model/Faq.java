@@ -1,4 +1,4 @@
-package com.od.crowdy.user.domain.model;
+package com.od.crowdy.user.repository.neo4j.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,18 +9,16 @@ import org.neo4j.springframework.data.core.schema.Node;
 import org.neo4j.springframework.data.core.support.UUIDStringGenerator;
 import org.springframework.data.annotation.Id;
 
-import java.time.LocalDate;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Node("Comment")
-public class Comment {
+@Node("Faq")
+public class Faq {
 
     @Id
     @GeneratedValue(UUIDStringGenerator.class)
     private String id;
-    private LocalDate createdAt;
-    private String message;
+    private String question;
+    private String answer;
 }

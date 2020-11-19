@@ -1,4 +1,4 @@
-package com.od.crowdy.user.domain.model;
+package com.od.crowdy.user.repository.neo4j.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,8 +11,8 @@ import org.springframework.data.annotation.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Node("Role")
-public class Role {
+@Node("ProjectType")
+public class ProjectType {
 
     @Id
     private String name;
