@@ -1,2 +1,5 @@
-<app-project-item *ngFor="let project of projects" [projectItem]="project">
-</app-project-item>
+<div *ngFor="let category of categories">
+  <h2 class="crowdy_font_style">{{category.name}}</h2>
+  <app-project-item *ngFor="let project of category.projects" [projectItem]="project">
+  </app-project-item>
+</div>

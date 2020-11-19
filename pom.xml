@@ -17,7 +17,6 @@
     <modules>
         <module>project</module>
         <module>user</module>
-        <module>shared</module>
     </modules>
 
     <properties>
