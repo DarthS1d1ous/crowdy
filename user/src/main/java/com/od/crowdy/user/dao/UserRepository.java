@@ -1,6 +1,6 @@
-package com.od.crowdy.user.repository;
+package com.od.crowdy.user.dao;
 
-import com.od.crowdy.user.repository.neo4j.model.User;
+import com.od.crowdy.user.dao.neo4j.model.User;
 import reactor.core.publisher.Mono;
 
 public interface UserRepository {

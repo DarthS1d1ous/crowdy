@@ -1,9 +1,10 @@
-package com.od.crowdy.project.domain.model;
+package com.od.crowdy.user.dao.neo4j.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.neo4j.driver.Value;
 import org.neo4j.springframework.data.core.schema.GeneratedValue;
 import org.neo4j.springframework.data.core.schema.Node;
 import org.neo4j.springframework.data.core.support.UUIDStringGenerator;
@@ -18,7 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Node("Project")
-public class Project implements CurrentBackCalculator {
+public class Project {
 
     @Id
     @GeneratedValue(UUIDStringGenerator.class)
@@ -30,15 +31,17 @@ public class Project implements CurrentBackCalculator {
     private LocalDate deadline;
     private List<String> imageUrls;
     private BigDecimal overallBack;
-    /**
-     * Dynamic field
-     */
     private BigDecimal currentBack;
 
-    @Override
-    public BigDecimal calculateAndGetCurrentBack() {
-        // TODO get all payments amount
-        return null;
+    public static Project mappingFunction(Value value) {
+        return Project.builder()
+                .id(value.get("id").asString())
+                .name(value.get("name").asString())
+                .description(value.get("description").asString())
+                .createdAt(value.get("createdAt").asLocalDate())
+                .deadline(value.get("deadline").asLocalDate())
+                .imageUrls(value.get("imageUrls").asList(Value::asString))
+                .overallBack(BigDecimal.valueOf(value.get("overallBack").asDouble()))
+                .build();
     }
 }
-

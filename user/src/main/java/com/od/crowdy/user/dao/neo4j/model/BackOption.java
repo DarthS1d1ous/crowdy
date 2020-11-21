@@ -1,4 +1,4 @@
-package com.od.crowdy.project.domain.model;
+package com.od.crowdy.user.dao.neo4j.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

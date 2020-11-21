@@ -1,5 +1,6 @@
-package com.od.crowdy.user.repository.neo4j.model;
+package com.od.crowdy.user.dao.neo4j.model;
 
+import com.od.crowdy.user.domain.dto.UserDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -35,6 +36,22 @@ public class User {
                 .createdAt(value.get("createdAt").asLocalDate())
                 .birthday(value.get("birthday").asLocalDate())
                 .avatar(value.get("avatar").asString())
+                .build();
+    }
+
+    public static UserDto toDto(User user) {
+        return UserDto.from(user);
+    }
+
+    public static User from(UserDto userDto) {
+        return User.builder()
+                .id(userDto.getId())
+                .username(userDto.getUsername())
+                .login(userDto.getLogin())
+                .fullName(userDto.getFullName())
+                .createdAt(userDto.getCreatedAt())
+                .birthday(userDto.getBirthday())
+                .avatar(userDto.getAvatar())
                 .build();
     }
 }
