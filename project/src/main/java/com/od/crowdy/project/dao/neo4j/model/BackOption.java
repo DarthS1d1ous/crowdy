@@ -1,7 +1,6 @@
-package com.od.crowdy.user.repository.neo4j.model;
+package com.od.crowdy.project.dao.neo4j.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.neo4j.springframework.data.core.schema.GeneratedValue;
@@ -9,16 +8,17 @@ import org.neo4j.springframework.data.core.schema.Node;
 import org.neo4j.springframework.data.core.support.UUIDStringGenerator;
 import org.springframework.data.annotation.Id;
 
+import java.math.BigDecimal;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-@Node("Faq")
-public class Faq {
+@Node("BackOption")
+public class BackOption {
 
     @Id
     @GeneratedValue(UUIDStringGenerator.class)
     private String id;
-    private String question;
-    private String answer;
+    private BigDecimal pledge;
+    private String reward;
 }

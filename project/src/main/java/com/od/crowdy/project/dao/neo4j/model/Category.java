@@ -1,5 +1,6 @@
-package com.od.crowdy.user.repository.neo4j.model;
+package com.od.crowdy.project.dao.neo4j.model;
 
+import com.od.crowdy.project.domain.dto.CategoryDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,5 +20,10 @@ public class Category {
     @Id
     @GeneratedValue(UUIDStringGenerator.class)
     private String id;
-    private String category;
+    private String name;
+
+
+    public static CategoryDto toDto(Category category) {
+        return CategoryDto.from(category);
+    }
 }
