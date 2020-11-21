@@ -117,10 +117,10 @@ CREATE (comment_3:Comment {
 })
 
 CREATE (board_game:Category {
-  category: 'Board games'
+  name: 'Board games'
 })
 CREATE (art:Category {
-  category: 'Arts'
+  name: 'Arts'
 })
 
 CREATE (back_option_1:BackOption {
