@@ -8,7 +8,6 @@ import {UserModel} from "../../user/model/user.model";
   styleUrls: ['./project-item.component.css']
 })
 export class ProjectItemComponent implements OnInit {
-
   @Input()
   projectItem: ProjectModel;
   @Input()

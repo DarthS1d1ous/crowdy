@@ -1,3 +1,5 @@
+import {UserModel} from "../../user/model/user.model";
+
 export class ProjectModel {
   constructor(public id: string,
               public name: string,
@@ -6,6 +8,7 @@ export class ProjectModel {
               public deadLine: Date,
               public imageUrls: string[],
               public overallBack: number,
-              public currentBack: number) {
+              public currentBack: number,
+              public author: UserModel) {
   }
 }
