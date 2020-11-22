@@ -18,7 +18,7 @@ public class RestUserService implements UserService {
     private String userServiceUri;
 
     @Override
-    public Mono<User> getAuthor(String projectId) {
+    public Mono<User> getAuthorByProjectId(String projectId) {
         return webClient.get()
                 .uri(userServiceUri + "/users/project/" + projectId)
                 .accept(MediaType.APPLICATION_JSON)

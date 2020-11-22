@@ -13,7 +13,7 @@ public class DefaultProjectService implements ProjectService {
     private final ProjectRepository projectRepository;
 
     @Override
-    public Flux<Project> getProjects(String categoryName) {
-        return projectRepository.findProjects(categoryName);
+    public Flux<Project> getProjectsByCategoryName(String categoryName) {
+        return this.projectRepository.findProjectsByCategoryName(categoryName);
     }
 }

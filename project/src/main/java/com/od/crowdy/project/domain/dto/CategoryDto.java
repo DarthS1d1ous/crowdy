@@ -30,7 +30,6 @@ public class CategoryDto {
     public List<ProjectDto> getProjectDtos() {
         if (projectDtos == null) {
             projectDtos = new ArrayList<>();
-            return projectDtos;
         }
         return projectDtos;
     }

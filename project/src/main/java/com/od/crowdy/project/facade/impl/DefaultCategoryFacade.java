@@ -26,21 +26,21 @@ public class DefaultCategoryFacade implements CategoryFacade {
 
     @Override
     public Flux<CategoryDto> getAllCategories() {
-        return categoryService.getAllCategories()
+        return this.categoryService.getAllCategories()
                 .map(Category::toDto)
                 .flatMap(this::fillProjects);
     }
 
-    private Flux<CategoryDto> fillProjects(CategoryDto categoryDto) {
-        return projectService.getProjects(categoryDto.getName())
+    private Mono<CategoryDto> fillProjects(CategoryDto categoryDto) {
+        return this.projectService.getProjectsByCategoryName(categoryDto.getName())
                 .map(Project::toDto)
                 .doOnNext(categoryDto.getProjectDtos()::add)
                 .flatMap(this::fillAuthor)
-                .thenMany(Flux.just(categoryDto));
+                .then(Mono.just(categoryDto));
     }
 
     private Mono<UserDto> fillAuthor(ProjectDto projectDto) {
-        return userService.getAuthor(projectDto.getId())
+        return this.userService.getAuthorByProjectId(projectDto.getId())
                 .map(User::toDto)
                 .doOnNext(projectDto::setAuthor);
     }
