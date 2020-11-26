@@ -1,35 +1,26 @@
 package com.od.crowdy.user.facade.impl;
 
-import com.od.crowdy.user.domain.model.User;
+import com.od.crowdy.user.dao.UserRepository;
+import com.od.crowdy.user.dao.neo4j.model.User;
+import com.od.crowdy.user.domain.dto.UserDto;
 import com.od.crowdy.user.facade.UserFacade;
-import com.od.crowdy.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Component
 @RequiredArgsConstructor
 public class DefaultUserFacade implements UserFacade {
-    private final UserService userService;
+    private final UserRepository userRepository;
 
     @Override
-    public Mono<User> findUserById(String id) {
-        return userService.findById(id);
+    public Mono<UserDto> getAuthor(String projectId) {
+        return userRepository.getAuthor(projectId).map(User::toDto);
     }
 
     @Override
-    public Flux<User> saveAllUsers(Flux<User> user) {
-        return userService.saveAll(user);
-    }
-
-    @Override
-    public Mono<Void> deleteById(String id) {
-        return userService.deleteById(id);
-    }
-
-    @Override
-    public Flux<User> findAllUsers() {
-        return userService.findAll();
+    public Mono<UserDto> save(Mono<UserDto> user) {
+        return user.flatMap(userDto -> userRepository.save(User.from(userDto)))
+                .map(UserDto::from);
     }
 }

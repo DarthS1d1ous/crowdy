@@ -7,6 +7,7 @@ CREATE (just_support:ProjectType {name: 'just_support'})
 CREATE (kickstarter:ProjectType {name: 'kickstarter'})
 
 CREATE (four_d_chess_1:Project {
+  id:          '1',
   name:        'Board game',
   description: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.',
   createdAt:   date(),
@@ -17,6 +18,7 @@ CREATE (four_d_chess_1:Project {
 })
 
 CREATE (four_d_chess_2:Project {
+  id:          '2',
   name:        'Board game',
   description: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.',
   createdAt:   date(),
@@ -27,6 +29,7 @@ CREATE (four_d_chess_2:Project {
 })
 
 CREATE (four_d_chess_3:Project {
+  id:          '3',
   name:        'Board game',
   description: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.',
   createdAt:   date(),
@@ -37,6 +40,7 @@ CREATE (four_d_chess_3:Project {
 })
 
 CREATE (art_1:Project {
+  id:          '4',
   name:        'Paint',
   description: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.',
   createdAt:   date(),
@@ -49,8 +53,8 @@ CREATE (art_1:Project {
 
 CREATE (denis:User {
   id:        '1',
-  username:  'Denis',
-  login:     'denis2000',
+  username:  'denis2000',
+  password:  'denis2000',
   fullName:  'Denis Borschevsky',
   createdAt: date(),
   birthday:  date({year: 2000, month: 2, day: 16}),
@@ -59,8 +63,8 @@ CREATE (denis:User {
 
 CREATE (oleg:User {
   id:        '2',
-  username:  'Oleg',
-  login:     'oleg2000',
+  username:  'oleg2000',
+  password:  'oleg2000',
   fullName:  'Oleg Vinograd',
   createdAt: date(),
   birthday:  date({year: 2000, month: 1, day: 9}),
@@ -68,8 +72,8 @@ CREATE (oleg:User {
 })
 CREATE (vlad:User {
   id:        '3',
-  username:  'Vlad',
-  login:     'vladNaChille',
+  username:  'vladNaChille',
+  password:  'vladNaChille',
   fullName:  'Vlad Rogovsky',
   createdAt: date(),
   birthday:  date({year: 1999, month: 9, day: 23}),
@@ -113,10 +117,10 @@ CREATE (comment_3:Comment {
 })
 
 CREATE (board_game:Category {
-  category: 'Board games'
+  name: 'Board games'
 })
 CREATE (art:Category {
-  category: 'Arts'
+  name: 'Arts'
 })
 
 CREATE (back_option_1:BackOption {

@@ -1,15 +1,10 @@
 package com.od.crowdy.user.facade;
 
-import com.od.crowdy.user.domain.model.User;
-import reactor.core.publisher.Flux;
+import com.od.crowdy.user.domain.dto.UserDto;
 import reactor.core.publisher.Mono;
 
 public interface UserFacade {
-    Mono<User> findUserById(String id);
+    Mono<UserDto> getAuthor(String projectId);
 
-    Flux<User> saveAllUsers(Flux<User> user);
-
-    Mono<Void> deleteById(String id);
-
-    Flux<User> findAllUsers();
+    Mono<UserDto> save(Mono<UserDto> user);
 }

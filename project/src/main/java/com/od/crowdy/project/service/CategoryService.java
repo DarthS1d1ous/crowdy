@@ -1,7 +1,9 @@
 package com.od.crowdy.project.service;
 
-import com.od.crowdy.project.domain.model.Category;
-import com.od.crowdy.shared.service.CrudService;
+import com.od.crowdy.project.dao.neo4j.model.Category;
+import reactor.core.publisher.Flux;
 
-public interface CategoryService extends CrudService<Category> {
+public interface CategoryService {
+    Flux<Category> getAllCategories();
+
 }

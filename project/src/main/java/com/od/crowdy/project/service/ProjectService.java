@@ -1,7 +1,8 @@
 package com.od.crowdy.project.service;
 
-import com.od.crowdy.project.domain.model.Project;
-import com.od.crowdy.shared.service.CrudService;
+import com.od.crowdy.project.dao.neo4j.model.Project;
+import reactor.core.publisher.Flux;
 
-public interface ProjectService extends CrudService<Project> {
+public interface ProjectService {
+    Flux<Project> getProjectsByCategoryName(String categoryName);
 }
