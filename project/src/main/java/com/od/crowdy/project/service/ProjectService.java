@@ -1,6 +1,6 @@
 package com.od.crowdy.project.service;
 
-import com.od.crowdy.project.dao.neo4j.model.Project;
+import com.od.crowdy.project.domain.neo4j.model.Project;
 import reactor.core.publisher.Flux;
 
 public interface ProjectService {

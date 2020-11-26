@@ -1,0 +1,9 @@
+<div class="mb-2 d-block">
+  <span class="badge badge-secondary">{{likes.length}}</span> users like it!
+</div>
+<span *ngFor="let user of likes | slice:0:4">
+  <ng-template #userTooltip> {{user.fullName}}</ng-template>
+    <img [closeDelay]="1000" [ngbPopover]="userTooltip" [openDelay]="400"
+         [src]="user.avatar" alt="Avatar of {{user.fullName}}" class="rounded-circle tooltip-img mr-2"
+         triggers="mouseenter:mouseleave">
+</span>

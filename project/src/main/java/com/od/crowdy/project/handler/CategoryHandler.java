@@ -1,6 +1,6 @@
 package com.od.crowdy.project.handler;
 
-import com.od.crowdy.project.domain.dto.CategoryDto;
+import com.od.crowdy.project.dto.CategoryDto;
 import com.od.crowdy.project.facade.CategoryFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

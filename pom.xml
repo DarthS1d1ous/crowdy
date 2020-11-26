@@ -17,6 +17,7 @@
     <modules>
         <module>project</module>
         <module>user</module>
+        <module>common</module>
     </modules>
 
     <properties>

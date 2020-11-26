@@ -5,14 +5,23 @@
     </div>
     <mat-card-title>{{projectItem.name}}<span class="badge badge-info ml-2">${{projectItem.currentBack}}
       of ${{projectItem.overallBack}}</span></mat-card-title>
-    <mat-card-subtitle>{{projectItem.author.fullName}} - {{projectItem.createdAt}}</mat-card-subtitle>
+    <mat-card-subtitle class="mb-3">{{projectItem.author.fullName}}</mat-card-subtitle>
+    <mat-card-subtitle class="mb-0">Created at: {{projectItem.createdAt | date}}</mat-card-subtitle>
+    <mat-card-subtitle class="mt-0">Deadline at: {{projectItem.deadline | date}}</mat-card-subtitle>
   </mat-card-header>
   <img [src]="projectItem.imageUrls[0]" alt="Project image" mat-card-image>
   <mat-card-content>
     <div class="crowdy_font_style">{{projectItem.description}}</div>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>LIKE</button>
+    <ng-template #likesTooltip>
+      <app-project-like-tooltip [likes]="projectItem.likes"></app-project-like-tooltip>
+    </ng-template>
+    <button [closeDelay]="1000" [ngbPopover]="likesTooltip" [openDelay]="400" aria-label="Like project" color="warn"
+            mat-icon-button triggers="mouseenter:mouseleave">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <span class="ml-1" style="color: red">{{projectItem.likes.length}}</span>
     <button mat-button>BACK IT</button>
     <button mat-button>SHARE</button>
   </mat-card-actions>

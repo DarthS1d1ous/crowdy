@@ -10,6 +10,8 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatCardModule} from "@angular/material/card";
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {NgbPopoverModule} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [],
@@ -23,7 +25,9 @@ import {MatCardModule} from "@angular/material/card";
     MatToolbarModule,
     MatMenuModule,
     MatSidenavModule,
-    MatCardModule
+    MatCardModule,
+    MatTooltipModule,
+    NgbPopoverModule
   ],
   exports: [
     BrowserModule,
@@ -35,7 +39,9 @@ import {MatCardModule} from "@angular/material/card";
     MatToolbarModule,
     MatMenuModule,
     MatSidenavModule,
-    MatCardModule
+    MatCardModule,
+    MatTooltipModule,
+    NgbPopoverModule
   ],
   providers: [],
   bootstrap: []

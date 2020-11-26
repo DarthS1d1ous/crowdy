@@ -17,7 +17,8 @@ public class RoutingConfig {
 
     @Bean
     RouterFunction<ServerResponse> routes(UserHandler userHandler) {
-        return route(GET("/users/project/{projectId}"), userHandler::getAuthor)
+        return route(GET("/users/project/{" + UserHandler.PROJECT_ID + "}"), userHandler::getAuthor)
+                .andRoute(GET("/users/like/projects/{" + UserHandler.PROJECT_ID + "}"), userHandler::getUserLikesByProjectId)
                 .andRoute(POST("/users"), userHandler::saveUser);
     }
 }

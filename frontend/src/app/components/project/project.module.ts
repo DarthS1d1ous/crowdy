@@ -5,10 +5,11 @@ import {ProjectItemComponent} from './project-item/project-item.component';
 import {ProjectDetailsComponent} from './project-details/project-details.component';
 import {MaterialModule} from "../../material/material.module";
 import {ProjectService} from "../../services/project.service";
+import {ProjectLikeTooltipComponent} from './project-like-tooltip/project-like-tooltip.component';
 
 
 @NgModule({
-  declarations: [ProjectListComponent, ProjectItemComponent, ProjectDetailsComponent],
+  declarations: [ProjectListComponent, ProjectItemComponent, ProjectDetailsComponent, ProjectLikeTooltipComponent],
   exports: [
     ProjectItemComponent
   ],

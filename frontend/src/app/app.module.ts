@@ -4,9 +4,9 @@ import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {MaterialModule} from "./material/material.module";
 import {HeaderComponent} from './components/header/header.component';
-import {SecurityModule} from "./security/security.module";
-import {ProjectModule} from "./project/project.module";
 import {RouteModule} from "./route/route.module";
+import {ProjectModule} from "./components/project/project.module";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -14,7 +14,7 @@ import {RouteModule} from "./route/route.module";
     HeaderComponent
   ],
   imports: [
-    HttpClientModule, ProjectModule, MaterialModule, SecurityModule, RouteModule
+    HttpClientModule, ProjectModule, MaterialModule, RouteModule, NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
