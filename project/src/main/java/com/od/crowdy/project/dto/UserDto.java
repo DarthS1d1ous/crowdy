@@ -15,7 +15,6 @@ import java.time.LocalDate;
 public class UserDto {
     private String id;
     private String username;
-    private String login;
     private String fullName;
     private LocalDate createdAt;
     private LocalDate birthday;
@@ -25,7 +24,6 @@ public class UserDto {
         return UserDto.builder()
                 .id(user.getId())
                 .username(user.getUsername())
-                .login(user.getLogin())
                 .fullName(user.getFullName())
                 .createdAt(user.getCreatedAt())
                 .birthday(user.getBirthday())

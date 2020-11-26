@@ -49,4 +49,14 @@ public class Neo4jUserRepository implements UserRepository {
                 .mappedBy((typeSystem, record) -> userMapper.map(record))
                 .all();
     }
+
+    @Override
+    public Mono<Boolean> isUserExists(String username) {
+        return neo4jClient.query(Queries.IS_USER_EXISTS_CYPHER)
+                .bind(username).to("username")
+                .fetchAs(Boolean.class)
+                .mappedBy((typeSystem, record) -> record.get("isExists").asBoolean())
+                .one()
+                .switchIfEmpty(Mono.just(false));
+    }
 }

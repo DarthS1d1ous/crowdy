@@ -5,9 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.neo4j.driver.Value;
+import org.neo4j.springframework.data.core.schema.GeneratedValue;
 import org.neo4j.springframework.data.core.schema.Id;
 import org.neo4j.springframework.data.core.schema.Node;
+import org.neo4j.springframework.data.core.support.UUIDStringGenerator;
 
 import java.time.LocalDate;
 
@@ -19,25 +20,14 @@ import java.time.LocalDate;
 public class User {
 
     @Id
+    @GeneratedValue(UUIDStringGenerator.class)
     private String id;
     private String username;
-    private String login;
+    private String password;
     private String fullName;
     private LocalDate createdAt;
     private LocalDate birthday;
     private String avatar;
-
-    public static User mappingFunction(Value value) {
-        return User.builder()
-                .id(value.get("id").asString())
-                .username(value.get("username").asString())
-                .login(value.get("login").asString())
-                .fullName(value.get("fullName").asString())
-                .createdAt(value.get("createdAt").asLocalDate())
-                .birthday(value.get("birthday").asLocalDate())
-                .avatar(value.get("avatar").asString())
-                .build();
-    }
 
     public static UserDto toDto(User user) {
         return UserDto.from(user);
@@ -47,7 +37,6 @@ public class User {
         return User.builder()
                 .id(userDto.getId())
                 .username(userDto.getUsername())
-                .login(userDto.getLogin())
                 .fullName(userDto.getFullName())
                 .createdAt(userDto.getCreatedAt())
                 .birthday(userDto.getBirthday())

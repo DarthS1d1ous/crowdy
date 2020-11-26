@@ -1,5 +1,6 @@
 package com.od.crowdy.user.config;
 
+import com.od.crowdy.user.handler.AuthHandler;
 import com.od.crowdy.user.handler.UserHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -16,9 +17,11 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 public class RoutingConfig {
 
     @Bean
-    RouterFunction<ServerResponse> routes(UserHandler userHandler) {
+    RouterFunction<ServerResponse> routes(UserHandler userHandler, AuthHandler authHandler) {
         return route(GET("/users/project/{" + UserHandler.PROJECT_ID + "}"), userHandler::getAuthor)
                 .andRoute(GET("/users/like/projects/{" + UserHandler.PROJECT_ID + "}"), userHandler::getUserLikesByProjectId)
-                .andRoute(POST("/users"), userHandler::saveUser);
+                .andRoute(POST("/users"), userHandler::saveUser)
+                .andRoute(POST("/login"), authHandler::login)
+                .andRoute(POST("/register"), authHandler::register);
     }
 }

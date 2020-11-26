@@ -24,7 +24,6 @@ public class User {
     private String id;
     private String username;
     private String password;
-    private String login;
     private String fullName;
     private LocalDate createdAt;
     private LocalDate birthday;
@@ -38,7 +37,6 @@ public class User {
         return User.builder()
                 .id(userDto.getId())
                 .username(userDto.getUsername())
-                .login(userDto.getLogin())
                 .fullName(userDto.getFullName())
                 .createdAt(userDto.getCreatedAt())
                 .birthday(userDto.getBirthday())

@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.neo4j.driver.Value;
 import org.neo4j.springframework.data.core.schema.GeneratedValue;
 import org.neo4j.springframework.data.core.schema.Node;
 import org.neo4j.springframework.data.core.support.UUIDStringGenerator;
@@ -32,16 +31,4 @@ public class Project {
     private List<String> imageUrls;
     private BigDecimal overallBack;
     private BigDecimal currentBack;
-
-    public static Project mappingFunction(Value value) {
-        return Project.builder()
-                .id(value.get("id").asString())
-                .name(value.get("name").asString())
-                .description(value.get("description").asString())
-                .createdAt(value.get("createdAt").asLocalDate())
-                .deadline(value.get("deadline").asLocalDate())
-                .imageUrls(value.get("imageUrls").asList(Value::asString))
-                .overallBack(BigDecimal.valueOf(value.get("overallBack").asDouble()))
-                .build();
-    }
 }

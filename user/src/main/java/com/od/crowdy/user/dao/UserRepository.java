@@ -9,7 +9,9 @@ public interface UserRepository {
 
     Mono<User> save(User user);
 
-    Mono<User> findByUsername(String userName);
+    Mono<User> findByUsername(String username);
 
     Flux<User> getUserLikesByProjectId(String projectId);
+
+    Mono<Boolean> isUserExists(String username);
 }

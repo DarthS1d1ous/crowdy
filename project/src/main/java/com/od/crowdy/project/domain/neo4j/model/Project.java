@@ -20,7 +20,6 @@ import java.util.List;
 @Builder
 @Node("Project")
 public class Project {
-    private static final int PROJECT_INDEX = 0;
 
     @Id
     @GeneratedValue(UUIDStringGenerator.class)

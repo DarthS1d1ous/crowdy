@@ -27,6 +27,10 @@ public interface Queries {
             MATCH (u:User)-[:
             """ + RelationShips.LIKES + """
             ]->(:Project {id: $projectId})
-            return u
+            RETURN u
+            """;
+    String IS_USER_EXISTS_CYPHER = """
+            MATCH (u:User {username: $username}) 
+            RETURN EXISTS(u.username) as isExists
             """;
 }

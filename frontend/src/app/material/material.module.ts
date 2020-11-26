@@ -12,6 +12,13 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatCardModule} from "@angular/material/card";
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {NgbPopoverModule} from "@ng-bootstrap/ng-bootstrap";
+import {MatTableModule} from "@angular/material/table";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatInputModule} from "@angular/material/input";
+import {MatDividerModule} from "@angular/material/divider";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatSelectModule} from "@angular/material/select";
+import {MatOptionModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [],
@@ -27,7 +34,19 @@ import {NgbPopoverModule} from "@ng-bootstrap/ng-bootstrap";
     MatSidenavModule,
     MatCardModule,
     MatTooltipModule,
-    NgbPopoverModule
+    NgbPopoverModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTableModule,
+    MatDividerModule,
+    MatProgressSpinnerModule,
+    MatInputModule,
+    MatCardModule,
+    MatSlideToggleModule,
+    MatSelectModule,
+    MatOptionModule
   ],
   exports: [
     BrowserModule,
@@ -41,7 +60,19 @@ import {NgbPopoverModule} from "@ng-bootstrap/ng-bootstrap";
     MatSidenavModule,
     MatCardModule,
     MatTooltipModule,
-    NgbPopoverModule
+    NgbPopoverModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTableModule,
+    MatDividerModule,
+    MatProgressSpinnerModule,
+    MatInputModule,
+    MatCardModule,
+    MatSlideToggleModule,
+    MatSelectModule,
+    MatOptionModule
   ],
   providers: [],
   bootstrap: []

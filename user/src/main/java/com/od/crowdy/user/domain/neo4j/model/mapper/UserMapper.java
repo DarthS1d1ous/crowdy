@@ -12,7 +12,6 @@ public class UserMapper implements Neo4jMapper<User> {
     private final static String ID = "id";
     private final static String USERNAME = "username";
     private final static String PASSWORD = "password";
-    private final static String LOGIN = "login";
     private final static String FULL_NAME = "fullName";
     private final static String CREATED_AT = "createdAt";
     private final static String BIRTHDAY = "birthday";
@@ -24,11 +23,10 @@ public class UserMapper implements Neo4jMapper<User> {
         return User.builder()
                 .id(user.get(ID).asString())
                 .username(user.get(USERNAME).asString())
-                .username(user.get(PASSWORD).asString())
-                .login(user.get(LOGIN).asString())
+                .password(user.get(PASSWORD).asString())
                 .fullName(user.get(FULL_NAME).asString())
-                .createdAt(user.get(CREATED_AT).asLocalDate())
-                .birthday(user.get(BIRTHDAY).asLocalDate())
+                .createdAt(user.get(CREATED_AT).isNull() ? null : user.get(CREATED_AT).asLocalDate())
+                .birthday(user.get(BIRTHDAY).isNull() ? null : user.get(BIRTHDAY).asLocalDate())
                 .avatar(user.get(AVATAR).asString())
                 .build();
     }
