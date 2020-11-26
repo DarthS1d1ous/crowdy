@@ -7,4 +7,14 @@ public interface Queries {
             ]->(p:Project {id: $projectId}) 
             RETURN u
             """;
+    String FIND_USER_BY_USERNAME_CYPHER = """
+            MATCH (u:User {username: $username})
+            RETURN u
+            """;
+    String FIND_ROLES_BY_USER_ID_CYPHER = """
+            MATCH (r:Role)<-[:
+            """ + RelationShips.HAS + """
+            ]-(u:User {id: $userId})
+            RETURN r.name
+            """;
 }

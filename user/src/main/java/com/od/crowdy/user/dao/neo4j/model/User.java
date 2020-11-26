@@ -6,8 +6,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.neo4j.driver.Value;
+import org.neo4j.springframework.data.core.schema.GeneratedValue;
 import org.neo4j.springframework.data.core.schema.Id;
 import org.neo4j.springframework.data.core.schema.Node;
+import org.neo4j.springframework.data.core.support.UUIDStringGenerator;
 
 import java.time.LocalDate;
 
@@ -19,8 +21,10 @@ import java.time.LocalDate;
 public class User {
 
     @Id
+    @GeneratedValue(UUIDStringGenerator.class)
     private String id;
     private String username;
+    private String password;
     private String login;
     private String fullName;
     private LocalDate createdAt;
@@ -31,6 +35,7 @@ public class User {
         return User.builder()
                 .id(value.get("id").asString())
                 .username(value.get("username").asString())
+                .username(value.get("password").asString())
                 .login(value.get("login").asString())
                 .fullName(value.get("fullName").asString())
                 .createdAt(value.get("createdAt").asLocalDate())

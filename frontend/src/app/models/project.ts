@@ -1,6 +1,6 @@
-import {UserModel} from "../../user/model/user.model";
+import {User} from "./user";
 
-export class ProjectModel {
+export class Project {
   constructor(public id: string,
               public name: string,
               public description: string,
@@ -9,6 +9,6 @@ export class ProjectModel {
               public imageUrls: string[],
               public overallBack: number,
               public currentBack: number,
-              public author: UserModel) {
+              public author: User) {
   }
 }

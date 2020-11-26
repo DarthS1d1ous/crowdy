@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Route, RouterModule} from "@angular/router";
-import {ProjectListComponent} from "../project/project-list/project-list.component";
+import {ProjectListComponent} from "../components/project/project-list/project-list.component";
 
 const routes: Route[] = [
   {

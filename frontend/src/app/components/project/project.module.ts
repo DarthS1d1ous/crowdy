@@ -3,8 +3,8 @@ import {CommonModule} from '@angular/common';
 import {ProjectListComponent} from './project-list/project-list.component';
 import {ProjectItemComponent} from './project-item/project-item.component';
 import {ProjectDetailsComponent} from './project-details/project-details.component';
-import {MaterialModule} from "../material/material.module";
-import {ProjectService} from "./service/project.service";
+import {MaterialModule} from "../../material/material.module";
+import {ProjectService} from "../../services/project.service";
 
 
 @NgModule({

@@ -2,16 +2,16 @@
   <button (click)="drawer.toggle()" mat-button>
     <mat-icon>category</mat-icon>
   </button>
-  <button *ngIf="!signService.isLoggedIn()" mat-button>
+  <button mat-button>
     <mat-icon>library_add</mat-icon>
   </button>
   <span class="spacer"></span>
   <span class="crowdy_font_style">Crowdy</span>
   <span class="spacer"></span>
-  <button *ngIf="!signService.isLoggedIn()" mat-button>
+  <button mat-button>
     <mat-icon>account_box</mat-icon>
   </button>
-  <button *ngIf="!signService.isLoggedIn()" mat-button>
+  <button mat-button>
     <mat-icon>login</mat-icon>
   </button>
 </mat-toolbar>

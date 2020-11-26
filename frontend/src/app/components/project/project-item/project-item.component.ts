@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ProjectModel} from "../model/project.model";
-import {UserModel} from "../../user/model/user.model";
+import {User} from "../../../models/user";
+import {Project} from "../../../models/project";
 
 @Component({
   selector: 'app-project-item',
@@ -9,9 +9,9 @@ import {UserModel} from "../../user/model/user.model";
 })
 export class ProjectItemComponent implements OnInit {
   @Input()
-  projectItem: ProjectModel;
+  projectItem: Project;
   @Input()
-  author: UserModel;
+  author: User;
 
   constructor() {
   }

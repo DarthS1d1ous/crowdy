@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ProjectService} from "../service/project.service";
-import {CategoryModel} from "../model/category.model";
+import {ProjectService} from "../../../services/project.service";
+import {Category} from "../../../models/category";
 
 @Component({
   selector: 'app-project-list',
@@ -9,7 +9,7 @@ import {CategoryModel} from "../model/category.model";
 })
 export class ProjectListComponent implements OnInit {
 
-  public categories: CategoryModel[];
+  public categories: Category[];
 
   constructor(private projectService: ProjectService) {
   }

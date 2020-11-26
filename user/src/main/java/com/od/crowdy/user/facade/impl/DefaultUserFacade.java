@@ -17,4 +17,10 @@ public class DefaultUserFacade implements UserFacade {
     public Mono<UserDto> getAuthor(String projectId) {
         return userRepository.getAuthor(projectId).map(User::toDto);
     }
+
+    @Override
+    public Mono<UserDto> save(Mono<UserDto> user) {
+        return user.flatMap(userDto -> userRepository.save(User.from(userDto)))
+                .map(UserDto::from);
+    }
 }

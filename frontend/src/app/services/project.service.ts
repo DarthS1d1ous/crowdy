@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {CategoryModel} from "../model/category.model";
+import {Category} from "../models/category";
 
 @Injectable()
 export class ProjectService {
@@ -9,7 +9,7 @@ export class ProjectService {
   constructor(public httpClient: HttpClient) {
   }
 
-  public getAllCategories(): Observable<CategoryModel[]> {
-    return this.httpClient.get<CategoryModel[]>("http://localhost:8082/categories");
+  public getAllCategories(): Observable<Category[]> {
+    return this.httpClient.get<Category[]>("http://localhost:8082/categories");
   }
 }

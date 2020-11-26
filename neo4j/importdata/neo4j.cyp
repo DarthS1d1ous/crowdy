@@ -53,8 +53,8 @@ CREATE (art_1:Project {
 
 CREATE (denis:User {
   id:        '1',
-  username:  'Denis',
-  login:     'denis2000',
+  username:  'denis2000',
+  password:  'denis2000',
   fullName:  'Denis Borschevsky',
   createdAt: date(),
   birthday:  date({year: 2000, month: 2, day: 16}),
@@ -63,8 +63,8 @@ CREATE (denis:User {
 
 CREATE (oleg:User {
   id:        '2',
-  username:  'Oleg',
-  login:     'oleg2000',
+  username:  'oleg2000',
+  password:  'oleg2000',
   fullName:  'Oleg Vinograd',
   createdAt: date(),
   birthday:  date({year: 2000, month: 1, day: 9}),
@@ -72,8 +72,8 @@ CREATE (oleg:User {
 })
 CREATE (vlad:User {
   id:        '3',
-  username:  'Vlad',
-  login:     'vladNaChille',
+  username:  'vladNaChille',
+  password:  'vladNaChille',
   fullName:  'Vlad Rogovsky',
   createdAt: date(),
   birthday:  date({year: 1999, month: 9, day: 23}),
