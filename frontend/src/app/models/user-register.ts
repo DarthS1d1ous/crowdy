@@ -1,7 +1,7 @@
-export class User {
+export class UserRegister {
   constructor(public username: string,
+              public password: string,
               public fullName: string,
-              public createdAt: Date,
               public birthday: Date,
               public avatar: string) {
   }

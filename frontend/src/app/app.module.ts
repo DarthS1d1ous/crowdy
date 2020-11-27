@@ -9,12 +9,14 @@ import {ProjectModule} from "./components/project/project.module";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {LoginComponent} from './components/login/login.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {RegisterComponent} from './components/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     HttpClientModule, ProjectModule, MaterialModule, RouteModule, NgbModule, ReactiveFormsModule

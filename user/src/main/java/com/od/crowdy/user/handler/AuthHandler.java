@@ -1,6 +1,7 @@
 package com.od.crowdy.user.handler;
 
 import com.od.crowdy.user.dto.AuthRequest;
+import com.od.crowdy.user.dto.RegisterUserDto;
 import com.od.crowdy.user.dto.UserDto;
 import com.od.crowdy.user.facade.AuthFacade;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +29,7 @@ public class AuthHandler {
         return ServerResponse.ok()
                 .body(
                         authFacade.register(
-                                serverRequest.bodyToMono(AuthRequest.class)
+                                serverRequest.bodyToMono(RegisterUserDto.class)
                         ),
                         UserDto.class
                 );

@@ -3,6 +3,7 @@ package com.od.crowdy.user.facade.impl;
 import com.od.crowdy.user.dao.UserRepository;
 import com.od.crowdy.user.domain.neo4j.model.User;
 import com.od.crowdy.user.dto.AuthRequest;
+import com.od.crowdy.user.dto.RegisterUserDto;
 import com.od.crowdy.user.dto.UserDto;
 import com.od.crowdy.user.facade.AuthFacade;
 import lombok.RequiredArgsConstructor;
@@ -33,11 +34,11 @@ public class SimpleAuthFacade implements AuthFacade {
     }
 
     @Override
-    public Mono<UserDto> register(Mono<AuthRequest> authRequest) {
-        return authRequest.flatMap(authReq ->
+    public Mono<UserDto> register(Mono<RegisterUserDto> registerUserDtoMono) {
+        return registerUserDtoMono.flatMap(registerUser ->
                 userRepository
-                        .isUserExists(authReq.getUsername())
-                        .flatMap(isUserExists -> saveIfNotExists(authReq.getUsername(), authReq.getPassword(), isUserExists))
+                        .isUserExists(registerUser.getUsername())
+                        .flatMap(isUserExists -> saveIfNotExists(registerUser.getUsername(), registerUser.getPassword(), isUserExists))
         )
                 .map(User::toDto);
     }

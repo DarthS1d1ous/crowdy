@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 import {Router} from '@angular/router';
 import {HttpClient} from "@angular/common/http";
-import {User} from "../models/user";
+import {UserRegister} from "../models/user-register";
 
 @Injectable({
   providedIn: 'root'
@@ -10,43 +10,45 @@ import {User} from "../models/user";
 export class AuthService {
 
   public isAuthenticated = new BehaviorSubject<boolean>(false);
+  authErrorMessage: Subject<string>;
 
   constructor(private router: Router, private httpClient: HttpClient) {
+    this.authErrorMessage = new Subject<string>();
   }
 
   async checkAuthenticated() {
-    // const authenticated = await this.authClient.session.exists();
-    // this.isAuthenticated.next(authenticated);
-    // return authenticated;
-    return false;
+    const isAuthenticated = localStorage.getItem("isAuthenticated");
+    return !!isAuthenticated;
   }
 
-  async login(username: string, password: string) {
-    // const transaction = await this.authClient.signIn({username, password});
-    //
-    // if (transaction.status !== 'SUCCESS') {
-    //   throw Error('We cannot handle the ' + transaction.status + ' status');
-    // }
-    // this.isAuthenticated.next(true);
-    //
-    // this.authClient.session.setCookieAndRedirect(transaction.sessionToken);
-    this.httpClient.post('http://localhost:8081/login', {
+  login(username: string, password: string) {
+    return this.httpClient.post<{ username: string, password: string }>('http://localhost:8081/login', {
       username: username,
       password: password
-    });
+    }).subscribe(authResponse => {
+      if (!authResponse) {
+        this.authErrorMessage.next("Auth error occurred");
+      } else {
+        this.isAuthenticated.next(true);
+        localStorage.setItem('user', JSON.stringify(authResponse));
+        localStorage.setItem("isAuthenticated", "true");
+        this.authErrorMessage.next("");
+        this.router.navigate(['/']);
+      }
+    })
   }
 
-  async register(user: User) {
-    return this.httpClient.post(`http://localhost:8081/users`, user);
+  register(user: UserRegister) {
+    return this.httpClient.post(`http://localhost:8081/register`, user);
   }
 
   async logout(redirect: string) {
-    // try {
-    //   await this.authClient.signOut();
-    //   this.isAuthenticated.next(false);
-    //   await this.router.navigate([redirect]);
-    // } catch (err) {
-    //   console.error(err);
-    // }
+    try {
+      this.isAuthenticated.next(false);
+      localStorage.removeItem("isAuthenticated");
+      await this.router.navigate([redirect]);
+    } catch (err) {
+      console.error(err);
+    }
   }
 }

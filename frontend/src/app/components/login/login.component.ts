@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from "../../services/auth.service";
@@ -8,11 +8,12 @@ import {AuthService} from "../../services/auth.service";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   form: FormGroup;
   public loginInvalid: boolean;
   private formSubmitAttempt: boolean;
   private returnUrl: string;
+  authErrorMessage: string;
 
   constructor(
     private fb: FormBuilder,
@@ -23,6 +24,8 @@ export class LoginComponent implements OnInit {
   }
 
   async ngOnInit() {
+    this.authService.authErrorMessage.subscribe(authErrorMessage => this.authErrorMessage = authErrorMessage);
+
     this.returnUrl = '/';
 
     this.form = this.fb.group({
@@ -35,19 +38,24 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  async onSubmit() {
-    this.loginInvalid = false;
-    this.formSubmitAttempt = false;
-    if (this.form.valid) {
-      try {
+  onSubmit(event: any) {
+    if (event.submitter.name === 'login') {
+      console.log('login')
+      this.loginInvalid = false;
+      this.formSubmitAttempt = false;
+      if (this.form.valid) {
         const username = this.form.get('username').value;
         const password = this.form.get('password').value;
-        await this.authService.login(username, password);
-      } catch (err) {
-        this.loginInvalid = true;
+        this.authService.login(username, password);
+      } else {
+        this.formSubmitAttempt = true;
       }
     } else {
-      this.formSubmitAttempt = true;
+      this.router.navigate(['register']);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.authService.authErrorMessage.unsubscribe();
   }
 }
