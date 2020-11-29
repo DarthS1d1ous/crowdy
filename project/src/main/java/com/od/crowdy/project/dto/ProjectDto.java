@@ -37,15 +37,15 @@ public class ProjectDto {
 
     public static ProjectDto from(Project project) {
         return ProjectDto.builder()
-                .id(project.getId())
-                .name(project.getName())
-                .description(project.getDescription())
-                .createdAt(project.getCreatedAt())
-                .deadline(project.getDeadline())
-                .imageUrls(project.getImageUrls())
-                .overallBack(project.getOverallBack())
-                .currentBack(project.getCurrentBack())
-                .build();
+            .id(project.getId())
+            .name(project.getName())
+            .description(project.getDescription())
+            .createdAt(project.getCreatedAt())
+            .deadline(project.getDeadline())
+            .imageUrls(project.getImageUrls())
+            .overallBack(project.getOverallBack())
+            .currentBack(project.getCurrentBack())
+            .build();
     }
 
     public List<UserDto> getLikes() {

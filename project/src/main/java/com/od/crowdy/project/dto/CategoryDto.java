@@ -22,9 +22,9 @@ public class CategoryDto {
 
     public static CategoryDto from(Category category) {
         return CategoryDto.builder()
-                .id(category.getId())
-                .name(category.getName())
-                .build();
+            .id(category.getId())
+            .name(category.getName())
+            .build();
     }
 
     public List<ProjectDto> getProjectDtos() {

@@ -1,6 +1,6 @@
 package com.od.crowdy.project.service.impl;
 
-import com.od.crowdy.project.domain.neo4j.model.User;
+import com.od.crowdy.project.dto.UserDto;
 import com.od.crowdy.project.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,20 +19,38 @@ public class RestUserService implements UserService {
     private String userServiceUri;
 
     @Override
-    public Mono<User> getAuthorByProjectId(String projectId) {
+    public Mono<UserDto> getAuthorByProjectId(String projectId) {
         return webClient.get()
-                .uri(userServiceUri + "/users/project/" + projectId)
-                .accept(MediaType.APPLICATION_JSON)
-                .retrieve()
-                .bodyToMono(User.class);
+            .uri(userServiceUri + "/users/project/" + projectId)
+            .accept(MediaType.APPLICATION_JSON)
+            .retrieve()
+            .bodyToMono(UserDto.class);
     }
 
     @Override
-    public Flux<User> getUserLikesByProject(String projectId) {
+    public Flux<UserDto> getUserLikesByProject(String projectId) {
         return webClient.get()
-                .uri(userServiceUri + "/users/like/projects/" + projectId)
-                .accept(MediaType.APPLICATION_JSON)
-                .retrieve()
-                .bodyToFlux(User.class);
+            .uri(userServiceUri + "/users/like/projects/" + projectId)
+            .accept(MediaType.APPLICATION_JSON)
+            .retrieve()
+            .bodyToFlux(UserDto.class);
+    }
+
+    @Override
+    public Mono<UserDto> getAuthorByCommentId(String commentId) {
+        return webClient.get()
+            .uri(userServiceUri + "/users/comment/" + commentId)
+            .accept(MediaType.APPLICATION_JSON)
+            .retrieve()
+            .bodyToMono(UserDto.class);
+    }
+
+    @Override
+    public Mono<UserDto> getUserById(String userId) {
+        return webClient.get()
+            .uri(userServiceUri + "/users/" + userId)
+            .accept(MediaType.APPLICATION_JSON)
+            .retrieve()
+            .bodyToMono(UserDto.class);
     }
 }

@@ -1,7 +1,7 @@
 package com.od.crowdy.project.handler;
 
-import com.od.crowdy.project.dto.CategoryDto;
-import com.od.crowdy.project.facade.CategoryFacade;
+import com.od.crowdy.project.dto.ProjectDto;
+import com.od.crowdy.project.facade.ProjectFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
@@ -12,11 +12,12 @@ import static org.springframework.web.reactive.function.server.ServerResponse.ok
 
 @Component
 @RequiredArgsConstructor
-public class CategoryHandler {
-    private final CategoryFacade categoryFacade;
+public class ProjectHandler {
+    public final static String PROJECT_ID = "projectId";
+    private final ProjectFacade projectFacade;
 
-    public Mono<ServerResponse> getCategories(ServerRequest serverRequest) {
+    public Mono<ServerResponse> getProjectById(ServerRequest serverRequest) {
         return ok()
-            .body(categoryFacade.getAllCategories(), CategoryDto.class);
+            .body(projectFacade.getProjectById(serverRequest.pathVariable(PROJECT_ID)), ProjectDto.class);
     }
 }

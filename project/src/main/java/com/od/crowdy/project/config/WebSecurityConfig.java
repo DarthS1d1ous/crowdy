@@ -26,8 +26,8 @@ public class WebSecurityConfig implements WebFluxConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry corsRegistry) {
         corsRegistry.addMapping("/**")
-                .allowedOrigins(frontendUri)
-                .allowedMethods("PUT", "GET", "POST")
-                .maxAge(3600);
+            .allowedOrigins(frontendUri)
+            .allowedMethods("PUT", "GET", "POST")
+            .maxAge(3600);
     }
 }

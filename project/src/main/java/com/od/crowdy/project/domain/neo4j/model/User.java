@@ -35,12 +35,12 @@ public class User {
 
     public static User from(UserDto userDto) {
         return User.builder()
-                .id(userDto.getId())
-                .username(userDto.getUsername())
-                .fullName(userDto.getFullName())
-                .createdAt(userDto.getCreatedAt())
-                .birthday(userDto.getBirthday())
-                .avatar(userDto.getAvatar())
-                .build();
+            .id(userDto.getId())
+            .username(userDto.getUsername())
+            .fullName(userDto.getFullName())
+            .createdAt(userDto.getCreatedAt())
+            .birthday(userDto.getBirthday())
+            .avatar(userDto.getAvatar())
+            .build();
     }
 }

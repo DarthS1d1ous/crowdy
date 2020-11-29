@@ -24,14 +24,14 @@ public class ProjectMapper implements Neo4jMapper<Project> {
     public Project map(Record record) {
         Value project = record.values().get(PROJECT_INDEX);
         return Project.builder()
-                .id(project.get(ID).asString())
-                .name(project.get(NAME).asString())
-                .description(project.get(DESCRIPTION).asString())
-                .createdAt(project.get(CREATED_AT).asLocalDate())
-                .deadline(project.get(DEADLINE).asLocalDate())
-                .imageUrls(project.get(IMAGE_URLS).asList(Value::asString))
-                .overallBack(new BigDecimal(project.get(OVERALL_BACK).asString()))
-                .currentBack(new BigDecimal(project.get(CURRENT_BACK).asString()))
-                .build();
+            .id(project.get(ID).asString())
+            .name(project.get(NAME).asString())
+            .description(project.get(DESCRIPTION).asString())
+            .createdAt(project.get(CREATED_AT).asLocalDate())
+            .deadline(project.get(DEADLINE).asLocalDate())
+            .imageUrls(project.get(IMAGE_URLS).asList(Value::asString))
+            .overallBack(new BigDecimal(project.get(OVERALL_BACK).asString()))
+            .currentBack(new BigDecimal(project.get(CURRENT_BACK).asString()))
+            .build();
     }
 }
