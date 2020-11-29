@@ -1,10 +1,22 @@
-CREATE (admin:Role {name: 'admin'})
+CREATE (admin:Role {
+  id:   '1',
+  name: 'admin'
+})
 
-CREATE (user:Role {name: 'user'})
+CREATE (user:Role {
+  id:   '2',
+  name: 'user'
+})
 
-CREATE (just_support:ProjectType {name: 'just_support'})
+CREATE (just_support:ProjectType {
+  id:   '1',
+  name: 'just_support'
+})
 
-CREATE (kickstarter:ProjectType {name: 'kickstarter'})
+CREATE (kickstarter:ProjectType {
+  id:   '2',
+  name: 'kickstarter'
+})
 
 CREATE (four_d_chess_1:Project {
   id:          '1',
@@ -81,61 +93,75 @@ CREATE (vlad:User {
 })
 
 CREATE (p_1:Payment {
+  id:        '1',
   amount:    '543.32',
-  createdAt: date()
+  createdAt: localdatetime()
 })
 
 CREATE (p_2:Payment {
+  id:        '2',
   amount:    '434.32',
-  createdAt: date()
+  createdAt: localdatetime()
 })
 
 CREATE (faq_1:Faq {
+  id:       '1',
   question: 'How is it work?',
   answer:   'Magic'
 })
 CREATE (faq_2:Faq {
+  id:       '2',
   question: 'Do we support shipment in Belarus?',
   answer:   'No, only USA'
 })
 CREATE (faq_3:Faq {
+  id:       '3',
   question: 'Do we support shipment in Belarus?',
   answer:   'Yes, but with tax'
 })
 
 CREATE (comment_1:Comment {
-  createdAt: date(),
+  id:        '1',
+  createdAt: localdatetime(),
   message:   'I got strange box with trash..'
 })
 CREATE (comment_2:Comment {
-  createdAt: date(),
+  id:        '2',
+  createdAt: localdatetime(),
   message:   'I like this!!'
 })
 CREATE (comment_3:Comment {
-  createdAt: date(),
+  id:        '3',
+  createdAt: localdatetime(),
   message:   'Good luuck. I wish you achive all goals.'
 })
 
 CREATE (board_game:Category {
+  id:   '1',
   name: 'Board games'
 })
 CREATE (art:Category {
+  id:   '2',
   name: 'Arts'
 })
 
 CREATE (back_option_1:BackOption {
+  id:     '1',
   pledge: 5,
   reward: 'Stikers'
 })
 CREATE (back_option_2:BackOption {
+  id:     '2',
   pledge: 10,
   reward: 'Badges'
 })
 CREATE (back_option_3:BackOption {
+  id:     '3',
   pledge: 35,
   reward: 'T-shorts'
 })
 CREATE (back_option_4:BackOption {
+  id:     '4',
   pledge: 100,
   reward: 'Subscribtion for 24 month'
 })
