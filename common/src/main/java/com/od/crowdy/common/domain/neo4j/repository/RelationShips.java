@@ -5,4 +5,6 @@ public interface RelationShips {
     String OWNS = "OWNS";
     String RELATED_TO = "RELATED_TO";
     String LIKES = "LIKES";
+    String FOLLOWS = "FOLLOWS";
+    String CREATES = "CREATES";
 }
