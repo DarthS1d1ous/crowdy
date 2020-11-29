@@ -5,7 +5,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface UserRepository {
-    Mono<User> getAuthor(String projectId);
+    Mono<User> getAuthorByProjectId(String projectId);
 
     Mono<User> save(User user);
 
@@ -14,4 +14,8 @@ public interface UserRepository {
     Flux<User> getUserLikesByProjectId(String projectId);
 
     Mono<Boolean> isUserExists(String username);
+
+    Flux<User> findFollowersByUserId(String userId);
+
+    Mono<User> findAuthorByCommentId(String commentId);
 }

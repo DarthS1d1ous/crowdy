@@ -9,7 +9,7 @@ import org.neo4j.springframework.data.core.schema.Node;
 import org.neo4j.springframework.data.core.support.UUIDStringGenerator;
 import org.springframework.data.annotation.Id;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -21,6 +21,6 @@ public class Comment {
     @Id
     @GeneratedValue(UUIDStringGenerator.class)
     private String id;
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
     private String message;
 }

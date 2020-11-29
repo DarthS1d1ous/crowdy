@@ -18,11 +18,11 @@ public class SimpleAuthFacade implements AuthFacade {
     @Override
     public Mono<UserDto> login(Mono<AuthRequest> authRequest) {
         return authRequest.flatMap(authReq ->
-                userRepository
-                        .findByUsername(authReq.getUsername())
-                        .flatMap(user -> verifyPassword(authReq, user))
+            userRepository
+                .findByUsername(authReq.getUsername())
+                .flatMap(user -> verifyPassword(authReq, user))
         )
-                .map(User::toDto);
+            .map(User::toDto);
     }
 
     private Mono<User> verifyPassword(AuthRequest authReq, User user) {
@@ -36,22 +36,16 @@ public class SimpleAuthFacade implements AuthFacade {
     @Override
     public Mono<UserDto> register(Mono<RegisterUserDto> registerUserDtoMono) {
         return registerUserDtoMono.flatMap(registerUser ->
-                userRepository
-                        .isUserExists(registerUser.getUsername())
-                        .flatMap(isUserExists -> saveIfNotExists(registerUser.getUsername(), registerUser.getPassword(), isUserExists))
+            userRepository
+                .isUserExists(registerUser.getUsername())
+                .flatMap(isUserExists -> saveIfNotExists(registerUser, isUserExists))
         )
-                .map(User::toDto);
+            .map(User::toDto);
     }
 
-    private Mono<User> saveIfNotExists(String username, String password, Boolean isUserExists) {
-        if (!isUserExists) {
-            return userRepository.save(
-                    User.builder()
-                            .username(username)
-                            .password(password)
-                            .build());
-        } else {
-            return Mono.empty();
-        }
+    private Mono<User> saveIfNotExists(RegisterUserDto registerUserDto, Boolean isUserExists) {
+        return !isUserExists
+            ? userRepository.save(RegisterUserDto.toModel(registerUserDto))
+            : Mono.empty();
     }
 }

@@ -19,12 +19,12 @@ public class Neo4jUserRepository implements UserRepository {
     private final Neo4jMapper<User> userMapper;
 
     @Override
-    public Mono<User> getAuthor(String projectId) {
+    public Mono<User> getAuthorByProjectId(String projectId) {
         return neo4jClient.query(Queries.FIND_AUTHOR_BY_PROJECT_ID_CYPHER)
-                .bind(projectId).to("projectId")
-                .fetchAs(User.class)
-                .mappedBy((typeSystem, record) -> userMapper.map(record))
-                .one();
+            .bind(projectId).to("projectId")
+            .fetchAs(User.class)
+            .mappedBy((typeSystem, record) -> userMapper.map(record))
+            .one();
     }
 
     @Override
@@ -35,28 +35,46 @@ public class Neo4jUserRepository implements UserRepository {
     @Override
     public Mono<User> findByUsername(String username) {
         return neo4jClient.query(Queries.FIND_USER_BY_USERNAME_CYPHER)
-                .bind(username).to("username")
-                .fetchAs(User.class)
-                .mappedBy((typeSystem, record) -> userMapper.map(record))
-                .one();
-    }
-
-    @Override
-    public Flux<User> getUserLikesByProjectId(String projectId) {
-        return neo4jClient.query(Queries.FIND_USER_LIKES_BY_PROJECT_ID_CYPHER)
-                .bind(projectId).to("projectId")
-                .fetchAs(User.class)
-                .mappedBy((typeSystem, record) -> userMapper.map(record))
-                .all();
+            .bind(username).to("username")
+            .fetchAs(User.class)
+            .mappedBy((typeSystem, record) -> userMapper.map(record))
+            .one();
     }
 
     @Override
     public Mono<Boolean> isUserExists(String username) {
         return neo4jClient.query(Queries.IS_USER_EXISTS_CYPHER)
-                .bind(username).to("username")
-                .fetchAs(Boolean.class)
-                .mappedBy((typeSystem, record) -> record.get("isExists").asBoolean())
-                .one()
-                .switchIfEmpty(Mono.just(false));
+            .bind(username).to("username")
+            .fetchAs(Boolean.class)
+            .mappedBy((typeSystem, record) -> record.get("isExists").asBoolean())
+            .one()
+            .switchIfEmpty(Mono.just(false));
+    }
+
+    @Override
+    public Flux<User> getUserLikesByProjectId(String projectId) {
+        return neo4jClient.query(Queries.FIND_USER_LIKES_BY_PROJECT_ID_CYPHER)
+            .bind(projectId).to("projectId")
+            .fetchAs(User.class)
+            .mappedBy((typeSystem, record) -> userMapper.map(record))
+            .all();
+    }
+
+    @Override
+    public Flux<User> findFollowersByUserId(String userId) {
+        return neo4jClient.query(Queries.FIND_FOLLOWERS_BY_USER_ID_CYPHER)
+            .bind(userId).to("userId")
+            .fetchAs(User.class)
+            .mappedBy((typeSystem, record) -> userMapper.map(record))
+            .all();
+    }
+
+    @Override
+    public Mono<User> findAuthorByCommentId(String commentId) {
+        return neo4jClient.query(Queries.FIND_AUTHOR_BY_COMMENT_ID_CYPHER)
+            .bind(commentId).to("commentId")
+            .fetchAs(User.class)
+            .mappedBy(((typeSystem, record) -> userMapper.map(record)))
+            .one();
     }
 }

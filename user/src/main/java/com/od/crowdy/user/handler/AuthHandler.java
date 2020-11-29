@@ -10,28 +10,30 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
+import static org.springframework.web.reactive.function.server.ServerResponse.ok;
+
 @Component
 @RequiredArgsConstructor
 public class AuthHandler {
     private final AuthFacade authFacade;
 
     public Mono<ServerResponse> login(ServerRequest serverRequest) {
-        return ServerResponse.ok()
-                .body(
-                        authFacade.login(
-                                serverRequest.bodyToMono(AuthRequest.class)
-                        ),
-                        UserDto.class
-                );
+        return ok()
+            .body(
+                authFacade.login(
+                    serverRequest.bodyToMono(AuthRequest.class)
+                ),
+                UserDto.class
+            );
     }
 
     public Mono<ServerResponse> register(ServerRequest serverRequest) {
-        return ServerResponse.ok()
-                .body(
-                        authFacade.register(
-                                serverRequest.bodyToMono(RegisterUserDto.class)
-                        ),
-                        UserDto.class
-                );
+        return ok()
+            .body(
+                authFacade.register(
+                    serverRequest.bodyToMono(RegisterUserDto.class)
+                ),
+                UserDto.class
+            );
     }
 }

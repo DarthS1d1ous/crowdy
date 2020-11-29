@@ -18,9 +18,9 @@ public class Neo4jRoleRepository implements RoleRepository {
     @Override
     public Flux<Role> getRolesByUserId(String userId) {
         return neo4jClient.query(Queries.FIND_ROLES_BY_USER_ID_CYPHER)
-                .bind(userId).to("userId")
-                .fetchAs(Role.class)
-                .mappedBy((typeSystem, record) -> roleNeo4jMapper.map(record))
-                .all();
+            .bind(userId).to("userId")
+            .fetchAs(Role.class)
+            .mappedBy((typeSystem, record) -> roleNeo4jMapper.map(record))
+            .all();
     }
 }

@@ -1,6 +1,5 @@
 package com.od.crowdy.user.handler;
 
-import com.od.crowdy.user.domain.neo4j.model.User;
 import com.od.crowdy.user.dto.UserDto;
 import com.od.crowdy.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
@@ -17,30 +16,56 @@ import static org.springframework.web.reactive.function.server.ServerResponse.ok
 @Component
 @RequiredArgsConstructor
 public class UserHandler {
-    public final static String PROJECT_ID = "projectId";
+    public static final String PROJECT_ID = "projectId";
+    public static final String USER_ID = "userId";
+    public static final String COMMENT_ID = "commentId";
     private final UserFacade userFacade;
 
-    public Mono<ServerResponse> getAuthor(ServerRequest serverRequest) {
+    public Mono<ServerResponse> getAuthorByProjectId(ServerRequest serverRequest) {
         return ok()
-                .body(
-                        userFacade.getAuthor(serverRequest.pathVariable(PROJECT_ID)),
-                        User.class
-                );
+            .body(
+                userFacade.getAuthorByProjectId(serverRequest.pathVariable(PROJECT_ID)),
+                UserDto.class
+            );
     }
 
     public Mono<ServerResponse> saveUser(ServerRequest serverRequest) {
         return created(URI.create("/users"))
-                .body(
-                        userFacade.save(serverRequest.bodyToMono(UserDto.class)),
-                        UserDto.class
-                );
+            .body(
+                userFacade.save(serverRequest.bodyToMono(UserDto.class)),
+                UserDto.class
+            );
     }
 
     public Mono<ServerResponse> getUserLikesByProjectId(ServerRequest serverRequest) {
         return ok()
-                .body(
-                        userFacade.getUserLikesByProjectId(serverRequest.pathVariable(PROJECT_ID)),
-                        User.class
-                );
+            .body(
+                userFacade.getUserLikesByProjectId(serverRequest.pathVariable(PROJECT_ID)),
+                UserDto.class
+            );
+    }
+
+    public Mono<ServerResponse> getFollowersByUserId(ServerRequest serverRequest) {
+        return ok()
+            .body(
+                userFacade.getFollowersByUserId(serverRequest.pathVariable(USER_ID)),
+                UserDto.class
+            );
+    }
+
+    public Mono<ServerResponse> getAuthorByCommentId(ServerRequest serverRequest) {
+        return ok()
+            .body(
+                userFacade.getAuthorByCommentId(serverRequest.pathVariable(COMMENT_ID)),
+                UserDto.class
+            );
+    }
+
+    public Mono<ServerResponse> getUserById(ServerRequest serverRequest) {
+        return ok()
+            .body(
+                userFacade.getUserById(serverRequest.pathVariable(USER_ID)),
+                UserDto.class
+            );
     }
 }

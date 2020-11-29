@@ -13,7 +13,7 @@ public class RoleMapper implements Neo4jMapper<Role> {
     @Override
     public Role map(Record record) {
         return Role.builder()
-                .name(record.get("name").asString())
-                .build();
+            .name(record.get("name").asString())
+            .build();
     }
 }

@@ -22,13 +22,13 @@ public class UserDto {
 
     public static UserDto from(User user) {
         return UserDto.builder()
-                .id(user.getId())
-                .username(user.getUsername())
-                .fullName(user.getFullName())
-                .createdAt(user.getCreatedAt())
-                .birthday(user.getBirthday())
-                .avatar(user.getAvatar())
-                .build();
+            .id(user.getId())
+            .username(user.getUsername())
+            .fullName(user.getFullName())
+            .createdAt(user.getCreatedAt())
+            .birthday(user.getBirthday())
+            .avatar(user.getAvatar())
+            .build();
     }
 
     public static User toModel(UserDto userDto) {

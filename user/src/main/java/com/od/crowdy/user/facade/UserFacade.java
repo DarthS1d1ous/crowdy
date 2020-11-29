@@ -5,9 +5,15 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface UserFacade {
-    Mono<UserDto> getAuthor(String projectId);
+    Mono<UserDto> getAuthorByProjectId(String projectId);
 
     Mono<UserDto> save(Mono<UserDto> user);
 
     Flux<UserDto> getUserLikesByProjectId(String projectId);
+
+    Flux<UserDto> getFollowersByUserId(String userId);
+
+    Mono<UserDto> getAuthorByCommentId(String commentId);
+
+    Mono<UserDto> getUserById(String userId);
 }

@@ -21,13 +21,13 @@ public class UserMapper implements Neo4jMapper<User> {
     public User map(Record record) {
         Value user = record.values().get(USER_INDEX);
         return User.builder()
-                .id(user.get(ID).asString())
-                .username(user.get(USERNAME).asString())
-                .password(user.get(PASSWORD).asString())
-                .fullName(user.get(FULL_NAME).asString())
-                .createdAt(user.get(CREATED_AT).isNull() ? null : user.get(CREATED_AT).asLocalDate())
-                .birthday(user.get(BIRTHDAY).isNull() ? null : user.get(BIRTHDAY).asLocalDate())
-                .avatar(user.get(AVATAR).asString())
-                .build();
+            .id(user.get(ID).asString())
+            .username(user.get(USERNAME).asString())
+            .password(user.get(PASSWORD).asString())
+            .fullName(user.get(FULL_NAME).asString())
+            .createdAt(user.get(CREATED_AT).isNull() ? null : user.get(CREATED_AT).asLocalDate())
+            .birthday(user.get(BIRTHDAY).isNull() ? null : user.get(BIRTHDAY).asLocalDate())
+            .avatar(user.get(AVATAR).asString())
+            .build();
     }
 }
