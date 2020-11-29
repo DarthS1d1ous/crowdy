@@ -1,0 +1,28 @@
+.project-card {
+  margin: 20px;
+  display: inline-block;
+}
+
+.author-card {
+  display: inline-block;
+}
+
+.header-image {
+  background-size: cover;
+}
+
+.mat-tab-group {
+  margin-bottom: 48px;
+}
+
+.back-status {
+  font-size: 14px;
+}
+
+.like-display {
+  transform: scale(1.5);
+}
+
+.like-counter-display {
+  font-size: 20px;
+}

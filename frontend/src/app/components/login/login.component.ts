@@ -11,9 +11,9 @@ import {AuthService} from "../../services/auth.service";
 export class LoginComponent implements OnInit, OnDestroy {
   form: FormGroup;
   public loginInvalid: boolean;
+  authErrorMessage: string;
   private formSubmitAttempt: boolean;
   private returnUrl: string;
-  authErrorMessage: string;
 
   constructor(
     private fb: FormBuilder,
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   ) {
   }
 
-  async ngOnInit() {
+  ngOnInit() {
     this.authService.authErrorMessage.subscribe(authErrorMessage => this.authErrorMessage = authErrorMessage);
 
     this.returnUrl = '/';
@@ -33,8 +33,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       password: ['', Validators.required]
     });
 
-    if (await this.authService.checkAuthenticated()) {
-      await this.router.navigate([this.returnUrl]);
+    if (this.authService.checkAuthenticated()) {
+      this.router.navigate([this.returnUrl]);
     }
   }
 

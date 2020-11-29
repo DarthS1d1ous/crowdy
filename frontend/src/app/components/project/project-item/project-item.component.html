@@ -3,7 +3,8 @@
     <div class="header-image mr-2" mat-card-avatar>
       <img [alt]="'Avatar of ' + projectItem.author.fullName" [src]="projectItem.author.avatar" mat-card-image>
     </div>
-    <mat-card-title>{{projectItem.name}}<span class="badge badge-info ml-2">${{projectItem.currentBack}}
+    <mat-card-title><a [routerLink]="'/projects/' + projectItem.id">{{projectItem.name}}</a><span
+      class="badge badge-info ml-2">${{projectItem.currentBack}}
       of ${{projectItem.overallBack}}</span></mat-card-title>
     <mat-card-subtitle class="mb-3">{{projectItem.author.fullName}}</mat-card-subtitle>
     <mat-card-subtitle class="mb-0">Created at: {{projectItem.createdAt | date}}</mat-card-subtitle>

@@ -15,8 +15,8 @@ export class AppComponent implements OnInit {
     );
   }
 
-  async ngOnInit() {
-    this.isAuthenticated = await this.authService.checkAuthenticated();
+  ngOnInit() {
+    this.isAuthenticated = this.authService.checkAuthenticated();
   }
 
   logout() {

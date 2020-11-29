@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
-import {UserRegister} from "../../models/user-register";
+import {UserRegister} from "../../models/dto/user-register";
 
 @Component({
   selector: 'app-register',
@@ -44,8 +44,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
       password: ['', Validators.required]
     });
 
-    if (await this.authService.checkAuthenticated()) {
-      await this.router.navigate([this.returnUrl]);
+    if (this.authService.checkAuthenticated()) {
+      this.router.navigate([this.returnUrl]);
     }
   }
 

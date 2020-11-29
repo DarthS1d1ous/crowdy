@@ -21,3 +21,8 @@
   font-family: 'lato', 'arial', sans-serif;
   font-size: xx-large;
 }
+
+.crowdy_header_title {
+  text-decoration: none;
+  color: black;
+}

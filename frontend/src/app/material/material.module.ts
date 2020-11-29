@@ -11,7 +11,7 @@ import {MatMenuModule} from "@angular/material/menu";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatCardModule} from "@angular/material/card";
 import {MatTooltipModule} from '@angular/material/tooltip';
-import {NgbPopoverModule} from "@ng-bootstrap/ng-bootstrap";
+import {NgbModule, NgbPopoverModule} from "@ng-bootstrap/ng-bootstrap";
 import {MatTableModule} from "@angular/material/table";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatInputModule} from "@angular/material/input";
@@ -19,6 +19,8 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatSelectModule} from "@angular/material/select";
 import {MatOptionModule} from "@angular/material/core";
+import {MatTabsModule} from "@angular/material/tabs";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 @NgModule({
   declarations: [],
@@ -46,7 +48,10 @@ import {MatOptionModule} from "@angular/material/core";
     MatCardModule,
     MatSlideToggleModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    NgbModule,
+    MatTabsModule,
+    MatProgressBarModule
   ],
   exports: [
     BrowserModule,
@@ -72,7 +77,10 @@ import {MatOptionModule} from "@angular/material/core";
     MatCardModule,
     MatSlideToggleModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    NgbModule,
+    MatTabsModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: []
