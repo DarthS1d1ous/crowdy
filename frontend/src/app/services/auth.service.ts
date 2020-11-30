@@ -23,7 +23,6 @@ export class AuthService {
   }
 
   login(username: string, password: string) {
-    console.log("TRYING LOGIN")
     return this.httpClient.post<User>('http://localhost:8081/login', {
       username: username,
       password: password

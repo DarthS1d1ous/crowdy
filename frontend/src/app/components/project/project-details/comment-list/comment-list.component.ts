@@ -42,9 +42,11 @@ export class CommentListComponent implements OnInit {
   }
 
   onCommentSend() {
-    const comment = this.sendCommentForm.get('comment').value;
-    this.projectService.sendComment(new CommentSave(comment, this.authService.getCurrentUser().id, this.projectId))
-      .subscribe(comment => this.comments.push(comment))
+    if (this.sendCommentForm.valid) {
+      const comment = this.sendCommentForm.get('comment').value;
+      this.projectService.sendComment(new CommentSave(comment, this.authService.getCurrentUser().id, this.projectId))
+        .subscribe(comment => this.comments.push(comment))
+    }
   }
 
   public trackItem(index: number, comment: Comment) {

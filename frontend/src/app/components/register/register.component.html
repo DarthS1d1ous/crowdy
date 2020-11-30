@@ -8,29 +8,29 @@
       <mat-form-field class="full-width-input">
         <input formControlName="username" matInput placeholder="Username" required>
         <mat-error>
-          Please provide a valid username
+          Пожалуйста, введите корректное имя пользователя
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
         <input formControlName="password" matInput placeholder="Password" required type="password">
         <mat-error>
-          Please provide a valid password
+          Пожалуйста, введите корректный пароль
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
         <input formControlName="fullName" matInput placeholder="Full Name" required>
         <mat-error>
-          Please provide a valid full name
+          Пожалуйста, введите полное имя
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
         <input formControlName="birthday" matInput placeholder="Birthday" required type="date">
         <mat-error>
-          Please provide a valid date for birthday
+          Пожалуйста, введите дату рождения
         </mat-error>
       </mat-form-field>
       <div class="form-group">
-        <label for="file">File</label>
+        <label for="file">Фото</label>
         <input
           (change)="onFileChange($event)"
           class="form-control"
@@ -38,11 +38,11 @@
           id="file"
           type="file">
         <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
-          <div *ngIf="f.file.errors.required">File is required.</div>
+          <div *ngIf="f.file.errors.required">Требуется фото</div>
         </div>
       </div>
       <img *ngIf="imageSrc" [src]="imageSrc" style="height: 80%; width:80%">
-      <button class="ml-3 mt-3" color="primary" mat-raised-button name="register">Register</button>
+      <button class="ml-3 mt-3" color="primary" mat-raised-button name="register">Зарегистрироваться</button>
     </form>
   </mat-card-content>
 </mat-card>

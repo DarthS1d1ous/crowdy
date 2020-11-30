@@ -20,8 +20,8 @@ CREATE (kickstarter:ProjectType {
 
 CREATE (four_d_chess_1:Project {
   id:          '1',
-  name:        'Board game',
-  description: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.',
+  name:        '4D Шахматы',
+  description: 'Четверные немецкие шахматы, европейские четверные шахматы или шахматы вчетвером — вариант шахмат, который допускает игру между четырьмя участниками. Игра проводится на особой доске, которая представляет собой классическую шахматную доску с тремя дополнительными рядами по восемь клеток с каждой стороны. Для игры необходимы 4 комплекта разноцветных фигур.',
   createdAt:   date(),
   deadline:    date({year: 2021, month: 10, day: 11}),
   imageUrls:   ['https://pbs.twimg.com/media/ESNpMg_WoAAy8FV.jpg'],
@@ -29,45 +29,45 @@ CREATE (four_d_chess_1:Project {
   currentBack: '2332.67'
 })
 
-CREATE (four_d_chess_2:Project {
+CREATE (card_game:Project {
   id:          '2',
-  name:        'Board game',
-  description: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.',
+  name:        'Уно',
+  description: 'У́но (Uno, с исп. — «Uno», один). Игра первоначально была разработана в 1971 году парикмахером Мерлом Роббинсом в городке Реддинг, в пригороде Цинциннати, штат Огайо, США. В 1992 году компания Mattel выкупила права на игру и бренд. Игра Uno в значительной степени совпадает с популярной европейской игрой мау-мау, известной в России как «Сто одно», но требует специальной колоды карт. Время игры от 15 минут. Минимум 2 игрока.',
   createdAt:   date(),
   deadline:    date({year: 2021, month: 10, day: 11}),
-  imageUrls:   ['https://pbs.twimg.com/media/ESNpMg_WoAAy8FV.jpg'],
+  imageUrls:   ['https://image.api.playstation.com/cdn/EP0001/CUSA04040_00/LRI3Rg5MKOi5AkefFaMcChNv5WitM7sz.png'],
   overallBack: '5456.43',
-  currentBack: '2332.67'
+  currentBack: '1400.67'
 })
 
-CREATE (four_d_chess_3:Project {
+CREATE (lego:Project {
   id:          '3',
-  name:        'Board game',
-  description: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.',
+  name:        'Лего Minecraft',
+  description: 'Конструктор Лего – признанная во всем мире не только самая желанная, но и самая полезная игра. Она позволяет научиться следовать инструкции, создавать декорации и персонажей для ролевых игр. Купить Lego можно в подарок своему ребенку или чаду друзей, просто для расширения игровых возможностей. В любом случае можете быть уверены, что сюрприз будет кстати.',
   createdAt:   date(),
   deadline:    date({year: 2021, month: 10, day: 11}),
-  imageUrls:   ['https://pbs.twimg.com/media/ESNpMg_WoAAy8FV.jpg'],
-  overallBack: '5456.43',
-  currentBack: '2332.67'
+  imageUrls:   ['https://www.funtastik.by/upload/iblock/df5/df5a07e97d89694b3e119dc06306290f.jpg'],
+  overallBack: '7894.43',
+  currentBack: '4555.67'
 })
 
 CREATE (art_1:Project {
   id:          '4',
-  name:        'Paint',
-  description: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.',
+  name:        'Картина Анонимного Автора',
+  description: 'Здравствуйте, я начинающий художник, мне очень нравится заниматься этой деятельностью. Был бы признательным, получить минимальное спонсирование для продолжение деятельности, Спасибо',
   createdAt:   date(),
   deadline:    date({year: 2021, month: 8, day: 11}),
   imageUrls:   [
                  'https://images.wallpaperscraft.ru/image/vinsent_van_gog_zvezdnaya_noch_maslo_kholst_117815_1920x1080.jpg'],
   overallBack: '3456.43',
-  currentBack: '22.67'
+  currentBack: '658.67'
 })
 
 CREATE (denis:User {
   id:        '1',
   username:  'denis2000',
   password:  'denis2000',
-  fullName:  'Denis Borschevsky',
+  fullName:  'Денис Борщевский',
   createdAt: date(),
   birthday:  date({year: 2000, month: 2, day: 16}),
   avatar:    'https://i.imgur.com/rBQq49N.png'
@@ -77,7 +77,7 @@ CREATE (oleg:User {
   id:        '2',
   username:  'oleg2000',
   password:  'oleg2000',
-  fullName:  'Oleg Vinograd',
+  fullName:  'Олег Виноград',
   createdAt: date(),
   birthday:  date({year: 2000, month: 1, day: 9}),
   avatar:    'https://i.pinimg.com/236x/1e/aa/75/1eaa75496c78dc65c9c7358cd8dd759a.jpg'
@@ -86,7 +86,7 @@ CREATE (vlad:User {
   id:        '3',
   username:  'vladNaChille',
   password:  'vladNaChille',
-  fullName:  'Vlad Rogovsky',
+  fullName:  'Влад Роговский',
   createdAt: date(),
   birthday:  date({year: 1999, month: 9, day: 23}),
   avatar:    'https://steamrep.com/steamimage/avatars/f4/f4027e888be814ae0d933b2e13de7a8ac098713a_full.jpg'
@@ -106,64 +106,64 @@ CREATE (p_2:Payment {
 
 CREATE (faq_1:Faq {
   id:       '1',
-  question: 'How is it work?',
-  answer:   'Magic'
+  question: 'Как это работает?',
+  answer:   'Магия'
 })
 CREATE (faq_2:Faq {
   id:       '2',
-  question: 'Do we support shipment in Belarus?',
-  answer:   'No, only USA'
+  question: 'Вы поддерживаете доставку в Беларусь?',
+  answer:   'Нет, только США'
 })
 CREATE (faq_3:Faq {
   id:       '3',
-  question: 'Do we support shipment in Belarus?',
-  answer:   'Yes, but with tax'
+  question: 'Вы поодерживаете доставку в Беларусь?',
+  answer:   'Да, но с дополнительной платой'
 })
 
 CREATE (comment_1:Comment {
   id:        '1',
   createdAt: localdatetime(),
-  message:   'I got strange box with trash..'
+  message:   'Я получил странную коробку с мусором...'
 })
 CREATE (comment_2:Comment {
   id:        '2',
   createdAt: localdatetime(),
-  message:   'I like this!!'
+  message:   'Обожаю это!!'
 })
 CREATE (comment_3:Comment {
   id:        '3',
   createdAt: localdatetime(),
-  message:   'Good luuck. I wish you achive all goals.'
+  message:   'Удачи, желаю успехов в достижении цени!'
 })
 
 CREATE (board_game:Category {
   id:   '1',
-  name: 'Board games'
+  name: 'Настольные игры'
 })
 CREATE (art:Category {
   id:   '2',
-  name: 'Arts'
+  name: 'Искусство'
 })
 
 CREATE (back_option_1:BackOption {
   id:     '1',
   pledge: 5,
-  reward: 'Stikers'
+  reward: 'Стикеры'
 })
 CREATE (back_option_2:BackOption {
   id:     '2',
   pledge: 10,
-  reward: 'Badges'
+  reward: 'Значки'
 })
 CREATE (back_option_3:BackOption {
   id:     '3',
   pledge: 35,
-  reward: 'T-shorts'
+  reward: 'Майки'
 })
 CREATE (back_option_4:BackOption {
   id:     '4',
   pledge: 100,
-  reward: 'Subscribtion for 24 month'
+  reward: 'Подписка на 24 месяца'
 })
 
 CREATE
@@ -183,8 +183,8 @@ CREATE
   (oleg)-[:FOLLOWS]->(vlad),
 
   (denis)-[:OWNS]->(four_d_chess_1),
-  (denis)-[:OWNS]->(four_d_chess_2),
-  (oleg)-[:OWNS]->(four_d_chess_3),
+  (denis)-[:OWNS]->(card_game),
+  (oleg)-[:OWNS]->(lego),
   (vlad)-[:OWNS]->(art_1),
 
   (denis)-[:CREATES]->(comment_1),
@@ -195,39 +195,39 @@ CREATE
   (oleg)-[:MAKES]->(p_2),
 
   (four_d_chess_1)-[:HAS]->(comment_1),
-  (four_d_chess_2)-[:HAS]->(comment_2),
-  (four_d_chess_2)-[:HAS]->(comment_3),
+  (card_game)-[:HAS]->(comment_2),
+  (card_game)-[:HAS]->(comment_3),
 
   (four_d_chess_1)-[:IS]->(kickstarter),
-  (four_d_chess_2)-[:IS]->(kickstarter),
-  (four_d_chess_3)-[:IS]->(kickstarter),
+  (card_game)-[:IS]->(kickstarter),
+  (lego)-[:IS]->(kickstarter),
   (art_1)-[:IS]->(just_support),
 
   (four_d_chess_1)-[:HAS]->(faq_1),
-  (four_d_chess_2)-[:HAS]->(faq_2),
-  (four_d_chess_2)-[:HAS]->(faq_3),
-  (four_d_chess_3)-[:HAS]->(faq_3),
+  (card_game)-[:HAS]->(faq_2),
+  (card_game)-[:HAS]->(faq_3),
+  (lego)-[:HAS]->(faq_3),
 
   (four_d_chess_1)-[:HAS]->(back_option_1),
   (four_d_chess_1)-[:HAS]->(back_option_2),
-  (four_d_chess_2)-[:HAS]->(back_option_3),
-  (four_d_chess_3)-[:HAS]->(back_option_4),
+  (card_game)-[:HAS]->(back_option_3),
+  (lego)-[:HAS]->(back_option_4),
 
   (four_d_chess_1)-[:RELATED_TO]->(board_game),
-  (four_d_chess_2)-[:RELATED_TO]->(board_game),
-  (four_d_chess_3)-[:RELATED_TO]->(board_game),
+  (card_game)-[:RELATED_TO]->(board_game),
+  (lego)-[:RELATED_TO]->(board_game),
   (art_1)-[:RELATED_TO]->(art),
 
   (four_d_chess_1)<-[:LIKES]-(denis),
-  (four_d_chess_2)<-[:LIKES]-(denis),
-  (four_d_chess_3)<-[:LIKES]-(denis),
-  (four_d_chess_2)<-[:LIKES]-(oleg),
+  (card_game)<-[:LIKES]-(denis),
+  (lego)<-[:LIKES]-(denis),
+  (card_game)<-[:LIKES]-(oleg),
   (art_1)<-[:LIKES]-(oleg),
-  (four_d_chess_3)<-[:LIKES]-(vlad),
+  (lego)<-[:LIKES]-(vlad),
   (art_1)<-[:LIKES]-(denis),
 
   (four_d_chess_1)<-[:PASSED_TO]-(p_2),
-  (four_d_chess_2)<-[:PASSED_TO]-(p_1),
+  (card_game)<-[:PASSED_TO]-(p_1),
 
   (back_option_3)<-[:WANTS]-(vlad),
 

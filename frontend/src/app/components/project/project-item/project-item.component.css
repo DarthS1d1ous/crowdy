@@ -1,9 +1,15 @@
 .project-card {
-  max-width: 400px;
+  width: min-content;
   margin: 20px;
   display: inline-block;
 }
 
 .header-image {
   background-size: cover;
+}
+
+.card-img {
+  width: 711px; /* width of container */
+  height: 400px; /* height of container */
+  object-fit: cover;
 }

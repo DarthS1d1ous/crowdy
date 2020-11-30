@@ -1,7 +1,3 @@
-.project-card {
-  margin: 20px;
-  display: inline-block;
-}
 
 .author-card {
   display: inline-block;
@@ -25,4 +21,20 @@
 
 .like-counter-display {
   font-size: 20px;
+}
+
+.project-card {
+  width: min-content;
+  margin: 20px;
+  display: inline-block;
+}
+
+.header-image {
+  background-size: cover;
+}
+
+.card-img {
+  width: 1280px; /* width of container */
+  height: 720px; /* height of container */
+  object-fit: cover;
 }
