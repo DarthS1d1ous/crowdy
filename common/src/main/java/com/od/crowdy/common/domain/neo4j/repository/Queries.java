@@ -67,4 +67,10 @@ public interface Queries {
         ]-(u)
         RETURN c
         """;
+    String FIND_BACKOPTIONS_BY_PROJECT_ID_CYPHER = """
+        MATCH (:Project {id: $projectId})-[:
+        """ + RelationShips.HAS + """
+        ]->(b:BackOption)
+        RETURN b
+        """;
 }

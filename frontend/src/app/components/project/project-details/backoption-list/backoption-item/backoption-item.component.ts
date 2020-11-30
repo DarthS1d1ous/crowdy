@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Backoption} from "../../../../../models/backoption";
 
 @Component({
   selector: 'app-backoption-item',
@@ -6,6 +7,8 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./backoption-item.component.css']
 })
 export class BackoptionItemComponent implements OnInit {
+  @Input()
+  backoption: Backoption;
 
   constructor() {
   }

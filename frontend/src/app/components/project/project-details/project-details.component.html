@@ -33,19 +33,18 @@
         <mat-tab label="Комментарии">
           <app-comment-list [projectId]="projectItem.id"></app-comment-list>
         </mat-tab>
-        <mat-tab label="Способы пооддержки">
-          <app-backoption-list [projectId]="projectItem.id"></app-backoption-list>
-        </mat-tab>
       </mat-tab-group>
     </mat-card>
   </div>
   <div class="col-sm text-center">
-    <mat-card class="author-card w-75">
+    <mat-card class="mt-3 mb-4 author-card w-100 d-block">
       <mat-card-header>
         <div class="header-image mr-2" mat-card-avatar>
-          <img [alt]="'Avatar of ' + projectItem.author.fullName" [src]="projectItem.author.avatar" mat-card-image>
+          <img [alt]="'Avatar of ' + projectItem.author.fullName" [src]="projectItem.author.avatar"
+               class="mt-1 ml-1 d-inline-block" mat-card-image>
         </div>
-        <mat-card-title>{{projectItem.author.username}}</mat-card-title>
+        <mat-card-title class="ml-3">{{projectItem.author.username}}</mat-card-title>
+        <div class="spacer"></div>
         <button *ngIf="!isCurrentUserFollowingAuthor()" color="primary" mat-stroked-button>Подписаться</button>
         <button *ngIf="isCurrentUserFollowingAuthor()" color="primary" mat-stroked-button>Отписаться</button>
       </mat-card-header>
@@ -56,5 +55,6 @@
           of ${{projectItem.overallBack}}</span>
       </mat-card-content>
     </mat-card>
+    <app-backoption-list [projectId]="projectItem.id"></app-backoption-list>
   </div>
 </div>

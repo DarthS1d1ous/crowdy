@@ -6,6 +6,7 @@ import {Project} from "../models/project";
 import {Faq} from "../models/faq";
 import {Comment} from "../models/comment";
 import {CommentSave} from "../models/dto/comment-save";
+import {Backoption} from "../models/backoption";
 
 @Injectable()
 export class ProjectService {
@@ -18,7 +19,6 @@ export class ProjectService {
   }
 
   public getProjectById(id: number): Observable<Project> {
-    console.log(id);
     return this.httpClient.get<Project>("http://localhost:8082/projects/" + id);
   }
 
@@ -32,5 +32,9 @@ export class ProjectService {
 
   sendComment(commentSave: CommentSave) {
     return this.httpClient.post<Comment>("http://localhost:8082/comments", commentSave);
+  }
+
+  getBackoptionsByProjectId(projectId: string) {
+    return this.httpClient.get<Backoption[]>("http://localhost:8082/backoptions/project/" + projectId);
   }
 }

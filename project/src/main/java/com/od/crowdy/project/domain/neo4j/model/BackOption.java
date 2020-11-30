@@ -1,6 +1,8 @@
 package com.od.crowdy.project.domain.neo4j.model;
 
+import com.od.crowdy.project.dto.BackOptionDto;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.neo4j.springframework.data.core.schema.GeneratedValue;
@@ -13,6 +15,7 @@ import java.math.BigDecimal;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Node("BackOption")
 public class BackOption {
 
@@ -21,4 +24,8 @@ public class BackOption {
     private String id;
     private BigDecimal pledge;
     private String reward;
+
+    public static BackOptionDto toDto(BackOption backOption) {
+        return BackOptionDto.from(backOption);
+    }
 }
