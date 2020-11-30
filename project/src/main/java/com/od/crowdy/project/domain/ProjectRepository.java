@@ -8,4 +8,6 @@ public interface ProjectRepository {
     Flux<Project> findProjectsByCategoryName(String categoryName);
 
     Mono<Project> findProjectById(String projectId);
+
+    Flux<Project> findProjectsByUserId(String userId);
 }

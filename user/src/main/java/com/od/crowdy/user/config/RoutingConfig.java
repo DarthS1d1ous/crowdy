@@ -25,6 +25,7 @@ public class RoutingConfig {
             .andRoute(POST("/register"), authHandler::register)
             .andRoute(GET("/users/{" + UserHandler.USER_ID + "}/followers"), userHandler::getFollowersByUserId)
             .andRoute(GET("/users/comment/{" + UserHandler.COMMENT_ID + "}"), userHandler::getAuthorByCommentId)
-            .andRoute(GET("/users/{" + UserHandler.USER_ID + "}"), userHandler::getUserById);
+            .andRoute(GET("/users/{" + UserHandler.USER_ID + "}"), userHandler::getUserById)
+            .andRoute(GET("/users/profiles/{" + UserHandler.USER_ID + "}"), userHandler::getUserProfileById);
     }
 }

@@ -7,6 +7,7 @@ import com.od.crowdy.project.facade.ProjectFacade;
 import com.od.crowdy.project.helper.ProjectHelper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Component
@@ -21,5 +22,11 @@ public class ProjectDetailsProjectFacade implements ProjectFacade {
             .map(Project::toDto)
             .flatMap(projectHelper::fillAuthor)
             .flatMap(projectHelper::fillLikes);
+    }
+
+    @Override
+    public Flux<ProjectDto> getProjectByUserId(String userId) {
+        return projectRepository.findProjectsByUserId(userId)
+            .map(Project::toDto);
     }
 }

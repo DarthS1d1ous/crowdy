@@ -70,11 +70,25 @@ public class Neo4jUserRepository implements UserRepository {
     }
 
     @Override
+    public Flux<User> findFollowingByUserId(String userId) {
+        return neo4jClient.query(Queries.FIND_FOLLOWING_BY_USER_ID_CYPHER)
+            .bind(userId).to("userId")
+            .fetchAs(User.class)
+            .mappedBy((typeSystem, record) -> userMapper.map(record))
+            .all();
+    }
+
+    @Override
     public Mono<User> findAuthorByCommentId(String commentId) {
         return neo4jClient.query(Queries.FIND_AUTHOR_BY_COMMENT_ID_CYPHER)
             .bind(commentId).to("commentId")
             .fetchAs(User.class)
             .mappedBy(((typeSystem, record) -> userMapper.map(record)))
             .one();
+    }
+
+    @Override
+    public Mono<User> getUserById(String userId) {
+        return neo4jOperations.findById(userId, User.class);
     }
 }

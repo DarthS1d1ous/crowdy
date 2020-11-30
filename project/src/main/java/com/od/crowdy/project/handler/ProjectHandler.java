@@ -14,10 +14,22 @@ import static org.springframework.web.reactive.function.server.ServerResponse.ok
 @RequiredArgsConstructor
 public class ProjectHandler {
     public final static String PROJECT_ID = "projectId";
+    public final static String USER_ID = "userId";
     private final ProjectFacade projectFacade;
 
     public Mono<ServerResponse> getProjectById(ServerRequest serverRequest) {
         return ok()
-            .body(projectFacade.getProjectById(serverRequest.pathVariable(PROJECT_ID)), ProjectDto.class);
+            .body(
+                projectFacade.getProjectById(serverRequest.pathVariable(PROJECT_ID)),
+                ProjectDto.class
+            );
+    }
+
+    public Mono<ServerResponse> getProjectsByUserId(ServerRequest serverRequest) {
+        return ok()
+            .body(
+                projectFacade.getProjectByUserId(serverRequest.pathVariable(USER_ID)),
+                ProjectDto.class
+            );
     }
 }

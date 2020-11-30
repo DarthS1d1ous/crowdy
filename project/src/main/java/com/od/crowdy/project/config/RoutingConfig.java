@@ -28,6 +28,7 @@ public class RoutingConfig {
             .andRoute(GET("/faqs/project/{" + ProjectHandler.PROJECT_ID + "}"), faqHandler::getFaqsByProjectId)
             .andRoute(GET("/comments/project/{" + ProjectHandler.PROJECT_ID + "}"), commentHandler::getCommentsByProjectId)
             .andRoute(POST("/comments"), commentHandler::saveComment)
-            .andRoute(GET("/backoptions/project/{" + ProjectHandler.PROJECT_ID + "}"), backOptionHandler::getBackOptionsByProjectId);
+            .andRoute(GET("/backoptions/project/{" + ProjectHandler.PROJECT_ID + "}"), backOptionHandler::getBackOptionsByProjectId)
+            .andRoute(GET("/projects/user/{" + ProjectHandler.USER_ID + "}"), projectHandler::getProjectsByUserId);
     }
 }

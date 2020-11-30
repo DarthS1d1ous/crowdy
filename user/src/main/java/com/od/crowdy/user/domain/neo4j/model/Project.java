@@ -1,5 +1,6 @@
 package com.od.crowdy.user.domain.neo4j.model;
 
+import com.od.crowdy.user.dto.ProjectDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,7 +20,6 @@ import java.util.List;
 @Builder
 @Node("Project")
 public class Project {
-
     @Id
     @GeneratedValue(UUIDStringGenerator.class)
     private String id;
@@ -31,4 +31,8 @@ public class Project {
     private List<String> imageUrls;
     private BigDecimal overallBack;
     private BigDecimal currentBack;
+
+    public static ProjectDto toDto(Project project) {
+        return ProjectDto.from(project);
+    }
 }

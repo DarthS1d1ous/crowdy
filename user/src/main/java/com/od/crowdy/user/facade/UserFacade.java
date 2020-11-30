@@ -1,6 +1,7 @@
 package com.od.crowdy.user.facade;
 
 import com.od.crowdy.user.dto.UserDto;
+import com.od.crowdy.user.dto.UserProfileDto;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -16,4 +17,6 @@ public interface UserFacade {
     Mono<UserDto> getAuthorByCommentId(String commentId);
 
     Mono<UserDto> getUserById(String userId);
+
+    Mono<UserProfileDto> getUserProfileById(String userId);
 }

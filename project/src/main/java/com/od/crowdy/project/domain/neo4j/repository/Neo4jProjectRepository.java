@@ -29,6 +29,15 @@ public class Neo4jProjectRepository implements ProjectRepository {
 
     @Override
     public Mono<Project> findProjectById(String projectId) {
-        return neo4jOperations.findById(projectId, Project.class);
+        return this.neo4jOperations.findById(projectId, Project.class);
+    }
+
+    @Override
+    public Flux<Project> findProjectsByUserId(String userId) {
+        return this.neo4jClient.query(Queries.FIND_PROJECTS_BY_USER_ID_CYPHER)
+            .bind(userId).to("userId")
+            .fetchAs(Project.class)
+            .mappedBy((typeSystem, record) -> mapper.map(record))
+            .all();
     }
 }

@@ -1,6 +1,7 @@
 package com.od.crowdy.user.handler;
 
 import com.od.crowdy.user.dto.UserDto;
+import com.od.crowdy.user.dto.UserProfileDto;
 import com.od.crowdy.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -66,6 +67,14 @@ public class UserHandler {
             .body(
                 userFacade.getUserById(serverRequest.pathVariable(USER_ID)),
                 UserDto.class
+            );
+    }
+
+    public Mono<ServerResponse> getUserProfileById(ServerRequest serverRequest) {
+        return ok()
+            .body(
+                userFacade.getUserProfileById(serverRequest.pathVariable(USER_ID)),
+                UserProfileDto.class
             );
     }
 }

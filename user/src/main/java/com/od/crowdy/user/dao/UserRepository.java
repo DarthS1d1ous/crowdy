@@ -17,5 +17,9 @@ public interface UserRepository {
 
     Flux<User> findFollowersByUserId(String userId);
 
+    Flux<User> findFollowingByUserId(String userId);
+
     Mono<User> findAuthorByCommentId(String commentId);
+
+    Mono<User> getUserById(String userId);
 }

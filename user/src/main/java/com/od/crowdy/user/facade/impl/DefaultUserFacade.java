@@ -3,7 +3,9 @@ package com.od.crowdy.user.facade.impl;
 import com.od.crowdy.user.dao.UserRepository;
 import com.od.crowdy.user.domain.neo4j.model.User;
 import com.od.crowdy.user.dto.UserDto;
+import com.od.crowdy.user.dto.UserProfileDto;
 import com.od.crowdy.user.facade.UserFacade;
+import com.od.crowdy.user.service.ProjectService;
 import lombok.RequiredArgsConstructor;
 import org.neo4j.springframework.data.core.ReactiveNeo4jOperations;
 import org.springframework.stereotype.Component;
@@ -14,6 +16,7 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class DefaultUserFacade implements UserFacade {
     private final UserRepository userRepository;
+    private final ProjectService projectService;
     private final ReactiveNeo4jOperations neo4jOperations;
 
     @Override
@@ -51,5 +54,24 @@ public class DefaultUserFacade implements UserFacade {
     public Mono<UserDto> getUserById(String userId) {
         return neo4jOperations.findById(userId, User.class)
             .map(User::toDto);
+    }
+
+    @Override
+    public Mono<UserProfileDto> getUserProfileById(String userId) {
+        return userRepository.getUserById(userId)
+            .map(UserProfileDto::from)
+            .flatMap(userProfileDto -> projectService.getProjectsByUserId(userId)
+                .collectList()
+                .doOnNext(userProfileDto::setProjects)
+                .thenMany(userRepository.findFollowersByUserId(userId))
+                .map(User::toDto)
+                .collectList()
+                .doOnNext(userProfileDto::setFollowers)
+                .thenMany(userRepository.findFollowingByUserId(userId))
+                .map(User::toDto)
+                .collectList()
+                .doOnNext(userProfileDto::setFollowing)
+                .then(Mono.just(userProfileDto))
+            );
     }
 }
