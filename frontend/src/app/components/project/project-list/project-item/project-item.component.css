@@ -13,3 +13,7 @@
   height: 400px; /* height of container */
   object-fit: cover;
 }
+
+.spacer {
+  flex: 0.5 0.5 auto;
+}

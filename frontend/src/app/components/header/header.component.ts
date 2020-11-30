@@ -9,7 +9,7 @@ import {AuthService} from "../../services/auth.service";
 export class HeaderComponent implements OnInit {
   showFiller = false;
 
-  constructor(private authService: AuthService) {
+  constructor(public authService: AuthService) {
   }
 
   ngOnInit(): void {

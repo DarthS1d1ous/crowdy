@@ -2,13 +2,13 @@
   <button (click)="drawer.toggle()" mat-button>
     <mat-icon>category</mat-icon>
   </button>
-  <button mat-button>
+  <button *ngIf="authService.getCurrentUser()" [routerLink]="['/projects/add']" mat-button>
     <mat-icon>library_add</mat-icon>
   </button>
   <span class="spacer"></span>
   <span class="crowdy_font_style"><a class="crowdy_header_title" href="/">Crowdy</a></span>
   <span class="spacer"></span>
-  <button mat-button>
+  <button *ngIf="authService.getCurrentUser()" [routerLink]="['/users/' + authService.getCurrentUser().id]" mat-button>
     <mat-icon>account_box</mat-icon>
   </button>
   <button (click)="logout()" mat-button>

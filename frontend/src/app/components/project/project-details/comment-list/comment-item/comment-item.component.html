@@ -1,16 +1,29 @@
 <div class="be-comment">
   <div class="be-img-comment">
-    <a href="#todoauhorprofile">
+    <a [routerLink]="['/users/' + comment.author.id]">
       <img [src]="comment.author.avatar" alt="Avatar of {{comment.author.fullName}}" class="be-ava-comment">
     </a>
   </div>
   <div class="be-comment-content">
 				<span class="be-comment-name">
-					<a href="#todoauhorprofile">{{comment.author.username}}</a>
+					<a [routerLink]="['/users/' + comment.author.id]">{{comment.author.username}}</a>
 					</span>
     <span class="be-comment-time">
 					<i class="fa fa-clock-o"></i>
       {{comment.createdAt | date:'short'}}
+      <button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" mat-icon-button>
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>delete</mat-icon>
+        <span>Удалить</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>edit</mat-icon>
+        <span>Изменить</span>
+      </button>
+    </mat-menu>
 				</span>
     <p class="be-comment-text">
       {{comment.message}}

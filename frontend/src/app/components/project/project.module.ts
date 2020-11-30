@@ -1,11 +1,10 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ProjectListComponent} from './project-list/project-list.component';
-import {ProjectItemComponent} from './project-item/project-item.component';
+import {ProjectItemComponent} from './project-list/project-item/project-item.component';
 import {ProjectDetailsComponent} from './project-details/project-details.component';
 import {MaterialModule} from "../../material/material.module";
 import {ProjectService} from "../../services/project.service";
-import {ProjectLikeTooltipComponent} from './project-like-tooltip/project-like-tooltip.component';
 import {RouteModule} from "../../route/route.module";
 import {BackoptionListComponent} from './project-details/backoption-list/backoption-list.component';
 import {FaqListComponent} from './project-details/faq-list/faq-list.component';
@@ -14,6 +13,8 @@ import {BackoptionItemComponent} from './project-details/backoption-list/backopt
 import {CommentItemComponent} from './project-details/comment-list/comment-item/comment-item.component';
 import {FaqItemComponent} from './project-details/faq-list/faq-item/faq-item.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {ProjectAddComponent} from './project-add/project-add.component';
+import {UserModule} from "../user/user.module";
 
 
 @NgModule({
@@ -21,22 +22,23 @@ import {ReactiveFormsModule} from "@angular/forms";
     ProjectListComponent,
     ProjectItemComponent,
     ProjectDetailsComponent,
-    ProjectLikeTooltipComponent,
     BackoptionListComponent,
     FaqListComponent,
     CommentListComponent,
     BackoptionItemComponent,
     CommentItemComponent,
-    FaqItemComponent
+    FaqItemComponent,
+    ProjectAddComponent
   ],
   exports: [
-    ProjectItemComponent
+    ProjectItemComponent,
   ],
   imports: [
     CommonModule,
     MaterialModule,
     RouteModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    UserModule
   ],
   providers: [
     ProjectService

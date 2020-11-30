@@ -7,7 +7,25 @@
     </div>
     <mat-card-title><a [routerLink]="'/projects/' + projectItem.id">{{projectItem.name}}</a><span
       class="badge badge-info ml-2">${{projectItem.currentBack}}
-      of ${{projectItem.overallBack}}</span></mat-card-title>
+      of ${{projectItem.overallBack}}</span>
+      <button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" mat-icon-button>
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>delete</mat-icon>
+          <span>Удалить</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>edit</mat-icon>
+          <span>Изменить</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>notifications_off</mat-icon>
+          <span>Отключить уведомления</span>
+        </button>
+      </mat-menu>
+    </mat-card-title>
     <mat-card-subtitle class="mb-3">
       <a
         [routerLink]="['/users/' + projectItem.author.id]">{{projectItem.author.fullName}}
@@ -22,7 +40,7 @@
   </mat-card-content>
   <mat-card-actions>
     <ng-template #likesTooltip>
-      <app-project-like-tooltip [likes]="projectItem.likes"></app-project-like-tooltip>
+      <app-users-tooltip [message]="' пользователей оценили'" [users]="projectItem.likes"></app-users-tooltip>
     </ng-template>
     <button [closeDelay]="1000" [ngbPopover]="likesTooltip" [openDelay]="400" aria-label="Like project" color="warn"
             mat-icon-button triggers="mouseenter:mouseleave">
@@ -30,6 +48,8 @@
     </button>
     <span class="ml-1" style="color: red">{{projectItem.likes.length}}</span>
     <button mat-button>Поддержать</button>
-    <button mat-button>Поделиться</button>
+    <button class="float-right mr-3" color="primary" mat-icon-button>
+      <mat-icon>share</mat-icon>
+    </button>
   </mat-card-actions>
 </mat-card>

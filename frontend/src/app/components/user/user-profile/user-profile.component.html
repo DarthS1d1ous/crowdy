@@ -17,21 +17,36 @@
       <div class="bg-light p-4 d-flex justify-content-end text-center">
         <ul class="list-inline mb-0">
           <li class="list-inline-item">
-            <h5 class="font-weight-bold mb-0 d-block">{{userProfile.projects.length}}</h5><small class="text-muted"> <i
-            class="fas fa-image mr-1"></i>Проекты</small>
+            <span class="text-muted mr-2"> <i class="fas fa-image"></i>Проекты</span>
+            <button aria-label="Projects"
+                    class="font-weight-bold mb-0 mr-4" mat-stroked-button>
+              {{userProfile.projects.length}}
+            </button>
           </li>
           <li class="list-inline-item">
-            <h5 class="font-weight-bold mb-0 d-block">{{userProfile.followers.length}}</h5><small class="text-muted"> <i
-            class="fas fa-user mr-1"></i>Подписчики</small>
+            <span class="text-muted mr-2"> <i class="fas fa-user"></i>Подписчики</span>
+            <ng-template #followersTooltip>
+              <app-users-tooltip [message]="' подписки'" [users]="userProfile.followers"></app-users-tooltip>
+            </ng-template>
+            <button [closeDelay]="1000" [ngbPopover]="followersTooltip" [openDelay]="400" aria-label="Followers"
+                    class="font-weight-bold mb-0" mat-stroked-button triggers="mouseenter:mouseleave">
+              {{userProfile.followers.length}}
+            </button>
           </li>
           <li class="list-inline-item">
-            <h5 class="font-weight-bold mb-0 d-block">{{userProfile.following.length}}</h5><small class="text-muted"> <i
-            class="fas fa-user mr-1"></i>Подписки</small>
+            <span class="text-muted mr-2"><i class="fas fa-user mr-4"></i>Подписки</span>
+            <ng-template #followingTooltip>
+              <app-users-tooltip [message]="' подписаны на Вас'" [users]="userProfile.following"></app-users-tooltip>
+            </ng-template>
+            <button [closeDelay]="1000" [ngbPopover]="followingTooltip" [openDelay]="400" aria-label="Following"
+                    class="font-weight-bold mb-0 mr-4" mat-stroked-button triggers="mouseenter:mouseleave">
+              {{userProfile.following.length}}
+            </button>
           </li>
         </ul>
       </div>
       <div class="px-4 py-3">
-        <h5 class="mb-0">Обо мне</h5>
+        <h3 class="mb-0">Обо мне</h3>
         <div class="p-4 rounded shadow-sm bg-light">
           <p class="font-italic mb-0">Web Developer</p>
           <p class="font-italic mb-0">Lives in New York</p>
@@ -40,7 +55,7 @@
       </div>
       <div class="py-4 px-4">
         <div class="d-flex align-items-center justify-content-between mb-3">
-          <h5 class="mb-0">Недавние проекты</h5><a class="btn btn-link text-muted" href="#">Показать все</a>
+          <h3 class="mb-0">Недавние проекты</h3><a class="btn btn-link text-muted" href="#">Показать все</a>
         </div>
         <div>
           <mat-grid-list cols="2" rowHeight="2:1">

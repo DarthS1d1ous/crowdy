@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {User} from "../../../models/user";
-import {Project} from "../../../models/project";
+import {User} from "../../../../models/user";
+import {Project} from "../../../../models/project";
 
 @Component({
   selector: 'app-project-item',

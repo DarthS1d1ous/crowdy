@@ -9,7 +9,7 @@
       <img [src]="projectItem.imageUrls[0]" alt="Project image" class="card-img" mat-card-image>
       <span>
         <ng-template #likesTooltip>
-              <app-project-like-tooltip [likes]="projectItem.likes"></app-project-like-tooltip>
+              <app-users-tooltip [message]="' пользователей оценили'" [users]="projectItem.likes"></app-users-tooltip>
             </ng-template>
             <button [closeDelay]="1000" [ngbPopover]="likesTooltip" [openDelay]="400" aria-label="Like project"
                     color="warn"
