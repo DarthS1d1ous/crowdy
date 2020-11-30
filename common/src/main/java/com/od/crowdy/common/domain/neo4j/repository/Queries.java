@@ -34,9 +34,9 @@ public interface Queries {
         RETURN EXISTS(u.username) as isExists
         """;
     String FIND_FOLLOWERS_BY_USER_ID_CYPHER = """
-        MATCH (u:User {id: $userId})-[:
+        MATCH (u:User {id: $userId})<-[:
         """ + RelationShips.FOLLOWS + """
-        ]->(f:User) 
+        ]-(f:User) 
         RETURN f
         """;
     String FIND_FAQS_BY_PROJECT_ID_CYPHER = """
@@ -72,5 +72,17 @@ public interface Queries {
         """ + RelationShips.HAS + """
         ]->(b:BackOption)
         RETURN b
+        """;
+    String FIND_PROJECTS_BY_USER_ID_CYPHER = """
+        MATCH (:User {id: $userId})-[:
+        """ + RelationShips.OWNS + """
+        ]->(p:Project)
+        RETURN p
+        """;
+    String FIND_FOLLOWING_BY_USER_ID_CYPHER = """
+        MATCH (u:User {id: $userId})-[:
+        """ + RelationShips.FOLLOWS + """
+        ]->(f:User) 
+        RETURN f
         """;
 }
