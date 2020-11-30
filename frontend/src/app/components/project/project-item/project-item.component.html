@@ -1,12 +1,18 @@
 <mat-card class="project-card">
   <mat-card-header>
-    <div class="header-image mr-2" mat-card-avatar>
-      <img [alt]="'Аватарка ' + projectItem.author.fullName" [src]="projectItem.author.avatar" mat-card-image>
+    <div class="header-image mr-2 ml-2 mt-2" mat-card-avatar>
+      <a [routerLink]="['/users/' + projectItem.author.id]">
+        <img [alt]="'Аватарка ' + projectItem.author.fullName" [src]="projectItem.author.avatar" mat-card-image>
+      </a>
     </div>
     <mat-card-title><a [routerLink]="'/projects/' + projectItem.id">{{projectItem.name}}</a><span
       class="badge badge-info ml-2">${{projectItem.currentBack}}
       of ${{projectItem.overallBack}}</span></mat-card-title>
-    <mat-card-subtitle class="mb-3">{{projectItem.author.fullName}}</mat-card-subtitle>
+    <mat-card-subtitle class="mb-3">
+      <a
+        [routerLink]="['/users/' + projectItem.author.id]">{{projectItem.author.fullName}}
+      </a>
+    </mat-card-subtitle>
     <mat-card-subtitle class="mb-0">Создан: {{projectItem.createdAt | date}}</mat-card-subtitle>
     <mat-card-subtitle class="mt-0">Дата окончания: {{projectItem.deadline | date}}</mat-card-subtitle>
   </mat-card-header>

@@ -10,16 +10,17 @@ import {LoginComponent} from './components/login/login.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {RegisterComponent} from './components/register/register.component';
 import {CommonModule} from "@angular/common";
+import {UserModule} from "./components/user/user.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LoginComponent,
-    RegisterComponent,
+    RegisterComponent
   ],
   imports: [
-    HttpClientModule, ProjectModule, MaterialModule, RouteModule, ReactiveFormsModule, CommonModule
+    HttpClientModule, ProjectModule, MaterialModule, RouteModule, ReactiveFormsModule, CommonModule, UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]

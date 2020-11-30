@@ -6,6 +6,7 @@ import {LoginComponent} from "../components/login/login.component";
 import {AuthGuardService} from "../services/auth-guard.service";
 import {RegisterComponent} from "../components/register/register.component";
 import {ProjectDetailsComponent} from "../components/project/project-details/project-details.component";
+import {UserProfileComponent} from "../components/user/user-profile/user-profile.component";
 
 const routes: Route[] = [
   {
@@ -20,6 +21,9 @@ const routes: Route[] = [
   {
     path: 'projects/:id', component: ProjectDetailsComponent, canActivate: [AuthGuardService]
   },
+  {
+    path: 'users/:id', component: UserProfileComponent, canActivate: [AuthGuardService]
+  }
   /*{path: 'recipes', component: RecipesComponent, children: [
       {path: 'new', component: RecipeEditComponent},
       {path: ':id', component: RecipeDetailComponent},
