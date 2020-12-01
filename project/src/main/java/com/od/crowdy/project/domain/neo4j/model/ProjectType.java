@@ -15,5 +15,6 @@ import org.springframework.data.annotation.Id;
 public class ProjectType {
 
     @Id
+    private String id;
     private String name;
 }

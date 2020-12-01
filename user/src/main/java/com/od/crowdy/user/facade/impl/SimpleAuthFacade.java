@@ -6,6 +6,7 @@ import com.od.crowdy.user.dto.AuthRequest;
 import com.od.crowdy.user.dto.RegisterUserDto;
 import com.od.crowdy.user.dto.UserDto;
 import com.od.crowdy.user.facade.AuthFacade;
+import com.od.crowdy.user.helper.UserHelper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
@@ -14,6 +15,7 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class SimpleAuthFacade implements AuthFacade {
     private final UserRepository userRepository;
+    private final UserHelper userHelper;
 
     @Override
     public Mono<UserDto> login(Mono<AuthRequest> authRequest) {
@@ -22,7 +24,8 @@ public class SimpleAuthFacade implements AuthFacade {
                 .findByUsername(authReq.getUsername())
                 .flatMap(user -> verifyPassword(authReq, user))
         )
-            .map(User::toDto);
+            .map(User::toDto)
+            .flatMap(userHelper::fillRoles);
     }
 
     private Mono<User> verifyPassword(AuthRequest authReq, User user) {
@@ -40,7 +43,8 @@ public class SimpleAuthFacade implements AuthFacade {
                 .isUserExists(registerUser.getUsername())
                 .flatMap(isUserExists -> saveIfNotExists(registerUser, isUserExists))
         )
-            .map(User::toDto);
+            .map(User::toDto)
+            .flatMap(userHelper::fillRoles);
     }
 
     private Mono<User> saveIfNotExists(RegisterUserDto registerUserDto, Boolean isUserExists) {

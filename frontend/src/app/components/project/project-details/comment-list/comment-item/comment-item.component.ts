@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Comment} from "../../../../../models/comment";
+import {AuthService} from "../../../../../services/auth.service";
 
 @Component({
   selector: 'app-comment-item',
@@ -10,7 +11,7 @@ export class CommentItemComponent implements OnInit {
   @Input()
   comment: Comment;
 
-  constructor() {
+  constructor(public authService: AuthService) {
   }
 
   ngOnInit(): void {

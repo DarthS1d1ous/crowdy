@@ -167,14 +167,9 @@ CREATE (back_option_4:BackOption {
 })
 
 CREATE
-  (denis)-[:HAS]->(admin),
+  (denis)-[:HAS]->(user),
   (oleg)-[:HAS]->(admin),
   (vlad)-[:HAS]->(user),
-
-  (denis)-[:LIKES]->(oleg),
-  (oleg)-[:LIKES]->(denis),
-  (vlad)-[:LIKES]->(oleg),
-  (vlad)-[:LIKES]->(denis),
 
   (denis)-[:FOLLOWS]->(oleg),
   (oleg)-[:FOLLOWS]->(denis),

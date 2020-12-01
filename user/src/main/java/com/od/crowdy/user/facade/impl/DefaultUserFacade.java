@@ -5,6 +5,7 @@ import com.od.crowdy.user.domain.neo4j.model.User;
 import com.od.crowdy.user.dto.UserDto;
 import com.od.crowdy.user.dto.UserProfileDto;
 import com.od.crowdy.user.facade.UserFacade;
+import com.od.crowdy.user.helper.UserHelper;
 import com.od.crowdy.user.service.ProjectService;
 import lombok.RequiredArgsConstructor;
 import org.neo4j.springframework.data.core.ReactiveNeo4jOperations;
@@ -16,44 +17,51 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class DefaultUserFacade implements UserFacade {
     private final UserRepository userRepository;
+    private final UserHelper userHelper;
     private final ProjectService projectService;
     private final ReactiveNeo4jOperations neo4jOperations;
 
     @Override
     public Mono<UserDto> getAuthorByProjectId(String projectId) {
         return userRepository.getAuthorByProjectId(projectId)
-            .map(User::toDto);
+            .map(User::toDto)
+            .flatMap(userHelper::fillRoles);
     }
 
     @Override
     public Mono<UserDto> save(Mono<UserDto> user) {
         return user.flatMap(userDto -> userRepository.save(User.from(userDto)))
-            .map(User::toDto);
+            .map(User::toDto)
+            .flatMap(userHelper::fillRoles);
     }
 
     @Override
     public Flux<UserDto> getUserLikesByProjectId(String projectId) {
         return userRepository
             .getUserLikesByProjectId(projectId)
-            .map(User::toDto);
+            .map(User::toDto)
+            .flatMap(userHelper::fillRoles);
     }
 
     @Override
     public Flux<UserDto> getFollowersByUserId(String userId) {
         return userRepository.findFollowersByUserId(userId)
-            .map(User::toDto);
+            .map(User::toDto)
+            .flatMap(userHelper::fillRoles);
     }
 
     @Override
     public Mono<UserDto> getAuthorByCommentId(String commentId) {
         return userRepository.findAuthorByCommentId(commentId)
-            .map(User::toDto);
+            .map(User::toDto)
+            .flatMap(userHelper::fillRoles);
     }
 
     @Override
     public Mono<UserDto> getUserById(String userId) {
         return neo4jOperations.findById(userId, User.class)
-            .map(User::toDto);
+            .map(User::toDto)
+            .flatMap(userHelper::fillRoles);
     }
 
     @Override

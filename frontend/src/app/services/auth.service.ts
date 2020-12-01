@@ -28,7 +28,7 @@ export class AuthService {
       password: password
     }).subscribe(authResponse => {
       if (!authResponse) {
-        this.authErrorMessage.next("Auth error occurred");
+        this.authErrorMessage.next("Ошибка авторизации, проверьте введенные значения");
       } else {
         this.isAuthenticated.next(true);
         localStorage.setItem('user', JSON.stringify(authResponse));
@@ -37,6 +37,10 @@ export class AuthService {
         this.router.navigate(['/']);
       }
     })
+  }
+
+  isCurrentUserAdmin() {
+    return this.getCurrentUser().roles.find(value => value.name === 'admin');
   }
 
   getCurrentUser(): User {

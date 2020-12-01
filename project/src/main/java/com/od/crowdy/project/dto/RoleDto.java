@@ -1,20 +1,15 @@
-package com.od.crowdy.project.domain.neo4j.model;
+package com.od.crowdy.project.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.neo4j.springframework.data.core.schema.Node;
-import org.springframework.data.annotation.Id;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 @Builder
-@Node("Role")
-public class Role {
-
-    @Id
+public class RoleDto {
     private String id;
     private String name;
 }

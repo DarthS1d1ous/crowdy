@@ -59,8 +59,7 @@
         </div>
         <div>
           <mat-grid-list cols="2" rowHeight="2:1">
-            <mat-grid-tile *ngFor='let project of userProfile.projects'>
-
+            <mat-grid-tile *ngFor='let project of userProfile.projects' matTooltip="{{project.name}}">
               <a [routerLink]="['/projects/' + project.id]">
                 <img [src]="project.imageUrls[0]" alt=""
                      class="img-fluid rounded shadow-sm">

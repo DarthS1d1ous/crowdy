@@ -21,7 +21,7 @@ public interface Queries {
         MATCH (r:Role)<-[:
         """ + RelationShips.HAS + """
         ]-(:User {id: $userId})
-        RETURN r.name
+        RETURN r
         """;
     String FIND_USER_LIKES_BY_PROJECT_ID_CYPHER = """
         MATCH (u:User)-[:
@@ -84,5 +84,12 @@ public interface Queries {
         """ + RelationShips.FOLLOWS + """
         ]->(f:User) 
         RETURN f
+        """;
+    String SAVE_ROLE_BY_USER_ID_CYPHER = """
+        MATCH (u:User {id: userId}), (r:Role {name: $roleName}
+               CREATE (u)-[:
+               """ + RelationShips.HAS + """
+                ]->(r)
+                RETURN r
         """;
 }

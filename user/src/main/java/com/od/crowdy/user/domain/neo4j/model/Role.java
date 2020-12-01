@@ -1,5 +1,6 @@
 package com.od.crowdy.user.domain.neo4j.model;
 
+import com.od.crowdy.user.dto.RoleDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +14,14 @@ import org.springframework.data.annotation.Id;
 @Builder
 @Node("Role")
 public class Role {
+    public static final String ADMIN = "admin";
+    public static final String USER = "user";
 
     @Id
+    private String id;
     private String name;
+
+    public static RoleDto toDto(Role role) {
+        return RoleDto.from(role);
+    }
 }

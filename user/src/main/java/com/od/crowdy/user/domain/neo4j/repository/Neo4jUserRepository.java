@@ -3,6 +3,8 @@ package com.od.crowdy.user.domain.neo4j.repository;
 import com.od.crowdy.common.domain.neo4j.model.mapper.Neo4jMapper;
 import com.od.crowdy.common.domain.neo4j.repository.Queries;
 import com.od.crowdy.user.dao.UserRepository;
+import com.od.crowdy.user.domain.neo4j.RoleRepository;
+import com.od.crowdy.user.domain.neo4j.model.Role;
 import com.od.crowdy.user.domain.neo4j.model.User;
 import lombok.RequiredArgsConstructor;
 import org.neo4j.springframework.data.core.ReactiveNeo4jClient;
@@ -17,6 +19,7 @@ public class Neo4jUserRepository implements UserRepository {
     private final ReactiveNeo4jClient neo4jClient;
     private final ReactiveNeo4jOperations neo4jOperations;
     private final Neo4jMapper<User> userMapper;
+    private final RoleRepository roleRepository;
 
     @Override
     public Mono<User> getAuthorByProjectId(String projectId) {
@@ -29,7 +32,10 @@ public class Neo4jUserRepository implements UserRepository {
 
     @Override
     public Mono<User> save(User user) {
-        return neo4jOperations.save(user);
+        return neo4jOperations.save(user)
+            .flatMap(u -> roleRepository.save(u.getId(), Role.ADMIN)
+                .thenReturn(u)
+            );
     }
 
     @Override
