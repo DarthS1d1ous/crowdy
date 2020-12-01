@@ -18,6 +18,9 @@
             </button>
             <span class="ml-1 like-counter-display" style="color: red">{{projectItem.likes.length}}</span>
       </span>
+      <button class="ml-2" color="primary" mat-icon-button matTooltip="Поделиться в соц. сетях">
+        <mat-icon>share</mat-icon>
+      </button>
       <mat-card-subtitle class="text-right mb-0">Создано: {{projectItem.createdAt | date}}</mat-card-subtitle>
       <mat-card-subtitle class="text-right mt-0">Дата окончания: {{projectItem.deadline | date}}</mat-card-subtitle>
       <mat-card-subtitle class="text-right mb-3">Автор: <a

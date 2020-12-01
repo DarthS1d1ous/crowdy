@@ -9,6 +9,8 @@ import {Backoption} from "../../../../../models/backoption";
 export class BackoptionItemComponent implements OnInit {
   @Input()
   backoption: Backoption;
+  @Input()
+  projectId: string;
 
   constructor() {
   }

@@ -9,7 +9,11 @@
             href="#">Изменить
             профиль</a></div>
           <div class="media-body mb-5 text-white">
-            <h4 class="mt-0 mb-0">{{userProfile.fullName}}</h4>
+            <h4 class="mt-0 mb-0">{{userProfile.fullName}}
+              <button class="ml-1" color="primary" mat-icon-button matTooltip="Поделиться в соц. сетях">
+                <mat-icon>share</mat-icon>
+              </button>
+            </h4>
             <p class="small mb-4"><i class="fas fa-map-marker-alt mr-2"></i>{{userProfile.username}}</p>
           </div>
         </div>
@@ -26,7 +30,7 @@
           <li class="list-inline-item">
             <span class="text-muted mr-2"> <i class="fas fa-user"></i>Подписчики</span>
             <ng-template #followersTooltip>
-              <app-users-tooltip [message]="' подписки'" [users]="userProfile.followers"></app-users-tooltip>
+              <app-users-tooltip [message]="' подписаны на Вас'" [users]="userProfile.followers"></app-users-tooltip>
             </ng-template>
             <button [closeDelay]="1000" [ngbPopover]="followersTooltip" [openDelay]="400" aria-label="Followers"
                     class="font-weight-bold mb-0" mat-stroked-button triggers="mouseenter:mouseleave">
@@ -36,7 +40,7 @@
           <li class="list-inline-item">
             <span class="text-muted mr-2"><i class="fas fa-user mr-4"></i>Подписки</span>
             <ng-template #followingTooltip>
-              <app-users-tooltip [message]="' подписаны на Вас'" [users]="userProfile.following"></app-users-tooltip>
+              <app-users-tooltip [message]="' подписки'" [users]="userProfile.following"></app-users-tooltip>
             </ng-template>
             <button [closeDelay]="1000" [ngbPopover]="followingTooltip" [openDelay]="400" aria-label="Following"
                     class="font-weight-bold mb-0 mr-4" mat-stroked-button triggers="mouseenter:mouseleave">

@@ -8,6 +8,7 @@ import {RegisterComponent} from "../components/register/register.component";
 import {ProjectDetailsComponent} from "../components/project/project-details/project-details.component";
 import {UserProfileComponent} from "../components/user/user-profile/user-profile.component";
 import {ProjectAddComponent} from "../components/project/project-add/project-add.component";
+import {BackProcessComponent} from "../components/back-process/back-process.component";
 
 const routes: Route[] = [
   {
@@ -27,6 +28,9 @@ const routes: Route[] = [
   },
   {
     path: 'users/:id', component: UserProfileComponent, canActivate: [AuthGuardService]
+  },
+  {
+    path: 'projects/:id/back', component: BackProcessComponent, canActivate: [AuthGuardService]
   }
   /*{path: 'recipes', component: RecipesComponent, children: [
       {path: 'new', component: RecipeEditComponent},

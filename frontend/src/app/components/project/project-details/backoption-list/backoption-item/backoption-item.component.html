@@ -4,7 +4,7 @@
     <div class="crowdy_font_style"><b>Награда:</b> {{backoption.reward}}</div>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>Поддержать</button>
+    <button [routerLink]="['/projects/' + projectId + '/back']" mat-button>Поддержать</button>
     <button mat-button>Поделиться</button>
   </mat-card-actions>
 </mat-card>

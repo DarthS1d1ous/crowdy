@@ -27,7 +27,7 @@
         </button>
       </mat-menu>
     </mat-card-title>
-    <mat-card-subtitle class="mb-3">
+    <mat-card-subtitle class="mb-2">
       <a
         [routerLink]="['/users/' + projectItem.author.id]">{{projectItem.author.fullName}}
       </a>
@@ -48,7 +48,7 @@
       <mat-icon>favorite</mat-icon>
     </button>
     <span class="ml-1" style="color: red">{{projectItem.likes.length}}</span>
-    <button mat-button>Поддержать</button>
+    <button [routerLink]="['/projects/' + projectItem.id + '/back']" mat-button>Поддержать</button>
     <button class="float-right mr-3" color="primary" mat-icon-button matTooltip="Поделиться в соц. сетях">
       <mat-icon>share</mat-icon>
     </button>
