@@ -8,4 +8,6 @@ public interface CommentRepository {
     Flux<Comment> findCommentsByProjectId(String projectId);
 
     Mono<Comment> save(Comment comment, String projectId, String authorID);
+
+    Mono<Comment> update(Comment comment);
 }

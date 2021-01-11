@@ -63,7 +63,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
           if (value) {
             this.authService.login(username, password);
           } else {
-            this.registerErrorMessage = 'Username is already in use';
+            this.registerErrorMessage = 'Имя пользователя уже используется';
           }
         })
     } else {

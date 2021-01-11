@@ -31,4 +31,12 @@ public class CommentHandler {
                 CommentDto.class
             );
     }
+
+    public Mono<ServerResponse> updateComment(ServerRequest serverRequest) {
+        return ok()
+            .body(
+                commentFacade.updateComment(serverRequest.bodyToMono(CommentDto.class)),
+                CommentDto.class
+            );
+    }
 }

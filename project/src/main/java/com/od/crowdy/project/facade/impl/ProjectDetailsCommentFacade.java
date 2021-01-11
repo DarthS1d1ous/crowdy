@@ -41,6 +41,18 @@ public class ProjectDetailsCommentFacade implements CommentFacade {
         );
     }
 
+    @Override
+    public Mono<CommentDto> updateComment(Mono<CommentDto> commentDto) {
+        return commentDto.flatMap(this::convertAndUpdateComment);
+    }
+
+    private Mono<CommentDto> convertAndUpdateComment(CommentDto commentDto) {
+        Comment comment = Comment.from(commentDto);
+        comment.setId(commentDto.getId());
+        return commentRepository.update(comment)
+            .map(Comment::toDto);
+    }
+
     private Mono<CommentDto> fillCommentAuthor(CommentDto commentDto) {
         return userService.getAuthorByCommentId(commentDto.getId())
             .doOnNext(commentDto::setAuthor)

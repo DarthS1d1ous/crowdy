@@ -7,8 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
-import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
-import static org.springframework.web.reactive.function.server.RequestPredicates.POST;
+import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
 @Configuration
@@ -28,6 +27,7 @@ public class RoutingConfig {
             .andRoute(GET("/faqs/project/{" + ProjectHandler.PROJECT_ID + "}"), faqHandler::getFaqsByProjectId)
             .andRoute(GET("/comments/project/{" + ProjectHandler.PROJECT_ID + "}"), commentHandler::getCommentsByProjectId)
             .andRoute(POST("/comments"), commentHandler::saveComment)
+            .andRoute(PUT("/comments"), commentHandler::updateComment)
             .andRoute(GET("/backoptions/project/{" + ProjectHandler.PROJECT_ID + "}"), backOptionHandler::getBackOptionsByProjectId)
             .andRoute(GET("/projects/user/{" + ProjectHandler.USER_ID + "}"), projectHandler::getProjectsByUserId);
     }

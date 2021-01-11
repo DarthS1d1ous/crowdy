@@ -37,4 +37,8 @@ export class ProjectService {
   getBackoptionsByProjectId(projectId: string) {
     return this.httpClient.get<Backoption[]>("http://localhost:8082/backoptions/project/" + projectId);
   }
+
+  updateComment(comment: Comment) {
+    return this.httpClient.put<Comment>("http://localhost:8082/comments", comment);
+  }
 }

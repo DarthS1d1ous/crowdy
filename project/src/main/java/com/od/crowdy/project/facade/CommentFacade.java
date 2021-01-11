@@ -9,4 +9,6 @@ public interface CommentFacade {
     Flux<CommentDto> getCommentsByProjectId(String projectId);
 
     Mono<CommentDto> saveComment(Mono<CommentSaveRequest> commentSaveRequest);
+
+    Mono<CommentDto> updateComment(Mono<CommentDto> commentDto);
 }

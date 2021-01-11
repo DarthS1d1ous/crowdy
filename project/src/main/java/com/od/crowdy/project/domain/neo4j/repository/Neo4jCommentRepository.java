@@ -40,4 +40,9 @@ public class Neo4jCommentRepository implements CommentRepository {
             );
     }
 
+    @Override
+    public Mono<Comment> update(Comment comment) {
+        return neo4jOperations.save(comment);
+    }
+
 }
