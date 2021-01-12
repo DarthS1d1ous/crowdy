@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {User} from "../models/user";
 import {Observable} from "rxjs";
-import {defaultIfEmpty, filter, map, mergeMap} from "rxjs/operators";
+import {map} from "rxjs/operators";
 import {AuthService} from "./auth.service";
 import {UserProfile} from "../models/user-profile";
 
@@ -14,10 +14,7 @@ export class UserService {
 
   isCurrentUserFollowing(user: User): Observable<boolean> {
     return this.getFollowers(user).pipe(
-      mergeMap(value => value),
-      filter(u => u.id !== this.authService.getCurrentUser().id),
-      map(u => true),
-      defaultIfEmpty(false)
+      map(u => !!u.find(value => value.id !== this.authService.getCurrentUser().id))
     );
   }
 

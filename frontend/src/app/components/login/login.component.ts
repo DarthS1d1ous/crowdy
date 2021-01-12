@@ -2,6 +2,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from "../../services/auth.service";
+import {takeUntil} from "rxjs/operators";
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   authErrorMessage: string;
   private formSubmitAttempt: boolean;
   private returnUrl: string;
-
+  private onUnsubscribe = new Subject();
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -24,7 +26,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.authService.authErrorMessage.subscribe(authErrorMessage => this.authErrorMessage = authErrorMessage);
+    this.authService.authErrorMessage.pipe(takeUntil(this.onUnsubscribe)).subscribe(authErrorMessage => this.authErrorMessage = authErrorMessage);
 
     this.returnUrl = '/';
 
@@ -56,6 +58,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.authService.authErrorMessage.unsubscribe();
+    this.onUnsubscribe.next();
   }
 }
