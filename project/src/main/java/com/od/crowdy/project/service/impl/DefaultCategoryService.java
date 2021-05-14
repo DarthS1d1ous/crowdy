@@ -1,6 +1,6 @@
 package com.od.crowdy.project.service.impl;
 
-import com.od.crowdy.project.domain.CategoryRepository;
+import com.od.crowdy.project.dao.CategoryRepository;
 import com.od.crowdy.project.domain.neo4j.model.Category;
 import com.od.crowdy.project.service.CategoryService;
 import lombok.RequiredArgsConstructor;

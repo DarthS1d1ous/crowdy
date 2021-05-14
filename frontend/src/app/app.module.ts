@@ -2,28 +2,34 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
-import {MaterialModule} from "./material/material.module";
-import {HeaderComponent} from './components/header/header.component';
-import {RouteModule} from "./route/route.module";
-import {ProjectModule} from "./components/project/project.module";
-import {LoginComponent} from './components/login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {RegisterComponent} from './components/register/register.component';
 import {CommonModule} from "@angular/common";
-import {UserModule} from "./components/user/user.module";
-import {BackProcessComponent} from './components/back-process/back-process.component';
+import {HeaderComponent} from './header/header.component';
+import {FooterComponent} from './footer/footer.component';
+import {SharedComponent} from './shared/shared.component';
+import {ProjectsComponent} from './projects/projects.component';
+import {UserComponent} from './user/user.component';
+import {BrowserModule} from "@angular/platform-browser";
+import {AppRoutingModule} from "./app-routing.module";
+import {AuthModule} from "./auth/auth.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    LoginComponent,
-    RegisterComponent,
-    BackProcessComponent
+    FooterComponent,
+    SharedComponent,
+    ProjectsComponent,
+    UserComponent,
   ],
   imports: [
-    HttpClientModule, ProjectModule, MaterialModule, RouteModule, ReactiveFormsModule, FormsModule, CommonModule, UserModule
-  ],
+    HttpClientModule,
+    AppRoutingModule,
+    BrowserModule.withServerTransition({appId: 'serverApp'}),
+    ReactiveFormsModule,
+    AuthModule,
+    FormsModule,
+    CommonModule],
   providers: [],
   bootstrap: [AppComponent]
 })

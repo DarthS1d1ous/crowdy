@@ -2,7 +2,7 @@ package com.od.crowdy.project.domain.neo4j.repository;
 
 import com.od.crowdy.common.domain.neo4j.model.mapper.Neo4jMapper;
 import com.od.crowdy.common.domain.neo4j.repository.Queries;
-import com.od.crowdy.project.domain.ProjectRepository;
+import com.od.crowdy.project.dao.ProjectRepository;
 import com.od.crowdy.project.domain.neo4j.model.Project;
 import lombok.RequiredArgsConstructor;
 import org.neo4j.springframework.data.core.ReactiveNeo4jClient;

@@ -2,8 +2,8 @@ package com.od.crowdy.user.domain.neo4j.repository;
 
 import com.od.crowdy.common.domain.neo4j.model.mapper.Neo4jMapper;
 import com.od.crowdy.common.domain.neo4j.repository.Queries;
+import com.od.crowdy.user.dao.RoleRepository;
 import com.od.crowdy.user.dao.UserRepository;
-import com.od.crowdy.user.domain.neo4j.RoleRepository;
 import com.od.crowdy.user.domain.neo4j.model.Role;
 import com.od.crowdy.user.domain.neo4j.model.User;
 import lombok.RequiredArgsConstructor;
