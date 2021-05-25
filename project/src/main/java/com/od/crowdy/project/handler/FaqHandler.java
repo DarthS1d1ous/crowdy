@@ -1,7 +1,7 @@
 package com.od.crowdy.project.handler;
 
-import com.od.crowdy.project.domain.FaqRepository;
 import com.od.crowdy.project.domain.neo4j.model.Faq;
+import com.od.crowdy.project.domain.neo4j.repository.FaqRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;

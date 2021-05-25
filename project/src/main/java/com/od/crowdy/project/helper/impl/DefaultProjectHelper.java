@@ -32,8 +32,7 @@ public class DefaultProjectHelper implements ProjectHelper {
         return this.userService
             .getUserLikesByProject(projectDto.getId())
             .doOnNext(projectDto.getLikes()::add)
-            .then()
-            .thenReturn(projectDto);
+            .then(Mono.just(projectDto));
     }
 
     @Override

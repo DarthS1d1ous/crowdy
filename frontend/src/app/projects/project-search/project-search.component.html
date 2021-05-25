@@ -1,0 +1,60 @@
+<div class="custom-border">
+  <div class="container px-5 mt-5">
+    <form (ngSubmit)="submitSearchForm()" [formGroup]="searchForm" class="px-3 d-flex flex-column">
+      <mat-form-field appearance="outline" class="example-form-field">
+        <mat-label>Project name or keywords..</mat-label>
+        <mat-icon matPrefix>search</mat-icon>
+        <input formControlName="searchText" matInput type="text">
+        <button (click)="searchForm.get('searchText')?.reset()" *ngIf="searchForm.get('searchText')?.value"
+                aria-label="Clear" mat-button mat-icon-button matSuffix
+                type="button">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <div class="row">
+        <mat-form-field appearance="outline" class="col-xl-5">
+          <mat-label>Categories</mat-label>
+          <mat-select formControlName="categories" multiple>
+            <mat-option *ngFor="let category of categoryList" [value]="category">{{category}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="col-xl-5">
+          <mat-label>Raised %</mat-label>
+          <mat-select formControlName="raisedPercent">
+            <mat-option>-- None --</mat-option>
+            <mat-option *ngFor="let value of raisedPercentValues" [value]="value">{{value}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-slide-toggle
+          [color]="'primary'"
+          formControlName="isLikedProjects">Liked projects
+        </mat-slide-toggle>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="outline" class="col-xl-5">
+          <mat-label>Sort by</mat-label>
+          <mat-select formControlName="sortBy">
+            <mat-option>-- None --</mat-option>
+            <mat-option *ngFor="let value of sortValues" [value]="value">{{value}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="col-xl-5">
+          <mat-label>Goal</mat-label>
+          <mat-select formControlName="goal">
+            <mat-option>-- None --</mat-option>
+            <mat-option *ngFor="let value of goalValues" [value]="value">{{value}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <button type="submit"></button>
+    </form>
+  </div>
+</div>
+<div class="container my-5">
+  <div class="ml-5 h3">Found <span class="font-weight-bold">{{getFoundProjects().length}}</span> projects</div>
+  <div class="d-flex flex-wrap">
+    <app-project-card *ngFor="let project of getFoundProjects()" [project]="project"
+                      class="p-3">
+    </app-project-card>
+  </div>
+</div>

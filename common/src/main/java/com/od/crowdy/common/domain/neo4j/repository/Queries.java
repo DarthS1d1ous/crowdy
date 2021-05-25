@@ -86,7 +86,7 @@ public interface Queries {
         RETURN f
         """;
     String SAVE_ROLE_BY_USER_ID_CYPHER = """
-        MATCH (u:User {id: userId}), (r:Role {name: $roleName}
+        MATCH (u:User {id: $userId}), (r:Role {name: $roleName})
                CREATE (u)-[:
                """ + RelationShips.HAS + """
                 ]->(r)

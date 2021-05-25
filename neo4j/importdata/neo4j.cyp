@@ -53,15 +53,149 @@ CREATE (lego:Project {
 
 CREATE (art_1:Project {
   id:          '4',
-  name:        'Картина Анонимного Автора',
-  description: 'Здравствуйте, я начинающий художник, мне очень нравится заниматься этой деятельностью. Был бы признательным, получить минимальное спонсирование для продолжение деятельности, Спасибо',
+  name:        'Althingi - The Crescent and the Northern Star',
+  description: 'Forbidden Games will post updates to the project as newsworthy developments occur. This means that there may be periods where there are no updates as we work on finishing the game, balancing it, developing final assets, and working with the factory to finalize the finished assets into the finished product for mass production. When we have something exciting to share, rest assured we definitely will. What we will not do is post dull placeholder updates telling you that we are working on the project. You can assume that we are hard at work making this project awesome!',
   createdAt:   date(),
   deadline:    date({year: 2021, month: 8, day: 11}),
   imageUrls:   [
-                 'https://images.wallpaperscraft.ru/image/vinsent_van_gog_zvezdnaya_noch_maslo_kholst_117815_1920x1080.jpg'],
+                 'https://storge.pic2.me/cm/2560x1440/754/55fc5d0e79541.jpg'],
   overallBack: '3456.43',
   currentBack: '658.67'
 })
+//------------
+CREATE (art_2:Project {
+  id:          '5',
+  name:        'Althingi - The Crescent and the Northern Star',
+  description: 'Forbidden Games will post updates to the project as newsworthy developments occur. This means that there may be periods where there are no updates as we work on finishing the game, balancing it, developing final assets, and working with the factory to finalize the finished assets into the finished product for mass production. When we have something exciting to share, rest assured we definitely will. What we will not do is post dull placeholder updates telling you that we are working on the project. You can assume that we are hard at work making this project awesome!',
+  createdAt:   date(),
+  deadline:    date({year: 2021, month: 8, day: 11}),
+  imageUrls:   [
+                 'https://ksr-ugc.imgix.net/assets/033/466/597/d7bdec9a388ebcc08289a707a0808caa_original.jpg?ixlib=rb-4.0.2&w=680&fit=max&v=1620700270&auto=format&frame=1&q=92&s=3e07db18f0864ddffd38cd641281b93a'],
+  overallBack: '3456.43',
+  currentBack: '658.67'
+})
+CREATE (art_3:Project {
+  id:          '6',
+  name:        'Althingi - The Crescent and the Northern Star',
+  description: 'Forbidden Games will post updates to the project as newsworthy developments occur. This means that there may be periods where there are no updates as we work on finishing the game, balancing it, developing final assets, and working with the factory to finalize the finished assets into the finished product for mass production. When we have something exciting to share, rest assured we definitely will. What we will not do is post dull placeholder updates telling you that we are working on the project. You can assume that we are hard at work making this project awesome!',
+  createdAt:   date(),
+  deadline:    date({year: 2021, month: 8, day: 11}),
+  imageUrls:   [
+                 'https://i.pinimg.com/originals/21/41/2e/21412e4c231dcf5a90bad0ff543d766e.jpg'],
+  overallBack: '3456.43',
+  currentBack: '658.67'
+})
+CREATE (art_4:Project {
+  id:          '7',
+  name:        'Althingi - The Crescent and the Northern Star',
+  description: 'Forbidden Games will post updates to the project as newsworthy developments occur. This means that there may be periods where there are no updates as we work on finishing the game, balancing it, developing final assets, and working with the factory to finalize the finished assets into the finished product for mass production. When we have something exciting to share, rest assured we definitely will. What we will not do is post dull placeholder updates telling you that we are working on the project. You can assume that we are hard at work making this project awesome!',
+  createdAt:   date(),
+  deadline:    date({year: 2021, month: 8, day: 11}),
+  imageUrls:   [
+                 'https://storge.pic2.me/cm/2560x1440/754/55fc5d0e79541.jpg'],
+  overallBack: '3456.43',
+  currentBack: '658.67'
+})
+CREATE (art_5:Project {
+  id:          '8',
+  name:        'Althingi - The Crescent and the Northern Star',
+  description: 'Forbidden Games will post updates to the project as newsworthy developments occur. This means that there may be periods where there are no updates as we work on finishing the game, balancing it, developing final assets, and working with the factory to finalize the finished assets into the finished product for mass production. When we have something exciting to share, rest assured we definitely will. What we will not do is post dull placeholder updates telling you that we are working on the project. You can assume that we are hard at work making this project awesome!',
+  createdAt:   date(),
+  deadline:    date({year: 2021, month: 8, day: 11}),
+  imageUrls:   [
+                 'https://storge.pic2.me/cm/2560x1440/754/55fc5d0e79541.jpg'],
+  overallBack: '3456.43',
+  currentBack: '658.67'
+})
+CREATE (art_6:Project {
+  id:          '9',
+  name:        'Althingi - The Crescent and the Northern Star',
+  description: 'Forbidden Games will post updates to the project as newsworthy developments occur. This means that there may be periods where there are no updates as we work on finishing the game, balancing it, developing final assets, and working with the factory to finalize the finished assets into the finished product for mass production. When we have something exciting to share, rest assured we definitely will. What we will not do is post dull placeholder updates telling you that we are working on the project. You can assume that we are hard at work making this project awesome!',
+  createdAt:   date(),
+  deadline:    date({year: 2021, month: 8, day: 11}),
+  imageUrls:   [
+                 'https://storge.pic2.me/cm/2560x1440/754/55fc5d0e79541.jpg'],
+  overallBack: '3456.43',
+  currentBack: '658.67'
+})
+CREATE (art_7:Project {
+  id:          '10',
+  name:        'Althingi - The Crescent and the Northern Star',
+  description: 'Forbidden Games will post updates to the project as newsworthy developments occur. This means that there may be periods where there are no updates as we work on finishing the game, balancing it, developing final assets, and working with the factory to finalize the finished assets into the finished product for mass production. When we have something exciting to share, rest assured we definitely will. What we will not do is post dull placeholder updates telling you that we are working on the project. You can assume that we are hard at work making this project awesome!',
+  createdAt:   date(),
+  deadline:    date({year: 2021, month: 8, day: 11}),
+  imageUrls:   [
+                 'https://storge.pic2.me/cm/2560x1440/754/55fc5d0e79541.jpg'],
+  overallBack: '3456.43',
+  currentBack: '658.67'
+})
+CREATE (art_8:Project {
+  id:          '11',
+  name:        'Althingi - The Crescent and the Northern Star',
+  description: 'Forbidden Games will post updates to the project as newsworthy developments occur. This means that there may be periods where there are no updates as we work on finishing the game, balancing it, developing final assets, and working with the factory to finalize the finished assets into the finished product for mass production. When we have something exciting to share, rest assured we definitely will. What we will not do is post dull placeholder updates telling you that we are working on the project. You can assume that we are hard at work making this project awesome!',
+  createdAt:   date(),
+  deadline:    date({year: 2021, month: 8, day: 11}),
+  imageUrls:   [
+                 'https://storge.pic2.me/cm/2560x1440/754/55fc5d0e79541.jpg'],
+  overallBack: '3456.43',
+  currentBack: '658.67'
+})
+CREATE (art_9:Project {
+  id:          '12',
+  name:        'Althingi - The Crescent and the Northern Star',
+  description: 'Forbidden Games will post updates to the project as newsworthy developments occur. This means that there may be periods where there are no updates as we work on finishing the game, balancing it, developing final assets, and working with the factory to finalize the finished assets into the finished product for mass production. When we have something exciting to share, rest assured we definitely will. What we will not do is post dull placeholder updates telling you that we are working on the project. You can assume that we are hard at work making this project awesome!',
+  createdAt:   date(),
+  deadline:    date({year: 2021, month: 8, day: 11}),
+  imageUrls:   [
+                 'https://storge.pic2.me/cm/2560x1440/754/55fc5d0e79541.jpg'],
+  overallBack: '3456.43',
+  currentBack: '658.67'
+})
+CREATE (art_10:Project {
+  id:          '13',
+  name:        'Althingi - The Crescent and the Northern Star',
+  description: 'Forbidden Games will post updates to the project as newsworthy developments occur. This means that there may be periods where there are no updates as we work on finishing the game, balancing it, developing final assets, and working with the factory to finalize the finished assets into the finished product for mass production. When we have something exciting to share, rest assured we definitely will. What we will not do is post dull placeholder updates telling you that we are working on the project. You can assume that we are hard at work making this project awesome!',
+  createdAt:   date(),
+  deadline:    date({year: 2021, month: 8, day: 11}),
+  imageUrls:   [
+                 'https://storge.pic2.me/cm/2560x1440/754/55fc5d0e79541.jpg'],
+  overallBack: '3456.43',
+  currentBack: '658.67'
+})
+CREATE (art_11:Project {
+  id:          '14',
+  name:        'Althingi - The Crescent and the Northern Star',
+  description: 'Forbidden Games will post updates to the project as newsworthy developments occur. This means that there may be periods where there are no updates as we work on finishing the game, balancing it, developing final assets, and working with the factory to finalize the finished assets into the finished product for mass production. When we have something exciting to share, rest assured we definitely will. What we will not do is post dull placeholder updates telling you that we are working on the project. You can assume that we are hard at work making this project awesome!',
+  createdAt:   date(),
+  deadline:    date({year: 2021, month: 8, day: 11}),
+  imageUrls:   [
+                 'https://storge.pic2.me/cm/2560x1440/754/55fc5d0e79541.jpg'],
+  overallBack: '3456.43',
+  currentBack: '658.67'
+})
+CREATE (art_12:Project {
+  id:          '15',
+  name:        'Althingi - The Crescent and the Northern Star',
+  description: 'Forbidden Games will post updates to the project as newsworthy developments occur. This means that there may be periods where there are no updates as we work on finishing the game, balancing it, developing final assets, and working with the factory to finalize the finished assets into the finished product for mass production. When we have something exciting to share, rest assured we definitely will. What we will not do is post dull placeholder updates telling you that we are working on the project. You can assume that we are hard at work making this project awesome!',
+  createdAt:   date(),
+  deadline:    date({year: 2021, month: 8, day: 11}),
+  imageUrls:   [
+                 'https://storge.pic2.me/cm/2560x1440/754/55fc5d0e79541.jpg'],
+  overallBack: '3456.43',
+  currentBack: '658.67'
+})
+CREATE (art_13:Project {
+  id:          '16',
+  name:        'Althingi - The Crescent and the Northern Star',
+  description: 'Forbidden Games will post updates to the project as newsworthy developments occur. This means that there may be periods where there are no updates as we work on finishing the game, balancing it, developing final assets, and working with the factory to finalize the finished assets into the finished product for mass production. When we have something exciting to share, rest assured we definitely will. What we will not do is post dull placeholder updates telling you that we are working on the project. You can assume that we are hard at work making this project awesome!',
+  createdAt:   date(),
+  deadline:    date({year: 2021, month: 8, day: 11}),
+  imageUrls:   [
+                 'https://storge.pic2.me/cm/2560x1440/754/55fc5d0e79541.jpg'],
+  overallBack: '3456.43',
+  currentBack: '658.67'
+})
+//------------
 
 CREATE (denis:User {
   id:        '1',
@@ -144,6 +278,14 @@ CREATE (art:Category {
   id:   '2',
   name: 'Искусство'
 })
+CREATE (naruto:Category {
+  id:   '3',
+  name: 'Naruto'
+})
+CREATE (pain:Category {
+  id:   '4',
+  name: 'Pain'
+})
 
 CREATE (back_option_1:BackOption {
   id:     '1',
@@ -181,6 +323,49 @@ CREATE
   (denis)-[:OWNS]->(card_game),
   (oleg)-[:OWNS]->(lego),
   (vlad)-[:OWNS]->(art_1),
+
+//----------
+  (denis)-[:OWNS]->(art_2),
+  (oleg)-[:OWNS]->(art_3),
+  (vlad)-[:OWNS]->(art_4),
+  (denis)-[:OWNS]->(art_5),
+  (oleg)-[:OWNS]->(art_6),
+  (vlad)-[:OWNS]->(art_7),
+  (denis)-[:OWNS]->(art_8),
+  (oleg)-[:OWNS]->(art_9),
+  (vlad)-[:OWNS]->(art_10),
+  (denis)-[:OWNS]->(art_11),
+  (oleg)-[:OWNS]->(art_12),
+  (vlad)-[:OWNS]->(art_13),
+
+  (art_1)-[:RELATED_TO]->(naruto),
+  (art_2)-[:RELATED_TO]->(pain),
+  (art_3)-[:RELATED_TO]->(naruto),
+  (art_4)-[:RELATED_TO]->(pain),
+  (art_5)-[:RELATED_TO]->(naruto),
+  (art_6)-[:RELATED_TO]->(pain),
+  (art_7)-[:RELATED_TO]->(naruto),
+  (art_8)-[:RELATED_TO]->(pain),
+  (art_9)-[:RELATED_TO]->(naruto),
+  (art_10)-[:RELATED_TO]->(pain),
+  (art_11)-[:RELATED_TO]->(naruto),
+  (art_12)-[:RELATED_TO]->(pain),
+  (art_13)-[:RELATED_TO]->(pain),
+
+  (art_1)-[:IS]->(kickstarter),
+  (art_2)-[:IS]->(just_support),
+  (art_3)-[:IS]->(kickstarter),
+  (art_4)-[:IS]->(just_support),
+  (art_5)-[:IS]->(kickstarter),
+  (art_6)-[:IS]->(just_support),
+  (art_7)-[:IS]->(kickstarter),
+  (art_8)-[:IS]->(just_support),
+  (art_9)-[:IS]->(kickstarter),
+  (art_10)-[:IS]->(just_support),
+  (art_11)-[:IS]->(kickstarter),
+  (art_12)-[:IS]->(just_support),
+  (art_13)-[:IS]->(kickstarter),
+//----------
 
   (denis)-[:CREATES]->(comment_1),
   (oleg)-[:CREATES]->(comment_2),

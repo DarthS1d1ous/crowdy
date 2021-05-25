@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.css";
 
 html, body {
   height: 100%;
@@ -7,19 +6,12 @@ html, body {
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: 'Quattrocento Sans', sans-serif !important;
 }
 
-html, body {
-  height: 100%;
-}
+/*body { margin: 0; font-family: 'KoHo', sans-serif !important; }*/
 
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-*:focus {
-  outline: none !important;
-  border: 0 !important;
+.mat-card {
+  font-family: 'Quattrocento Sans', sans-serif !important;
+  /*font-family: 'KoHo', sans-serif !important;*/
 }

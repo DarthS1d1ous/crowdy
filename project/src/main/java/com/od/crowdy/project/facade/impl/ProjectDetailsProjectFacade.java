@@ -1,7 +1,7 @@
 package com.od.crowdy.project.facade.impl;
 
-import com.od.crowdy.project.dao.ProjectRepository;
 import com.od.crowdy.project.domain.neo4j.model.Project;
+import com.od.crowdy.project.domain.neo4j.repository.ProjectRepository;
 import com.od.crowdy.project.dto.ProjectDto;
 import com.od.crowdy.project.facade.ProjectFacade;
 import com.od.crowdy.project.helper.ProjectHelper;

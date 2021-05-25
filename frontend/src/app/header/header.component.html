@@ -1,1 +1,35 @@
-<p>header works!</p>
+<nav class="navbar navbar-expand-lg navbar-dark material-background-color">
+  <!--  <div class="container">-->
+  <!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"-->
+  <!--            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">-->
+  <!--      <span class="navbar-toggler-icon"></span>-->
+  <!--    </button>-->
+  <ul class="navbar-nav col-4">
+    <li class="nav-item">
+      <a class="nav-link" href="#">Categories</a>
+    </li>
+    <li class="nav-item ml-4">
+      <a class="nav-link" href="#">Create</a>
+    </li>
+  </ul>
+  <a class="navbar-brand col-4 text-center" href="#">Crowdy</a>
+  <!--    <form class="form-inline my-2 my-lg-0">-->
+  <!--      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+  <!--      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+  <!--    </form>-->
+  <ul class="navbar-nav col-4 justify-content-end">
+    <li class="nav-item mr-4">
+      <a class="nav-link" href="#">Search</a>
+    </li>
+    <li class="nav-item mr-4">
+      <a *ngIf="!isAuthenticated; else logout" [routerLink]="['/login']" class="nav-link">Log in</a>
+    </li>
+    <ng-template #logout>
+      <a (click)="onLogout()" [routerLink]="['/login']" class="nav-link">Log out</a>
+    </ng-template>
+    <li *ngIf="currentUser" class="nav-item mr-5">
+      <img alt="main image" mat-card-avatar src="data:image/png;base64,{{currentUser.avatar}}">
+    </li>
+  </ul>
+  <!--  </div>-->
+</nav>

@@ -1,0 +1,26 @@
+<div class="custom-border">
+  <div class="container py-5">
+    <div class="link-to-category mb-4 ml-3 h4">{{category.name}}
+      <span class="ml-4 main-blue-color small">
+        much more
+      <svg class="ml-1 bi bi-arrow-bar-right" fill="currentColor" height="16" viewBox="0 0 16 16"
+           width="16"
+           xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8zm-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5z"
+          fill-rule="evenodd"/>
+      </svg>
+      </span>
+    </div>
+    <swiper
+      [navigation]="true"
+      [scrollbar]="{draggable: true}"
+      [slidesPerView]="3.52"
+      [spaceBetween]="59"
+      class="mySwiper">
+      <ng-template *ngFor="let project of category.projects" swiperSlide>
+        <app-project-card [project]="project"></app-project-card>
+      </ng-template>
+    </swiper>
+  </div>
+</div>

@@ -1,17 +1,24 @@
 import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
+import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {HttpClientModule} from '@angular/common/http';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {CommonModule} from "@angular/common";
-import {HeaderComponent} from './header/header.component';
-import {FooterComponent} from './footer/footer.component';
-import {SharedComponent} from './shared/shared.component';
-import {ProjectsComponent} from './projects/projects.component';
-import {UserComponent} from './user/user.component';
-import {BrowserModule} from "@angular/platform-browser";
-import {AppRoutingModule} from "./app-routing.module";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatSliderModule} from "@angular/material/slider";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {HeaderComponent} from "./header/header.component";
+import {FooterComponent} from "./footer/footer.component";
+import {SharedComponent} from "./shared/shared.component";
+import {UserComponent} from "./user/user.component";
 import {AuthModule} from "./auth/auth.module";
+import {StoreModule} from '@ngrx/store';
+import * as fromApp from './store/app.reducer';
+import {EffectsModule} from '@ngrx/effects';
+import {AuthEffects} from "./auth/store/auth.effects";
+import {HttpClientModule} from "@angular/common/http";
+import {ProjectEffects} from "./projects/store/project.effects";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -19,17 +26,26 @@ import {AuthModule} from "./auth/auth.module";
     HeaderComponent,
     FooterComponent,
     SharedComponent,
-    ProjectsComponent,
     UserComponent,
   ],
   imports: [
     HttpClientModule,
+    BrowserModule,
     AppRoutingModule,
-    BrowserModule.withServerTransition({appId: 'serverApp'}),
-    ReactiveFormsModule,
+    NgbModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatExpansionModule,
     AuthModule,
-    FormsModule,
-    CommonModule],
+    StoreModule.forRoot(fromApp.appReducer, {
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    }),
+    EffectsModule.forRoot([AuthEffects, ProjectEffects]),
+    MatCardModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

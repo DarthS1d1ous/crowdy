@@ -1,0 +1,48 @@
+.project-card {
+  min-width: 270px;
+  max-width: 330px;
+}
+
+.mat-card-header {
+  min-height: 89px;
+}
+
+.project-card-description {
+  min-height: 42px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.mat-card-title-ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 16px;
+}
+
+.likes-number-on-project {
+  color: #f44336;
+}
+
+.image-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+}
+
+.image-wrapper img {
+  position: absolute;
+  object-fit: cover;
+  width: calc(100% + 32px);
+  height: calc(100% + 18px);
+}
+
+.mt-16px {
+  margin-top: 16px;
+}
+
+.mb-16px {
+  margin-bottom: 16px;
+}

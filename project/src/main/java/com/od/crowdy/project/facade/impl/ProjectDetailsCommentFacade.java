@@ -1,7 +1,7 @@
 package com.od.crowdy.project.facade.impl;
 
-import com.od.crowdy.project.domain.CommentRepository;
 import com.od.crowdy.project.domain.neo4j.model.Comment;
+import com.od.crowdy.project.domain.neo4j.repository.CommentRepository;
 import com.od.crowdy.project.dto.CommentDto;
 import com.od.crowdy.project.dto.CommentSaveRequest;
 import com.od.crowdy.project.facade.CommentFacade;

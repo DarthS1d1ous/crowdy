@@ -1,0 +1,26 @@
+<mat-card class="project-card">
+  <mat-card-header>
+    <img alt="avatar" mat-card-avatar src="{{project.author.avatar}}">
+    <mat-card-title class="mat-card-title-ellipsis">{{project.name}}</mat-card-title>
+    <mat-card-subtitle>{{project.createdAt}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-progress-bar class="mb-16px" mode="determinate"
+                    value="{{project.currentBack/project.overallBack * 100}}"></mat-progress-bar>
+  <a href="#">
+    <div></div>
+    <div class="image-wrapper">
+      <img alt="main image" mat-card-image src="{{project.imageUrls[0]}}">
+    </div>
+  </a>
+  <mat-card-content class="mb-0 mt-16px">
+    <p class="project-card-description">
+      {{project.description}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button (click)="likeProject()" color="warn" mat-icon-button>
+      <mat-icon>{{isLikedByCurrentUser ? 'favorite' : 'favorite_border'}}</mat-icon>
+    </button>
+    <span class="likes-number-on-project">{{project.likes.length}}</span>
+  </mat-card-actions>
+</mat-card>

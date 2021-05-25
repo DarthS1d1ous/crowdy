@@ -1,7 +1,7 @@
 package com.od.crowdy.user.helper.impl;
 
-import com.od.crowdy.user.dao.RoleRepository;
 import com.od.crowdy.user.domain.neo4j.model.Role;
+import com.od.crowdy.user.domain.neo4j.repository.RoleRepository;
 import com.od.crowdy.user.dto.UserDto;
 import com.od.crowdy.user.helper.UserHelper;
 import lombok.RequiredArgsConstructor;

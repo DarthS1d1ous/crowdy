@@ -1,7 +1,7 @@
 package com.od.crowdy.user.facade.impl;
 
-import com.od.crowdy.user.dao.UserRepository;
 import com.od.crowdy.user.domain.neo4j.model.User;
+import com.od.crowdy.user.domain.neo4j.repository.UserRepository;
 import com.od.crowdy.user.dto.UserDto;
 import com.od.crowdy.user.dto.UserProfileDto;
 import com.od.crowdy.user.facade.UserFacade;

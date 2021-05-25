@@ -1,9 +1,12 @@
 import {NgModule} from "@angular/core";
 import {AuthComponent} from "./auth.component";
 import {RouterModule, Routes} from "@angular/router";
+import {CommonModule} from "@angular/common";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MaterialModule} from "../shared/material/material.module";
 
 const authRoutes: Routes = [
-  {path: 'login', component: AuthComponent}
+  {path: '', component: AuthComponent}
 ]
 
 @NgModule({
@@ -12,6 +15,10 @@ const authRoutes: Routes = [
   ],
   imports: [
     RouterModule.forChild(authRoutes),
+    CommonModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    FormsModule
   ],
   exports: [
     AuthComponent

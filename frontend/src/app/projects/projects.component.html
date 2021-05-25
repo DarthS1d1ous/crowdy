@@ -1,1 +1,8 @@
-<p>projects works!</p>
+<div class="container-fluid custom-border">
+  <nav class="nav d-flex justify-content-center my-1">
+    <a *ngFor="let category of getCategoriesForNavBar()" [queryParams]="{name: category.name}"
+       [routerLink]="['/search']"
+       class="p-3 text-muted h4 custom-hover" href="#">{{category.name}}</a>
+  </nav>
+</div>
+<app-project-lists [allCategories]="allCategories"></app-project-lists>
