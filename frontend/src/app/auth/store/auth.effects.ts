@@ -11,12 +11,13 @@ import {AuthService} from "../auth.service";
 const handleAuthentication = (resData: any) => {
   // const expirationDate = new Date(new Date().getTime() + +resData.expiresIn * 1000);
   const user = new User(
-    resData.username,
     resData.id,
+    resData.username,
     resData.fullName,
     resData.createdAt,
     resData.birthday,
-    resData.avatar
+    resData.avatar,
+    resData.roles
   );
   localStorage.setItem('userData', JSON.stringify(user));
   console.log(user);
@@ -81,14 +82,19 @@ export class AuthEffects {
           password: authData.payload.password
         })
         .pipe(
+          tap(x => console.log(x)),
           // tap(() => this.authService.setLogoutTimer(360000)),
           map(resData => {
+            console.log(resData)
+            console.log(12345)
             if (resData) {
               this.authService.setLogoutTimer(360000)
             }
             return handleAuthentication(resData);
           }),
           catchError(err => {
+            console.log(err);
+            console.log("asddf");
             return handleError(err);
           })
         );
@@ -110,7 +116,8 @@ export class AuthEffects {
           userData.fullName,
           userData.createdAt,
           userData.birthday,
-          userData.avatar
+          userData.avatar,
+          userData.roles
         );
         if (loadedUser.username) {
           this.authService.setLogoutTimer(360000);

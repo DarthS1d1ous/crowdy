@@ -1,6 +1,5 @@
 package com.od.crowdy.project.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.od.crowdy.project.domain.neo4j.model.Project;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,7 +31,7 @@ public class ProjectDto {
 
     private UserDto author;
 
-    @JsonProperty(value = "likes")
+//    @JsonProperty(value = "likes")
     private List<UserDto> likes;
 
     public static ProjectDto from(Project project) {

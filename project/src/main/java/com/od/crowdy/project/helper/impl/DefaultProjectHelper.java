@@ -30,7 +30,7 @@ public class DefaultProjectHelper implements ProjectHelper {
     @Override
     public Mono<ProjectDto> fillLikes(ProjectDto projectDto) {
         return this.userService
-            .getUserLikesByProject(projectDto.getId())
+            .getUserLikesByProjectId(projectDto.getId())
             .doOnNext(projectDto.getLikes()::add)
             .then(Mono.just(projectDto));
     }

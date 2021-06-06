@@ -25,10 +25,27 @@ public class RoutingConfig {
         return route(GET("/categories"), categoryHandler::getCategories)
             .andRoute(GET("/projects/{" + ProjectHandler.PROJECT_ID + "}"), projectHandler::getProjectById)
             .andRoute(GET("/faqs/project/{" + ProjectHandler.PROJECT_ID + "}"), faqHandler::getFaqsByProjectId)
-            .andRoute(GET("/comments/project/{" + ProjectHandler.PROJECT_ID + "}"), commentHandler::getCommentsByProjectId)
+            .andRoute(
+                GET("/comments/project/{" + ProjectHandler.PROJECT_ID + "}"),
+                commentHandler::getCommentsByProjectId
+            )
             .andRoute(POST("/comments"), commentHandler::saveComment)
             .andRoute(PUT("/comments"), commentHandler::updateComment)
-            .andRoute(GET("/backoptions/project/{" + ProjectHandler.PROJECT_ID + "}"), backOptionHandler::getBackOptionsByProjectId)
-            .andRoute(GET("/projects/user/{" + ProjectHandler.USER_ID + "}"), projectHandler::getProjectsByUserId);
+            .andRoute(
+                GET("/backoptions/project/{" + ProjectHandler.PROJECT_ID + "}"),
+                backOptionHandler::getBackOptionsByProjectId
+            )
+            .andRoute(
+                GET("/projects/user/{" + ProjectHandler.USER_ID + "}"),
+                projectHandler::getProjectsByUserId
+            )
+            .andRoute(
+                POST("/users/like/projects"),
+                projectHandler::saveProjectLike
+            )
+            .andRoute(
+                DELETE("/users/{" + ProjectHandler.USER_ID + "}/dislike/projects/{" + ProjectHandler.PROJECT_ID + "}"),
+                projectHandler::deleteProjectLike
+            );
     }
 }

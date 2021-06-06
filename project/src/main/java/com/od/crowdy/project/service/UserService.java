@@ -7,7 +7,7 @@ import reactor.core.publisher.Mono;
 public interface UserService {
     Mono<UserDto> getAuthorByProjectId(String projectId);
 
-    Flux<UserDto> getUserLikesByProject(String projectDto);
+    Flux<UserDto> getUserLikesByProjectId(String projectDto);
 
     Mono<UserDto> getAuthorByCommentId(String commentId);
 

@@ -46,3 +46,7 @@
 .mb-16px {
   margin-bottom: 16px;
 }
+
+.router:hover {
+  cursor: pointer;
+}

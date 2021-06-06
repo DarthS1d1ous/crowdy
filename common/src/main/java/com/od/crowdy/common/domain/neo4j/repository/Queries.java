@@ -67,6 +67,19 @@ public interface Queries {
         ]-(u)
         RETURN c
         """;
+    String SAVE_LIKE_CYPHER = """
+        MATCH (u:User {id: $userId}),(p:Project {id: $projectId})
+        CREATE (u)-[:
+        """ + RelationShips.LIKES + """
+        ]->(p)
+        RETURN p
+        """;
+    String DELETE_LIKE_CYPHER = """
+        MATCH (u:User {id: $userId})-[r:
+        """ + RelationShips.LIKES + """
+        ]->(p:Project {id: $projectId})
+        DELETE r
+        """;
     String FIND_BACKOPTIONS_BY_PROJECT_ID_CYPHER = """
         MATCH (:Project {id: $projectId})-[:
         """ + RelationShips.HAS + """
@@ -85,11 +98,10 @@ public interface Queries {
         ]->(f:User) 
         RETURN f
         """;
-    String SAVE_ROLE_BY_USER_ID_CYPHER = """
-        MATCH (u:User {id: $userId}), (r:Role {name: $roleName})
-               CREATE (u)-[:
-               """ + RelationShips.HAS + """
-                ]->(r)
-                RETURN r
+    String SAVE_USER_ROLE_BY_USER_ID_CYPHER = """
+        MATCH (u:User {id: $userId}),(r:Role {name: $roleName})"
+        "CREATE (u)-[: 
+        """ + RelationShips.HAS + """
+        ]->(r) return r
         """;
 }

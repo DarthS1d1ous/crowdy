@@ -2,6 +2,7 @@ package com.od.crowdy.project.handler;
 
 import com.od.crowdy.project.dto.ProjectDto;
 import com.od.crowdy.project.facade.ProjectFacade;
+import com.od.crowdy.project.request.LikeRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
@@ -30,6 +31,23 @@ public class ProjectHandler {
             .body(
                 projectFacade.getProjectByUserId(serverRequest.pathVariable(USER_ID)),
                 ProjectDto.class
+            );
+    }
+
+    public Mono<ServerResponse> saveProjectLike(ServerRequest request) {
+        return ok()
+            .body(
+                this.projectFacade.saveProjectLike(request.bodyToMono(LikeRequest.class)),
+                ProjectDto.class
+            );
+    }
+
+
+    public Mono<ServerResponse> deleteProjectLike(ServerRequest request) {
+        return ok()
+            .body(
+                this.projectFacade.deleteProjectLike(request.pathVariable(USER_ID), request.pathVariable(PROJECT_ID)),
+                Void.class
             );
     }
 }

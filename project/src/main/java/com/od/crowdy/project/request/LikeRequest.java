@@ -1,4 +1,4 @@
-package com.od.crowdy.user.dto;
+package com.od.crowdy.project.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class AuthRequest {
-    private String username;
-    private String password;
+public class LikeRequest {
+    private String userId;
+    private String projectId;
 }

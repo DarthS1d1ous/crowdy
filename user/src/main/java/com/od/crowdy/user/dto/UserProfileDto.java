@@ -1,37 +1,25 @@
 package com.od.crowdy.user.dto;
 
+import com.od.crowdy.user.domain.neo4j.model.Project;
 import com.od.crowdy.user.domain.neo4j.model.User;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.util.List;
 
-@Data
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class UserProfileDto {
-    private String id;
-    private String username;
-    private String fullName;
-    private LocalDate createdAt;
-    private LocalDate birthday;
-    private String avatar;
-    private List<UserDto> followers;
-    private List<UserDto> following;
-    private List<ProjectDto> projects;
+@Data
+public class UserProfileDto extends UserDto {
+    private List<User> followers;
+    private List<User> following;
+    private List<Project> createdProjects;
+    private List<Project> backedProjects;
 
-    public static UserProfileDto from(User user) {
-        return UserProfileDto.builder()
-            .id(user.getId())
-            .username(user.getUsername())
-            .fullName(user.getFullName())
-            .createdAt(user.getCreatedAt())
-            .birthday(user.getBirthday())
-            .avatar(user.getAvatar())
-            .build();
+    public static User toModel(UserProfileDto userProfileDto) {
+        return User.from(userProfileDto);
     }
 }

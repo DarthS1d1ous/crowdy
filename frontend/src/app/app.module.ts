@@ -10,7 +10,6 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {HeaderComponent} from "./header/header.component";
 import {FooterComponent} from "./footer/footer.component";
 import {SharedComponent} from "./shared/shared.component";
-import {UserComponent} from "./user/user.component";
 import {AuthModule} from "./auth/auth.module";
 import {StoreModule} from '@ngrx/store';
 import * as fromApp from './store/app.reducer';
@@ -19,6 +18,7 @@ import {AuthEffects} from "./auth/store/auth.effects";
 import {HttpClientModule} from "@angular/common/http";
 import {ProjectEffects} from "./projects/store/project.effects";
 import {MatCardModule} from "@angular/material/card";
+import {UserEffects} from "./user/store/user.effects";
 
 @NgModule({
   declarations: [
@@ -26,7 +26,6 @@ import {MatCardModule} from "@angular/material/card";
     HeaderComponent,
     FooterComponent,
     SharedComponent,
-    UserComponent,
   ],
   imports: [
     HttpClientModule,
@@ -43,7 +42,7 @@ import {MatCardModule} from "@angular/material/card";
         strictActionImmutability: true
       }
     }),
-    EffectsModule.forRoot([AuthEffects, ProjectEffects]),
+    EffectsModule.forRoot([AuthEffects, ProjectEffects, UserEffects]),
     MatCardModule
   ],
   providers: [],

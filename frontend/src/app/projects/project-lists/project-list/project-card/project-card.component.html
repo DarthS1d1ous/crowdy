@@ -1,6 +1,7 @@
 <mat-card class="project-card">
   <mat-card-header>
-    <img alt="avatar" mat-card-avatar src="{{project.author.avatar}}">
+    <img [routerLink]="['/profile', project.author.id]" alt="avatar" class="router image" mat-card-avatar
+         src="{{project.author.avatar}}">
     <mat-card-title class="mat-card-title-ellipsis">{{project.name}}</mat-card-title>
     <mat-card-subtitle>{{project.createdAt}}</mat-card-subtitle>
   </mat-card-header>
@@ -19,8 +20,8 @@
   </mat-card-content>
   <mat-card-actions>
     <button (click)="likeProject()" color="warn" mat-icon-button>
-      <mat-icon>{{isLikedByCurrentUser ? 'favorite' : 'favorite_border'}}</mat-icon>
+      <mat-icon>{{isProjectLikedByUser ? 'favorite' : 'favorite_border'}}</mat-icon>
     </button>
-    <span class="likes-number-on-project">{{project.likes.length}}</span>
+    <span class="likes-number-on-project">{{projectLikeCount}}</span>
   </mat-card-actions>
 </mat-card>

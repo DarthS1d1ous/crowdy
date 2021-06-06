@@ -3,7 +3,7 @@ import {AuthComponent} from "./auth.component";
 import {RouterModule, Routes} from "@angular/router";
 import {CommonModule} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {MaterialModule} from "../shared/material/material.module";
+import {SharedModule} from "../shared/shared.module";
 
 const authRoutes: Routes = [
   {path: '', component: AuthComponent}
@@ -17,7 +17,7 @@ const authRoutes: Routes = [
     RouterModule.forChild(authRoutes),
     CommonModule,
     ReactiveFormsModule,
-    MaterialModule,
+    SharedModule,
     FormsModule
   ],
   exports: [

@@ -15,12 +15,14 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   storeSubscription!: Subscription;
 
   constructor(private store: Store<fromApp.AppState>,
+
   ) {
   }
 
   ngOnInit(): void {
     this.store.dispatch(new ProjectsActions.FetchAllCategories());
     this.storeSubscription = this.store.select('project').subscribe(projectsState => {
+      console.log("select [ropject after like")
       this.allCategories = projectsState.categories;
     })
   }

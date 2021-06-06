@@ -2,13 +2,11 @@ package com.od.crowdy.user.domain.neo4j.model.mapper;
 
 import com.od.crowdy.common.domain.neo4j.model.mapper.Neo4jMapper;
 import com.od.crowdy.user.domain.neo4j.model.Role;
-import lombok.RequiredArgsConstructor;
 import org.neo4j.driver.Record;
 import org.neo4j.driver.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
 public class RoleMapper implements Neo4jMapper<Role> {
     private final static int ROLE_INDEX = 0;
     private final static String ID = "id";

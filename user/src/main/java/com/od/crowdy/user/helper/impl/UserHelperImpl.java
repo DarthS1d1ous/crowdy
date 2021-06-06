@@ -1,21 +1,21 @@
 package com.od.crowdy.user.helper.impl;
 
 import com.od.crowdy.user.domain.neo4j.model.Role;
-import com.od.crowdy.user.domain.neo4j.repository.RoleRepository;
 import com.od.crowdy.user.dto.UserDto;
 import com.od.crowdy.user.helper.UserHelper;
+import com.od.crowdy.user.service.RoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 @Component
 @RequiredArgsConstructor
-public class DefaultUserHelper implements UserHelper {
-    private final RoleRepository roleRepository;
+public class UserHelperImpl implements UserHelper {
+    private final RoleService roleService;
 
     @Override
-    public Mono<UserDto> fillRoles(UserDto userDto) {
-        return roleRepository.getRolesByUserId(userDto.getId())
+    public Mono<UserDto> fillUserRoles(UserDto userDto) {
+        return this.roleService.getRolesByUserId(userDto.getId())
             .map(Role::toDto)
             .collectList()
             .doOnNext(userDto::setRoles)

@@ -25,8 +25,8 @@ public class UserMapper implements Neo4jMapper<User> {
             .username(user.get(USERNAME).asString())
             .password(user.get(PASSWORD).asString())
             .fullName(user.get(FULL_NAME).asString())
-            .createdAt(user.get(CREATED_AT).isNull() ? null : user.get(CREATED_AT).asLocalDate())
-            .birthday(user.get(BIRTHDAY).isNull() ? null : user.get(BIRTHDAY).asLocalDate())
+            .createdAt(user.get(CREATED_AT).asLocalDate())
+            .birthday(user.get(BIRTHDAY).asLocalDate())
             .avatar(user.get(AVATAR).asString())
             .build();
     }

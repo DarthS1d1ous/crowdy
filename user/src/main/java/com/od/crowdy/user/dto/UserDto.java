@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 import java.util.List;
 
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Builder
 public class UserDto {
     private String id;
     private String username;
@@ -36,5 +36,4 @@ public class UserDto {
     public static User toModel(UserDto userDto) {
         return User.from(userDto);
     }
-
 }

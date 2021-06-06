@@ -28,7 +28,7 @@ public class RestUserService implements UserService {
     }
 
     @Override
-    public Flux<UserDto> getUserLikesByProject(String projectId) {
+    public Flux<UserDto> getUserLikesByProjectId(String projectId) {
         return webClient.get()
             .uri(userServiceUri + "/users/like/projects/" + projectId)
             .accept(MediaType.APPLICATION_JSON)

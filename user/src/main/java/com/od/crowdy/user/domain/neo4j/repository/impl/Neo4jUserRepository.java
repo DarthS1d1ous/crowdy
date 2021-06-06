@@ -13,8 +13,8 @@ import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@RequiredArgsConstructor
 @Repository
+@RequiredArgsConstructor
 public class Neo4jUserRepository implements UserRepository {
     private final ReactiveNeo4jClient neo4jClient;
     private final ReactiveNeo4jOperations neo4jOperations;
@@ -22,79 +22,59 @@ public class Neo4jUserRepository implements UserRepository {
     private final RoleRepository roleRepository;
 
     @Override
-    public Mono<User> getAuthorByProjectId(String projectId) {
-        return neo4jClient.query(Queries.FIND_AUTHOR_BY_PROJECT_ID_CYPHER)
-            .bind(projectId).to("projectId")
-            .fetchAs(User.class)
-            .mappedBy((typeSystem, record) -> userMapper.map(record))
-            .one();
-    }
-
-    @Override
     public Mono<User> save(User user) {
-        return neo4jOperations.save(user)
-            .flatMap(u -> roleRepository.save(u.getId(), Role.ADMIN)
+        return this.neo4jOperations.save(user)
+            .flatMap(u -> this.roleRepository.save(u.getId(), Role.ADMIN)
                 .thenReturn(u)
             );
     }
 
-    @Override
-    public Mono<User> findByUsername(String username) {
-        return neo4jClient.query(Queries.FIND_USER_BY_USERNAME_CYPHER)
+    public Mono<User> getUserByUsername(String username) {
+        return this.neo4jClient.query(Queries.FIND_USER_BY_USERNAME_CYPHER)
             .bind(username).to("username")
             .fetchAs(User.class)
-            .mappedBy((typeSystem, record) -> userMapper.map(record))
+            .mappedBy((typeSystem, record) -> this.userMapper.map(record))
             .one();
     }
 
     @Override
     public Mono<Boolean> isUserExists(String username) {
-        return neo4jClient.query(Queries.IS_USER_EXISTS_CYPHER)
+        return this.neo4jClient.query(Queries.IS_USER_EXISTS_CYPHER)
             .bind(username).to("username")
             .fetchAs(Boolean.class)
             .mappedBy((typeSystem, record) -> record.get("isExists").asBoolean())
-            .one()
-            .switchIfEmpty(Mono.just(false));
+            .one();
     }
 
     @Override
     public Flux<User> getUserLikesByProjectId(String projectId) {
-        return neo4jClient.query(Queries.FIND_USER_LIKES_BY_PROJECT_ID_CYPHER)
+        return this.neo4jClient.query(Queries.FIND_USER_LIKES_BY_PROJECT_ID_CYPHER)
             .bind(projectId).to("projectId")
             .fetchAs(User.class)
-            .mappedBy((typeSystem, record) -> userMapper.map(record))
+            .mappedBy((typeSystem, record) -> this.userMapper.map(record))
             .all();
-    }
-
-    @Override
-    public Flux<User> findFollowersByUserId(String userId) {
-        return neo4jClient.query(Queries.FIND_FOLLOWERS_BY_USER_ID_CYPHER)
-            .bind(userId).to("userId")
-            .fetchAs(User.class)
-            .mappedBy((typeSystem, record) -> userMapper.map(record))
-            .all();
-    }
-
-    @Override
-    public Flux<User> findFollowingByUserId(String userId) {
-        return neo4jClient.query(Queries.FIND_FOLLOWING_BY_USER_ID_CYPHER)
-            .bind(userId).to("userId")
-            .fetchAs(User.class)
-            .mappedBy((typeSystem, record) -> userMapper.map(record))
-            .all();
-    }
-
-    @Override
-    public Mono<User> findAuthorByCommentId(String commentId) {
-        return neo4jClient.query(Queries.FIND_AUTHOR_BY_COMMENT_ID_CYPHER)
-            .bind(commentId).to("commentId")
-            .fetchAs(User.class)
-            .mappedBy(((typeSystem, record) -> userMapper.map(record)))
-            .one();
     }
 
     @Override
     public Mono<User> getUserById(String userId) {
         return neo4jOperations.findById(userId, User.class);
+    }
+
+    @Override
+    public Mono<User> getAuthorByCommentId(String commentId) {
+        return this.neo4jClient.query(Queries.FIND_AUTHOR_BY_COMMENT_ID_CYPHER)
+            .bind(commentId).to("commentId")
+            .fetchAs(User.class)
+            .mappedBy((typeSystem, record) -> this.userMapper.map(record))
+            .one();
+    }
+
+    @Override
+    public Mono<User> getAuthorByProjectId(String projectId) {
+        return this.neo4jClient.query(Queries.FIND_AUTHOR_BY_PROJECT_ID_CYPHER)
+            .bind(projectId).to("projectId")
+            .fetchAs(User.class)
+            .mappedBy((typeSystem, record) -> this.userMapper.map(record))
+            .one();
     }
 }
