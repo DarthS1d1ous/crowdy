@@ -28,6 +28,7 @@ public class User {
     private LocalDate createdAt;
     private LocalDate birthday;
     private String avatar;
+    private String about;
 
     public static UserDto toDto(User user) {
         return UserDto.from(user);
@@ -41,6 +42,7 @@ public class User {
             .createdAt(userDto.getCreatedAt())
             .birthday(userDto.getBirthday())
             .avatar(userDto.getAvatar())
+            .about(userDto.getAbout())
             .build();
     }
 }

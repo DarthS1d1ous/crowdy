@@ -13,15 +13,16 @@ public class BackOptionMapper implements Neo4jMapper<BackOption> {
     private final static int BACKOPTION_INDEX = 0;
     private final static String ID = "id";
     private final static String PLEDGE = "pledge";
-    private final static String REWARD = "reward";
+    private final static String REWARDS = "rewards";
 
     @Override
     public BackOption map(Record record) {
         Value backOption = record.values().get(BACKOPTION_INDEX);
+
         return BackOption.builder()
             .id(backOption.get(ID).asString())
             .pledge(BigDecimal.valueOf(backOption.get(PLEDGE).asDouble()))
-            .reward(backOption.get(REWARD).asString())
+            .rewards(backOption.get(REWARDS) == null ? null : backOption.get(REWARDS).asList(Value::asString))
             .build();
     }
 }

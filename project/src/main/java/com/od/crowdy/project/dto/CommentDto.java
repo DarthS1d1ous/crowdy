@@ -1,5 +1,6 @@
 package com.od.crowdy.project.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.od.crowdy.project.domain.neo4j.model.Comment;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 @Data
 public class CommentDto {
     private String id;
+    @JsonFormat(pattern = "MM/dd/yyyy HH:mm:ss")
     private LocalDateTime createdAt;
     private String message;
     private UserDto author;

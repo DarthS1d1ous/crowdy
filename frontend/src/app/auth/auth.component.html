@@ -46,6 +46,10 @@
         <!--          </mat-error>-->
         <!--        </mat-form-field>-->
       </div>
+      <div class="mat-error mb-3">
+        Authorization error!
+        Please re-check your credentials.
+      </div>
       <div *ngIf="isLoginMode" class="mb-4"><a class="material-color" href="">Forgot your password?</a></div>
       <button [disabled]="loginForm.invalid" class="container-fluid" color="primary"
               mat-raised-button
@@ -133,7 +137,7 @@
       </button>
     </form>
     <div class="separator my-3">OR</div>
-    <button (click)="login()" *ngIf="isLoginMode" class="container-fluid mb-2" mat-raised-button type="button">
+    <button *ngIf="isLoginMode" class="container-fluid mb-2" mat-raised-button type="button">
       <svg class="bi bi-google" fill="currentColor" height="16" viewBox="0 0 16 16" width="16"
            xmlns="http://www.w3.org/2000/svg">
         <path

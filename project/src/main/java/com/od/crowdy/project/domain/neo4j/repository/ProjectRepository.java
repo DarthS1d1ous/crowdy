@@ -9,9 +9,11 @@ public interface ProjectRepository {
 
     Mono<Project> findProjectById(String projectId);
 
-    Flux<Project> findProjectsByUserId(String userId);
+    Flux<Project> findCreatedProjectsByUserId(String userId);
 
     Mono<Project> saveProjectLike(String userId, String projectId);
 
     Mono<Void> deleteProjectLike(String userId, String projectId);
+
+    Flux<Project> findBackedProjectsByUserId(String userId);
 }

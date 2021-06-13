@@ -19,8 +19,11 @@ public interface UserRepository {
 
     Mono<User> getAuthorByProjectId(String projectId);
 
-//    Flux<User> findFollowingByUserId(String userId);
-//
-//    Flux<User> findFollowersByUserId(String userId);
-//
+    Flux<User> getFollowersByUserId(String userId);
+
+    Flux<User> getFollowingByUserId(String userId);
+
+    Mono<User> saveUserFollower(String followerUserId, String followingUserId);
+
+    Mono<User> deleteUserFollower(String followerId, String followingId);
 }

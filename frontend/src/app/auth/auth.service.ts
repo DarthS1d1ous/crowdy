@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import * as fromApp from '../store/app.reducer';
 import * as AuthActions from './store/auth.actions';
+import * as UserActions from '../user/store/user.actions';
 import {Store} from "@ngrx/store";
 
 @Injectable({
@@ -14,6 +15,7 @@ export class AuthService {
 
   setLogoutTimer(expirationDate: number): void {
     this.tokenExpirationTimer = setTimeout(() => {
+      this.store.dispatch(new UserActions.ClearCurrentUser())
       this.store.dispatch(new AuthActions.Logout());
     }, expirationDate);
   }

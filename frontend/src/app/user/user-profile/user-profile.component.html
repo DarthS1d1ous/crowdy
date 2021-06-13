@@ -1,31 +1,68 @@
-<div class="row py-5 px-4">
+<div class="py-5 px-4">
   <div class="col-md-5 mx-auto">
     <!-- Profile widget -->
     <div class="bg-white shadow rounded overflow-hidden">
-      <div class="px-4 pt-0 pb-4 cover">
+      <div [ngStyle]="{'backgroundImage':
+           visitUserProfile.createdProjects[0]
+           ? 'url('+visitUserProfile.createdProjects[1].imageUrls[0]+')'
+           : 'url(https://look.com.ua/pic/201209/1920x1080/look.com.ua-12214.jpg)'}"
+           class="px-4 pt-0 pb-4 cover">
+        <div class="d-flex justify-content-end">
+          <button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" mat-icon-button>
+            <svg class="bi bi-gear" fill="currentColor" height="24" viewBox="0 0 16 16" width="24"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+              <path
+                d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+            </svg>
+          </button>
+        </div>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            <span>Edit</span>
+          </button>
+        </mat-menu>
         <div class="media align-items-end profile-head">
-          <div class="profile mr-3"><img alt="..." class="rounded mb-2 img-thumbnail"
-                                         src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
-                                         width="130"><a class="btn btn-outline-dark btn-sm btn-block">Edit profile</a>
+          <div class="profile mr-3 d-flex flex-column custom-height">
+            <img alt="..." class="rounded mb-2 img-thumbnail"
+                 src="{{visitUserProfile?.avatar}}"
+                 width="150">
+            <button (click)="onFollowButton()" *ngIf="!isVisitUserCurrentUser && !isFollowerForCurrentUser()"
+                    color="primary"
+                    mat-raised-button>Follow
+            </button>
+            <button (click)="onUnfollowButton()" *ngIf="!isVisitUserCurrentUser && isFollowerForCurrentUser()"
+                    color="warn"
+                    mat-raised-button>Unfollow
+            </button>
           </div>
           <div class="media-body mb-5 text-white">
-            <h4 class="mt-0 mb-0">Mark Williams</h4>
-            <p class="small mb-4"><i class="fas fa-map-marker-alt mr-2"></i>New York</p>
+            <h4 class="mt-0 mb-0">{{visitUserProfile?.fullName}}</h4>
+            <p class="mb-4">{{visitUserProfile?.username}}</p>
           </div>
         </div>
       </div>
       <div class="bg-light p-4 d-flex justify-content-end text-center">
         <ul class="list-inline mb-0">
-          <li class="list-inline-item">
-            <h5 class="font-weight-bold mb-0 d-block">215</h5><small class="text-muted"> <i
-            class="fas fa-image mr-1"></i>Photos</small>
+          <li class="list-inline-item cursor-pointer">
+            <h5 class="font-weight-bold mb-0 d-block">{{visitUserProfile?.createdProjects?.length}}</h5><small
+            class="text-muted"> <i
+            class="fas fa-image mr-1"></i>Projects</small>
           </li>
-          <li class="list-inline-item">
-            <h5 class="font-weight-bold mb-0 d-block">745</h5><small class="text-muted"> <i
+          <li (click)="openFollowersDialog()" class="list-inline-item cursor-pointer">
+            <h5 class="font-weight-bold mb-0 d-block">{{visitUserProfile?.followers?.length}}</h5><small
+            class="text-muted"> <i
             class="fas fa-user mr-1"></i>Followers</small>
           </li>
-          <li class="list-inline-item">
-            <h5 class="font-weight-bold mb-0 d-block">340</h5><small class="text-muted"> <i
+          <li (click)="openFollowingDialog()" class="list-inline-item cursor-pointer">
+            <h5 class="font-weight-bold mb-0 d-block">{{visitUserProfile?.following?.length}}</h5><small
+            class="text-muted"> <i
             class="fas fa-user mr-1"></i>Following</small>
           </li>
         </ul>
@@ -33,30 +70,47 @@
       <div class="px-4 py-3">
         <h5 class="mb-0">About</h5>
         <div class="p-4 rounded shadow-sm bg-light">
-          <p class="font-italic mb-0">Web Developer</p>
-          <p class="font-italic mb-0">Lives in New York</p>
-          <p class="font-italic mb-0">Photographer</p>
+          {{visitUserProfile.about}}
         </div>
       </div>
-      <div class="py-4 px-4">
-        <div class="d-flex align-items-center justify-content-between mb-3">
-          <h5 class="mb-0">Recent photos</h5><a class="btn btn-link text-muted">Show all</a>
-        </div>
-        <div class="row">
-          <div class="col-lg-6 mb-2 pr-lg-1"><img alt="" class="img-fluid rounded shadow-sm"
-                                                  src="https://images.unsplash.com/photo-1469594292607-7bd90f8d3ba4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80">
+      <mat-tab-group mat-stretch-tabs>
+        <mat-tab label="Created">
+          <div class="d-flex justify-content-between flex-wrap my-3 mx-2">
+            <div *ngFor="let project of visitUserProfile?.createdProjects" class="pr-lg-1 image-wrapper">
+              <img [routerLink]="['/projects', project.id]"
+                   class="img-fluid rounded shadow-sm cursor-pointer" src="{{project.imageUrls[0]}}">
+            </div>
           </div>
-          <div class="col-lg-6 mb-2 pl-lg-1"><img alt="" class="img-fluid rounded shadow-sm"
-                                                  src="https://images.unsplash.com/photo-1493571716545-b559a19edd14?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80">
+        </mat-tab>
+
+        <mat-tab label="Backed">
+          <div class="d-flex justify-content-between my-3 mx-2">
+            <div *ngFor="let project of visitUserProfile?.backedProjects" class="pr-lg-1 image-wrapper">
+              <img [routerLink]="['/projects', project.id]" alt=""
+                   class="img-fluid rounded shadow-sm cursor-pointer" src="{{project.imageUrls[0]}}">
+            </div>
           </div>
-          <div class="col-lg-6 pr-lg-1 mb-2"><img alt="" class="img-fluid rounded shadow-sm"
-                                                  src="https://images.unsplash.com/photo-1453791052107-5c843da62d97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80">
-          </div>
-          <div class="col-lg-6 pl-lg-1"><img alt="" class="img-fluid rounded shadow-sm"
-                                             src="https://images.unsplash.com/photo-1475724017904-b712052c192a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80">
-          </div>
-        </div>
-      </div>
+        </mat-tab>
+      </mat-tab-group>
+      <!--      <div class="py-4 px-4">-->
+      <!--        <div class="d-flex align-items-center justify-content-between mb-3">-->
+      <!--          <h5 class="mb-0">{{userProfile?.birthday | date}}</h5><a class="btn btn-link text-muted">Show all</a>-->
+      <!--        </div>-->
+      <!--        <div class="row">-->
+      <!--          <div class="col-lg-6 mb-2 pr-lg-1"><img alt="" class="img-fluid rounded shadow-sm"-->
+      <!--                                                  src="https://images.unsplash.com/photo-1469594292607-7bd90f8d3ba4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80">-->
+      <!--          </div>-->
+      <!--          <div class="col-lg-6 mb-2 pl-lg-1"><img alt="" class="img-fluid rounded shadow-sm"-->
+      <!--                                                  src="https://images.unsplash.com/photo-1493571716545-b559a19edd14?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80">-->
+      <!--          </div>-->
+      <!--          <div class="col-lg-6 pr-lg-1 mb-2"><img alt="" class="img-fluid rounded shadow-sm"-->
+      <!--                                                  src="https://images.unsplash.com/photo-1453791052107-5c843da62d97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80">-->
+      <!--          </div>-->
+      <!--          <div class="col-lg-6 pl-lg-1"><img alt="" class="img-fluid rounded shadow-sm"-->
+      <!--                                             src="https://images.unsplash.com/photo-1475724017904-b712052c192a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80">-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--      </div>-->
     </div>
   </div>
 </div>

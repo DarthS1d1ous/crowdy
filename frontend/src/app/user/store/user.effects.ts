@@ -1,19 +1,58 @@
 import {Injectable} from "@angular/core";
-import {Actions} from "@ngrx/effects";
+import {Actions, createEffect, ofType} from "@ngrx/effects";
 import {Store} from "@ngrx/store";
 import * as fromApp from '../../store/app.reducer';
 import {HttpClient} from "@angular/common/http";
+import * as UserActions from "./user.actions";
+import {map, switchMap} from "rxjs/operators";
+import {UserProfile} from "../../model/dto/user-profile";
 
 @Injectable()
 export class UserEffects {
-  // fetchAllCategories = createEffect((): any => this.actions$.pipe(
-  //   ofType(ProjectsActions.FETCH_ALL_CATEGORIES),
-  //   switchMap(() => this.http.get<Category[]>('http://localhost:8082/categories')),
-  //   map(categories => {
-  //     console.log(categories);
-  //     return new ProjectsActions.SetAllCategories(categories);
-  //   })
-  // ));
+  fetchVisitUser = createEffect((): any => this.actions$.pipe(
+    ofType(UserActions.FETCH_VISIT_USER),
+    switchMap((data: UserActions.FetchVisitUser) =>
+      this.http.get<UserProfile>(`http://localhost:8081/userProfiles/${data.payload}`)),
+    map((userProfile: UserProfile) => {
+      return new UserActions.SetVisitUser(userProfile);
+    })
+  ));
+
+  fetchCurrentUser = createEffect((): any => this.actions$.pipe(
+    ofType(UserActions.FETCH_CURRENT_USER),
+    switchMap((data: UserActions.FetchVisitUser) =>
+      this.http.get<UserProfile>(`http://localhost:8081/userProfiles/${data.payload}`)),
+    map((userProfile: UserProfile) => {
+      return new UserActions.SetCurrentUser(userProfile);
+    })
+  ));
+
+  followUser = createEffect((): any => this.actions$.pipe(
+    ofType(UserActions.FOLLOW_USER),
+    switchMap((data: UserActions.FollowUser) => {
+      return this.http.post<UserProfile>(
+        `http://localhost:8081/users/follow/users`,
+        {
+          followerUserId: data.payload.followerUserId,
+          followingUserId: data.payload.followingUserId
+        })
+        .pipe(
+          map(resData => new UserActions.SetFollowUser(resData))
+        )
+    })
+  ));
+
+  unfollowUser = createEffect((): any => this.actions$.pipe(
+    ofType(UserActions.UNFOLLOW_USER),
+    switchMap((data: UserActions.UnfollowUser) => {
+      return this.http.delete<UserProfile>(
+        `http://localhost:8081/users/${data.payload.followerId}/follow/users/${data.payload.followingId}`
+      )
+        .pipe(
+          map(resData => new UserActions.SetUnfollowUser(resData))
+        )
+    })
+  ));
   //
   // saveProjectLike = createEffect((): any => this.actions$.pipe(
   //   ofType(ProjectsActions.SAVE_PROJECT_LIKE),

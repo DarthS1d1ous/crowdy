@@ -9,6 +9,7 @@ import org.neo4j.springframework.data.core.support.UUIDStringGenerator;
 import org.springframework.data.annotation.Id;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -20,5 +21,5 @@ public class BackOption {
     @GeneratedValue(UUIDStringGenerator.class)
     private String id;
     private BigDecimal pledge;
-    private String reward;
+    private List<String> rewards;
 }

@@ -5,6 +5,7 @@ import * as AuthActions from '../auth/store/auth.actions';
 import {Store} from "@ngrx/store";
 import {Subscription} from "rxjs";
 import {User} from "../model/user.model";
+import * as UserActions from "../user/store/user.actions";
 
 @Component({
   selector: 'app-header',
@@ -30,6 +31,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogout(): void {
+    this.store.dispatch(new UserActions.ClearCurrentUser())
     this.store.dispatch(new AuthActions.Logout());
   }
 

@@ -17,6 +17,7 @@ const handleAuthentication = (resData: any) => {
     resData.createdAt,
     resData.birthday,
     resData.avatar,
+    resData.about,
     resData.roles
   );
   localStorage.setItem('userData', JSON.stringify(user));
@@ -105,18 +106,18 @@ export class AuthEffects {
     ofType(AuthActions.AUTO_LOGIN),
     map(() => {
         console.log('autoLogin effect');
-        console.log(localStorage.getItem('userData'));
         const userData = JSON.parse(localStorage.getItem('userData')!);
         if (!userData) {
           return {type: 'DUMMY'};
         }
         const loadedUser = new User(
-          userData.username,
           userData.id,
+          userData.username,
           userData.fullName,
           userData.createdAt,
           userData.birthday,
           userData.avatar,
+          userData.about,
           userData.roles
         );
         if (loadedUser.username) {

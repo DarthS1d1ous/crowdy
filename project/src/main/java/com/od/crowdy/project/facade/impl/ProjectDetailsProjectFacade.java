@@ -2,6 +2,7 @@ package com.od.crowdy.project.facade.impl;
 
 import com.od.crowdy.project.domain.neo4j.model.Project;
 import com.od.crowdy.project.domain.neo4j.repository.ProjectRepository;
+import com.od.crowdy.project.dto.ProjectDetailsDto;
 import com.od.crowdy.project.dto.ProjectDto;
 import com.od.crowdy.project.facade.ProjectFacade;
 import com.od.crowdy.project.helper.ProjectHelper;
@@ -28,8 +29,8 @@ public class ProjectDetailsProjectFacade implements ProjectFacade {
     }
 
     @Override
-    public Flux<ProjectDto> getProjectByUserId(String userId) {
-        return projectRepository.findProjectsByUserId(userId)
+    public Flux<ProjectDto> getCreatedProjectsByUserId(String userId) {
+        return projectRepository.findCreatedProjectsByUserId(userId)
             .map(Project::toDto);
     }
 
@@ -48,5 +49,22 @@ public class ProjectDetailsProjectFacade implements ProjectFacade {
 //            .map(ProjectDto::from)
 //            .flatMap(projectHelper::fillAuthor)
 //            .flatMap(projectHelper::fillLikes);
+    }
+
+    @Override
+    public Flux<ProjectDto> getBackedProjectsByUserId(String userId) {
+        return projectRepository.findBackedProjectsByUserId(userId)
+            .map(Project::toDto);
+    }
+
+    @Override
+    public Mono<ProjectDetailsDto> getProjectDetailsByProjectId(String projectId) {
+        return this.projectRepository.findProjectById(projectId)
+            .map(ProjectDetailsDto::from)
+            .flatMap(projectHelper::fillAuthor)
+            .flatMap(projectHelper::fillLikes)
+            .flatMap(projectHelper::fillProjectComments)
+            .flatMap(projectHelper::fillProjectFaqs)
+            .flatMap(projectHelper::fillProjectBackOptions);
     }
 }

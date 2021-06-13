@@ -6,12 +6,17 @@ html, body {
 
 body {
   margin: 0;
-  font-family: 'Quattrocento Sans', sans-serif !important;
 }
 
-/*body { margin: 0; font-family: 'KoHo', sans-serif !important; }*/
+*, *:focus, *:hover {
+  outline: none;
+}
 
-.mat-card {
+* {
   font-family: 'Quattrocento Sans', sans-serif !important;
   /*font-family: 'KoHo', sans-serif !important;*/
+}
+
+.cursor-pointer:hover {
+  cursor: pointer;
 }

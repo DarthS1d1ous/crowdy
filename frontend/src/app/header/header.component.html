@@ -9,10 +9,10 @@
       <a class="nav-link" href="#">Categories</a>
     </li>
     <li class="nav-item ml-4">
-      <a class="nav-link" href="#">Create</a>
+      <a [routerLink]="['/create']" class="nav-link">Create</a>
     </li>
   </ul>
-  <a class="navbar-brand col-4 text-center" href="#">Crowdy</a>
+  <a [routerLink]="['/']" class="navbar-brand col-4 text-center">Crowdy</a>
   <!--    <form class="form-inline my-2 my-lg-0">-->
   <!--      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
   <!--      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
@@ -27,8 +27,10 @@
     <ng-template #logout>
       <a (click)="onLogout()" [routerLink]="['/login']" class="nav-link">Log out</a>
     </ng-template>
-    <li *ngIf="currentUser" class="nav-item mr-5">
-      <img alt="main image" mat-card-avatar src="data:image/png;base64,{{currentUser.avatar}}">
+    <li *ngIf="currentUser" class="nav-item mr-5 cursor-pointer">
+      <img [routerLink]="['/profile', currentUser.id]" alt="main image" class="avatar"
+           src="{{currentUser.avatar}}">
+      <!--           src="data:image/png;base64,{{currentUser.avatar}}">-->
     </li>
   </ul>
   <!--  </div>-->

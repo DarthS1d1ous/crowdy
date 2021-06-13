@@ -6,7 +6,7 @@ import * as ProjectsActions from '../../../store/project.actions';
 import {ProjectLike} from "../../../../model/dto/project-like";
 import {User} from "../../../../model/user.model";
 import {MatDialog} from "@angular/material/dialog";
-import {LoginDialogComponent} from "../../../../shared/dialog/login-dialog.component";
+import {LoginDialogComponent} from "../../../../shared/dialog/login-dialog/login-dialog.component";
 
 @Component({
   selector: 'app-project-card',

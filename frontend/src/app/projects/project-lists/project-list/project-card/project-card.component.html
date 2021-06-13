@@ -2,12 +2,13 @@
   <mat-card-header>
     <img [routerLink]="['/profile', project.author.id]" alt="avatar" class="router image" mat-card-avatar
          src="{{project.author.avatar}}">
-    <mat-card-title class="mat-card-title-ellipsis">{{project.name}}</mat-card-title>
-    <mat-card-subtitle>{{project.createdAt}}</mat-card-subtitle>
+    <mat-card-title [routerLink]="['/projects', project.id]"
+                    class="mat-card-title-ellipsis cursor-pointer">{{project.name}}</mat-card-title>
+    <mat-card-subtitle>{{project.createdAt | date}}</mat-card-subtitle>
   </mat-card-header>
   <mat-progress-bar class="mb-16px" mode="determinate"
                     value="{{project.currentBack/project.overallBack * 100}}"></mat-progress-bar>
-  <a href="#">
+  <a [routerLink]="['/projects', project.id]">
     <div></div>
     <div class="image-wrapper">
       <img alt="main image" mat-card-image src="{{project.imageUrls[0]}}">

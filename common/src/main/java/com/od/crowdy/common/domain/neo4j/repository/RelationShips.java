@@ -7,4 +7,9 @@ public interface RelationShips {
     String LIKES = "LIKES";
     String FOLLOWS = "FOLLOWS";
     String CREATES = "CREATES";
+    String MAKES = "MAKES";
+    String PASSED_TO = "PASSED_TO";
+    String WANTS = "WANTS";
+    String FOR = "FOR";
+
 }

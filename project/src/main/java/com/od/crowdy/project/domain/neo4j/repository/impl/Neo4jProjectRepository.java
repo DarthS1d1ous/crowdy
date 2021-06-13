@@ -33,8 +33,8 @@ public class Neo4jProjectRepository implements ProjectRepository {
     }
 
     @Override
-    public Flux<Project> findProjectsByUserId(String userId) {
-        return this.neo4jClient.query(Queries.FIND_PROJECTS_BY_USER_ID_CYPHER)
+    public Flux<Project> findCreatedProjectsByUserId(String userId) {
+        return this.neo4jClient.query(Queries.FIND_CREATED_PROJECTS_BY_USER_ID_CYPHER)
             .bind(userId).to("userId")
             .fetchAs(Project.class)
             .mappedBy((typeSystem, record) -> this.projectMapper.map(record))
@@ -61,5 +61,14 @@ public class Neo4jProjectRepository implements ProjectRepository {
 //            .fetchAs(Project.class)
 //            .mappedBy((typeSystem, record) -> this.projectMapper.map(record))
 //            .one();
+    }
+
+    @Override
+    public Flux<Project> findBackedProjectsByUserId(String userId) {
+        return this.neo4jClient.query(Queries.FIND_BACKED_PROJECTS_BY_USER_ID_CYPHER)
+            .bind(userId).to("userId")
+            .fetchAs(Project.class)
+            .mappedBy((typeSystem, record) -> this.projectMapper.map(record))
+            .all();
     }
 }

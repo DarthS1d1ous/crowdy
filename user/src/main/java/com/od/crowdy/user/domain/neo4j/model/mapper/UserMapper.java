@@ -16,6 +16,7 @@ public class UserMapper implements Neo4jMapper<User> {
     private final static String CREATED_AT = "createdAt";
     private final static String BIRTHDAY = "birthday";
     private final static String AVATAR = "avatar";
+    private final static String ABOUT = "about";
 
     @Override
     public User map(Record record) {
@@ -28,6 +29,7 @@ public class UserMapper implements Neo4jMapper<User> {
             .createdAt(user.get(CREATED_AT).asLocalDate())
             .birthday(user.get(BIRTHDAY).asLocalDate())
             .avatar(user.get(AVATAR).asString())
+            .about(user.get(ABOUT).asString())
             .build();
     }
 }

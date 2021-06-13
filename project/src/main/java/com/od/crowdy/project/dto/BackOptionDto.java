@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -15,13 +16,13 @@ import java.math.BigDecimal;
 public class BackOptionDto {
     private String id;
     private BigDecimal pledge;
-    private String reward;
+    private List<String> rewards;
 
     public static BackOptionDto from(BackOption backOption) {
         return BackOptionDto.builder()
             .id(backOption.getId())
             .pledge(backOption.getPledge())
-            .reward(backOption.getReward())
+            .rewards(backOption.getRewards())
             .build();
     }
 }

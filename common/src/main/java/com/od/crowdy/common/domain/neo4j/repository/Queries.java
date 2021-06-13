@@ -86,9 +86,17 @@ public interface Queries {
         ]->(b:BackOption)
         RETURN b
         """;
-    String FIND_PROJECTS_BY_USER_ID_CYPHER = """
+    String FIND_CREATED_PROJECTS_BY_USER_ID_CYPHER = """
         MATCH (:User {id: $userId})-[:
         """ + RelationShips.OWNS + """
+        ]->(p:Project)
+        RETURN p
+        """;
+    String FIND_BACKED_PROJECTS_BY_USER_ID_CYPHER = """
+        MATCH (:User {id: $userId})-[:
+        """ + RelationShips.MAKES + """
+        ]->(:Payment)-[:
+        """ + RelationShips.PASSED_TO + """
         ]->(p:Project)
         RETURN p
         """;
@@ -99,9 +107,22 @@ public interface Queries {
         RETURN f
         """;
     String SAVE_USER_ROLE_BY_USER_ID_CYPHER = """
-        MATCH (u:User {id: $userId}),(r:Role {name: $roleName})"
-        "CREATE (u)-[: 
+        MATCH (u:User {id: $userId}),(r:Role {name: $roleName})
+        CREATE (u)-[: 
         """ + RelationShips.HAS + """
         ]->(r) return r
+        """;
+    String SAVE_USER_FOLLOWER_CYPHER = """
+        MATCH (f:User {id: $followerUserId}), (u:User {id: $followingUserId})
+        CREATE (f)-[:
+        """ + RelationShips.FOLLOWS + """
+        ]->(u) return f
+        """;
+    String DELETE_USER_FOLLOWER_CYPHER = """
+        MATCH (f:User {id: $followerId})-[r:
+        """ + RelationShips.FOLLOWS + """
+        ]->(u:User {id: $followingId})
+        DELETE r
+        RETURN f
         """;
 }

@@ -1,5 +1,6 @@
 package com.od.crowdy.user.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.od.crowdy.user.domain.neo4j.model.Project;
 import lombok.AllArgsConstructor;
@@ -21,7 +22,9 @@ public class ProjectDto {
 
     private String name;
     private String description;
+    @JsonFormat(pattern = "MM/dd/yyyy")
     private LocalDate createdAt;
+    @JsonFormat(pattern = "MM/dd/yyyy")
     private LocalDate deadline;
     private List<String> imageUrls;
     private BigDecimal overallBack;

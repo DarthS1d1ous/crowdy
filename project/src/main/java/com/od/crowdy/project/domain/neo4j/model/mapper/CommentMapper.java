@@ -19,7 +19,7 @@ public class CommentMapper implements Neo4jMapper<Comment> {
         return Comment.builder()
             .id(comment.get(ID).asString())
             .message(comment.get(MESSAGE).asString())
-            .createdAt(comment.get(CREATED_AT).isNull() ? null : comment.get(CREATED_AT).asLocalDateTime())
+            .createdAt(comment.get(CREATED_AT).asLocalDateTime())
             .build();
     }
 }

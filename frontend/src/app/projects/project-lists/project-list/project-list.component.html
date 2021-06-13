@@ -16,8 +16,7 @@
       [navigation]="true"
       [scrollbar]="{draggable: true}"
       [slidesPerView]="3.52"
-      [spaceBetween]="59"
-      class="mySwiper">
+      [spaceBetween]="59">
       <ng-template *ngFor="let project of category.projects" swiperSlide>
         <app-project-card [project]="project"></app-project-card>
       </ng-template>

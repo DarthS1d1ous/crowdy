@@ -1,8 +1,8 @@
 package com.od.crowdy.project.handler;
 
 import com.od.crowdy.project.dto.CommentDto;
-import com.od.crowdy.project.dto.CommentSaveRequest;
 import com.od.crowdy.project.facade.CommentFacade;
+import com.od.crowdy.project.request.CommentSaveRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;

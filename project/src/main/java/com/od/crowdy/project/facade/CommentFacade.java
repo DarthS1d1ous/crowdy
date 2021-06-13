@@ -1,7 +1,7 @@
 package com.od.crowdy.project.facade;
 
 import com.od.crowdy.project.dto.CommentDto;
-import com.od.crowdy.project.dto.CommentSaveRequest;
+import com.od.crowdy.project.request.CommentSaveRequest;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

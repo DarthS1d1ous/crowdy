@@ -1,0 +1,1136 @@
+<div class="container projectDetails">
+  <div class="d-flex justify-content-end mt-3">
+    <button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" mat-icon-button>
+      <svg class="bi bi-gear" fill="currentColor" height="24" viewBox="0 0 16 16" width="24"
+           xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+        <path
+          d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+      </svg>
+    </button>
+  </div>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>delete</mat-icon>
+      <span>Delete</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>edit</mat-icon>
+      <span>Edit</span>
+    </button>
+  </mat-menu>
+  <h1 class="display-5 mt-3 mb-4 text-center">
+    {{projectDetails?.name}}
+  </h1>
+
+  <div class="row mb-2">
+    <div class="col-md-7">
+      <div class="mb-4">
+        <swiper
+          [pagination]="{dynamicBullets: true}">
+          <ng-template *ngFor="let image of projectDetails?.imageUrls" swiperSlide>
+            <div class="imageContainer">
+              <img alt="projectImage" class="projectImage" src="{{image}}">
+            </div>
+          </ng-template>
+          <ng-template *ngFor="let image of projectDetails?.imageUrls" swiperSlide>
+            <div class="imageContainer">
+              <img alt="projectImage" class="projectImage" src="{{image}}">
+            </div>
+          </ng-template>
+          <ng-template *ngFor="let image of projectDetails?.imageUrls" swiperSlide>
+            <div class="imageContainer">
+              <img alt="projectImage" class="projectImage" src="{{image}}">
+            </div>
+          </ng-template>
+        </swiper>
+      </div>
+    </div>
+    <div class="col-md-5 project-main-info d-flex flex-column">
+      <mat-progress-bar mode="determinate"
+                        value="{{getProgressBarValue()}}"></mat-progress-bar>
+      <div class="text-center h5 mt-2">
+        Collected <span class="bold">{{projectDetails?.currentBack}}$</span> out of <span
+        class="bold">{{projectDetails?.overallBack}}$</span>
+      </div>
+      <div class="h6 mt-4">
+        Created: <span class="bold">{{projectDetails?.createdAt | date}}</span>
+      </div>
+      <div class="h6">
+        DeadLine: <span class="bold">{{projectDetails?.deadline | date}}</span>
+      </div>
+      <div class="mt-4">
+        <span class="d-block bold type-28">{{findDateToGo()}}</span>
+        <span class="d-block">days to go</span>
+      </div>
+      <button [routerLink]="['payment']" class="container-fluid mt-auto" color="primary"
+              mat-raised-button type="button">Back this project
+      </button>
+    </div>
+  </div>
+</div>
+<main class="main-content container" role="main">
+  <mat-tab-group animationDuration="0ms">
+    <mat-tab label="Details">
+      <div class="row mx-0">
+        <div class="col-md-8 blog-main">
+          <!--          {{projectDetails?.description}}-->
+          <div class="max-w113 m-auto">
+            <div>
+              <div>
+                <div>
+                  <!--                  <div id="story" class="mb3"><h3 class="normal mb3 mb7-sm mobile-hide">Story</h3></div>-->
+                  <div class="rte__content">
+                    <div>
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33636865">
+                        <figure>
+                          <img alt="" class="fit lazyloaded"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/636/865/57c754048c05c341dfc03b629ccc91b7_original.jpg?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621886493&amp;auto=format&amp;frame=1&amp;q=92&amp;s=2d8ce7a9f4d8e8344e00564632b35271"
+                               src="https://ksr-ugc.imgix.net/assets/033/636/865/57c754048c05c341dfc03b629ccc91b7_original.jpg?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621886493&amp;auto=format&amp;frame=1&amp;q=92&amp;s=2d8ce7a9f4d8e8344e00564632b35271">
+                        </figure>
+
+                      </div>
+
+
+                      <p><span class="bold">Hello, survivors!</span> Lace up your hiking boots and prepare yourself for
+                        the <span class="bold">cutest apocalypse</span> of all time. With your help, Bub can <span
+                          class="bold">survive </span>and even learn to <span class="bold">thrive</span> in this
+                        dangerous and adorable world.</p>
+                      <br>
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33610671">
+                        <figure>
+                          <img alt="" class="fit js-lazy-image"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/610/671/658e1df350b6ab9ec4850819a1f27e26_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621668044&amp;auto=format&amp;gif-q=50&amp;q=92&amp;s=5715d0dba8b5947803a150682a1c60f0"
+                               src="https://ksr-ugc.imgix.net/assets/033/610/671/658e1df350b6ab9ec4850819a1f27e26_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621668044&amp;auto=format&amp;gif-q=50&amp;q=92&amp;s=5715d0dba8b5947803a150682a1c60f0">
+                        </figure>
+
+                      </div>
+
+
+                      <p>Setting off with little more than the clothes on his back, Bub must navigate a hostile
+                        wilderness teeming with <span class="bold">zombies</span>, <span class="bold">wildlife</span>,
+                        <span class="bold">resources</span>, and <span class="bold">mysteries.</span> If the prospect of
+                        zombie hordes doesn't frighten you then you might even find yourself wandering the <span
+                          class="bold">abandoned towns</span> of old-America to plunder the <span
+                          class="bold">riches </span>and <span class="bold">secrets</span> that remain.</p>
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33618478">
+                        <figure>
+                          <img alt="" class="fit js-lazy-image"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/618/478/92de51cb78d23cd549fef6f0e3eec8bb_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621730044&amp;auto=format&amp;gif-q=50&amp;q=92&amp;s=0bb5d77ee8b969c8c3fdfed9bd81223e"
+                               src="https://ksr-ugc.imgix.net/assets/033/618/478/92de51cb78d23cd549fef6f0e3eec8bb_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621730044&amp;auto=format&amp;gif-q=50&amp;q=92&amp;s=0bb5d77ee8b969c8c3fdfed9bd81223e">
+                        </figure>
+
+                      </div>
+
+
+                      <p>Explore an <span class="bold">infinite</span>, <span class="bold">procedurally generated</span>
+                        <span class="bold">world </span>to gather what you need, brave the elements, build a sustainable
+                        home base, and make some friends along the way.</p>
+                      <p><span class="bold">Gather</span>, <span class="bold">farm</span>, <span
+                        class="bold">fish</span>, <span class="bold">craft</span>, <span class="bold">build</span>,
+                        <span class="bold">trap</span>, <span class="bold">fortify</span>, <span
+                          class="bold">explore</span>, and <span class="bold">loot</span> your way to post-apocalyptic
+                        domination.</p>
+                      <br>
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33638490">
+                        <figure>
+                          <img alt="" class="fit lazyloaded"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/638/490/695eeb3a85036b2aae43287adb74c9ed_original.jpg?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621894424&amp;auto=format&amp;frame=1&amp;q=92&amp;s=e9be0725f9793adb540bbb4a448b05c9"
+                               src="https://ksr-ugc.imgix.net/assets/033/638/490/695eeb3a85036b2aae43287adb74c9ed_original.jpg?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621894424&amp;auto=format&amp;frame=1&amp;q=92&amp;s=e9be0725f9793adb540bbb4a448b05c9">
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text=""
+                           data-caption="Build a metal fortress to survive the elements or a zombie gauntlet to clear your enemies from afar"
+                           data-id="33607825">
+                        <figure>
+                          <img alt="" class="fit js-lazy-image"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/607/825/b6bef381f5389bc103791bdb1569540f_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621636061&amp;auto=format&amp;gif-q=50&amp;q=92&amp;s=da5d910a7135a670a45e991e15218acd"
+                               src="https://ksr-ugc.imgix.net/assets/033/607/825/b6bef381f5389bc103791bdb1569540f_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621636061&amp;auto=format&amp;gif-q=50&amp;q=92&amp;s=da5d910a7135a670a45e991e15218acd">
+                          <figcaption class="px2">Build a metal fortress to survive the elements or a zombie gauntlet to
+                            clear your enemies from afar
+                          </figcaption>
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33620064">
+                        <figure>
+                          <img alt="" class="fit lazyloaded"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/620/064/74f512b05482c6e1e17218c20a0532da_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621749716&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=7e6abeef0a8ce34fc7027a5e73678ffc"
+                               src="https://ksr-ugc.imgix.net/assets/033/620/064/74f512b05482c6e1e17218c20a0532da_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621749716&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=7e6abeef0a8ce34fc7027a5e73678ffc">
+                        </figure>
+
+                      </div>
+
+
+                      <p>Become self-sustaining with <span class="bold">smokers </span>and <span
+                        class="bold">wells </span>or grow the prettiest <span class="bold">flower garden</span> this
+                        side of Halcyon. What kind of base do you want to call home?</p>
+
+                      <div class="template asset" contenteditable="false" data-alt-text=""
+                           data-caption="A row of smelters can keep the iron and copper flowing" data-id="33641101">
+                        <figure>
+                          <img alt="" class="fit js-lazy-image"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/641/101/4c9db9dd752ae177680c06798298aafa_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621913869&amp;auto=format&amp;gif-q=50&amp;q=92&amp;s=d062530254407d01ea8ba0a1690cc250"
+                               src="https://ksr-ugc.imgix.net/assets/033/641/101/4c9db9dd752ae177680c06798298aafa_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621913869&amp;auto=format&amp;frame=1&amp;q=92&amp;s=dbdd02b3436aa522576a83cd3b2298b9">
+                          <figcaption class="px2">A row of smelters can keep the iron and copper flowing</figcaption>
+                        </figure>
+
+                      </div>
+
+
+                      <p>Traps in <span class="text-italic">Wanderlost</span> have a variety of purposes. A <span
+                        class="bold">Deadfall trap</span> can be great for guarding your walls but must be reset after
+                        each use. <span class="bold">Springboard traps</span> might not deal any damage on their own but
+                        they can fling zombies backward allowing you to use other traps like <span class="bold">spike pits</span>
+                        and <span class="bold">barbed wires</span> very effectively. Smaller traps like the <span
+                          class="bold">snare</span> and <span class="bold">figure-4 trap</span> may not be big enough to
+                        capture zombies but they do a fine job capturing small game. Just be sure to set your traps
+                        somewhere you know animals might wander by.</p>
+
+                      <div class="template asset" contenteditable="false" data-alt-text=""
+                           data-caption="Traps can provide vital protection from zombies when you're vulnerable, sleeping or occupied"
+                           data-id="33610905">
+                        <figure>
+                          <img alt="" class="fit js-lazy-image"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/610/905/2ab1131c38d7fc03d234cb5dc1aef236_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621670787&amp;auto=format&amp;gif-q=50&amp;q=92&amp;s=1fbfde5ad56ee5d1a6f383c09fe44ab1"
+                               src="https://ksr-ugc.imgix.net/assets/033/610/905/2ab1131c38d7fc03d234cb5dc1aef236_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621670787&amp;auto=format&amp;frame=1&amp;q=92&amp;s=8574d604219e126c199953cb7729e5ab">
+                          <figcaption class="px2">Traps can provide vital protection from zombies when you're
+                            vulnerable, sleeping or occupied
+                          </figcaption>
+                        </figure>
+
+                      </div>
+
+
+                      <br>
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33638497">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/638/497/280db0cdd0bd72f31cb82f22d2a726c6_original.jpg?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621894445&amp;auto=format&amp;frame=1&amp;q=92&amp;s=29117fb023030e5034a4ad699f2ee637"
+                               src="https://ksr-ugc.imgix.net/assets/033/638/497/280db0cdd0bd72f31cb82f22d2a726c6_original.jpg?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621894445&amp;frame=1&amp;s=e46f95d28077ee64311cb88686fa2e55">
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text=""
+                           data-caption="Swimming is unavoidable and can even help with fishing but hypothermia can kick in very quickly while wet. Be sure to warm up at a fire"
+                           data-id="33610987">
+                        <figure>
+                          <img alt="" class="fit js-lazy-image"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/610/987/2d58c3b94909dc678a03e823a533fa34_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621671607&amp;auto=format&amp;gif-q=50&amp;q=92&amp;s=c009248d3bbbd75b2a57e02e49800822"
+                               src="https://ksr-ugc.imgix.net/assets/033/610/987/2d58c3b94909dc678a03e823a533fa34_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621671607&amp;auto=format&amp;frame=1&amp;q=92&amp;s=3570a0948979b59b5c5400fe3015cb3a">
+                          <figcaption class="px2">Swimming is unavoidable and can even help with fishing but hypothermia
+                            can kick in very quickly while wet. Be sure to warm up at a fire
+                          </figcaption>
+                        </figure>
+
+                      </div>
+
+
+                      <br>
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33636436">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/636/436/7664197e37e327bf573b1d929a06208f_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621884026&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=26db724d3c36b88711bcbc0acdefcb29"
+                               src="https://ksr-ugc.imgix.net/assets/033/636/436/7664197e37e327bf573b1d929a06208f_original.png?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621884026&amp;frame=1&amp;s=808afd0f943e1a231eacc040ea49d1b0">
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33639013">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/639/013/f9bab3c18282ebc3f9c0666cb1b22ebc_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621897724&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=e7ccb9f67a457ba2ccd0c5552eab4de8"
+                               src="https://ksr-ugc.imgix.net/assets/033/639/013/f9bab3c18282ebc3f9c0666cb1b22ebc_original.png?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621897724&amp;frame=1&amp;s=cc66703a651d23b726a3d5193305114a">
+                        </figure>
+
+                      </div>
+
+
+                      <p>When the berries rot and the animals hibernate, you'll need to have a good stock of food
+                        preserved. When temperatures plummet at the height of winter, <span class="bold">stay near your fire</span>
+                        or <span class="bold">bundle yourself up in furs</span> to survive. And while water can be easy
+                        to come by in the wilderness, it's rarely clean. Be sure to <span
+                          class="bold">filter or boil it</span> <span class="bold">first</span>!</p>
+                      <br>
+
+                      <div class="template asset" contenteditable="false" data-alt-text=""
+                           data-caption="Fires can be a valuable source of wood ash and charcoal in the early game before you've set up a charcoal kiln"
+                           data-id="33640877">
+                        <figure>
+                          <img alt="" class="fit js-lazy-image"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/640/877/86a395e15a32be3634f9e0757636e695_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621912555&amp;auto=format&amp;gif-q=50&amp;q=92&amp;s=e0c95a4d1cb2bd2e3050d2a16ac5b36f"
+                               src="https://ksr-ugc.imgix.net/assets/033/640/877/86a395e15a32be3634f9e0757636e695_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621912555&amp;auto=format&amp;frame=1&amp;q=92&amp;s=6e8f207ee3bc98815d222accaf04e1a6">
+                          <figcaption class="px2">Fires can be a valuable source of wood ash and charcoal in the early
+                            game before you've set up a charcoal kiln
+                          </figcaption>
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33636464">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/636/464/27c40b8ace5d71d6d6695ea71d88e0e8_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621884139&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=5fabbaf110f435a9dbfeb9f62382d33c"
+                               src="https://ksr-ugc.imgix.net/assets/033/636/464/27c40b8ace5d71d6d6695ea71d88e0e8_original.png?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621884139&amp;frame=1&amp;s=ca22692779df1396f774e355a0a15bb5">
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text=""
+                           data-caption="Food doesn't just grow on trees you know" data-id="33607831">
+                        <figure>
+                          <img alt="" class="fit js-lazy-image"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/607/831/c8af683784784ad40068a9f4eb2ad269_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621636096&amp;auto=format&amp;gif-q=50&amp;q=92&amp;s=c6a4a0175c88b934c27c2c9209690f80"
+                               src="https://ksr-ugc.imgix.net/assets/033/607/831/c8af683784784ad40068a9f4eb2ad269_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621636096&amp;auto=format&amp;frame=1&amp;q=92&amp;s=e0108ea99d79b8d66e1b0c1e69611298">
+                          <figcaption class="px2">Food doesn't just grow on trees you know</figcaption>
+                        </figure>
+
+                      </div>
+
+
+                      <p>Finding food in the wild can be difficult, so why not create a reliable source instead? You
+                        won’t be starting out with a pocket full of turnip seeds, but <span class="bold">farming can provide an abundance of food</span>
+                        in the late-game when you're able to invest your time. And <span
+                          class="bold">different biomes</span> are <span class="bold">suited to different crops</span>
+                        so choose your <span class="bold">farm location</span> carefully.</p>
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33636468">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/636/468/0f1766796802d3c0836f89ffe3033900_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621884170&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=34a4b3ed4d7561426c19362fe396ca2b"
+                               src="https://ksr-ugc.imgix.net/assets/033/636/468/0f1766796802d3c0836f89ffe3033900_original.png?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621884170&amp;frame=1&amp;s=881aa0bb699b06117f87c5c60835dd14">
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33636508">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/636/508/b64bcc07b748134538f81c7c46247dfb_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621884387&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=9bc4de0d1fa8d634af05ba8f5e3970c3"
+                               src="https://ksr-ugc.imgix.net/assets/033/636/508/b64bcc07b748134538f81c7c46247dfb_original.png?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621884387&amp;frame=1&amp;s=eb7f8c8ef6942156afff4edabd9fa893">
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33607834">
+                        <figure>
+                          <img alt="" class="fit js-lazy-image"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/607/834/44615331155432863a4c005569593958_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621636133&amp;auto=format&amp;gif-q=50&amp;q=92&amp;s=a2f2a3f19f242d81bc88996d94a52021"
+                               src="https://ksr-ugc.imgix.net/assets/033/607/834/44615331155432863a4c005569593958_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621636133&amp;auto=format&amp;frame=1&amp;q=92&amp;s=d7a991a2f82afb161baa1c14b88c5724">
+                        </figure>
+
+                      </div>
+
+
+                      <p>The <span class="bold">waters are teeming with life</span>, but how do you reach it? Craft a
+                        <span class="bold">simple fishing pole</span> to catch a bite close to shore. For deeper waters,
+                        you will need different tools. Or you could try <span class="bold">wading into the water</span>
+                        yourself, just be careful you don’t <span class="bold">scare the fish away</span> or <span
+                          class="bold">get too cold</span> with no way to dry off.</p>
+
+                      <div class="template asset" contenteditable="false" data-alt-text=""
+                           data-caption="Some of the fish you can find in the Forest and Swamp biomes"
+                           data-id="33629142">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/629/142/d92e0e7ef5e7826db3fec1dfad80e930_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621838343&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=70b6d40e1f8aeb623c0797ed312944b5"
+                               src="https://ksr-ugc.imgix.net/assets/033/629/142/d92e0e7ef5e7826db3fec1dfad80e930_original.png?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621838343&amp;frame=1&amp;s=63240487cf305ae5328d00f430898a67">
+                          <figcaption class="px2">Some of the fish you can find in the Forest and Swamp biomes
+                          </figcaption>
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33636592">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/636/592/faec57912b81ab7954799136f02009ef_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621884910&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=deb59b5e88a447e605e19d9bc5372d4f"
+                               src="https://ksr-ugc.imgix.net/assets/033/636/592/faec57912b81ab7954799136f02009ef_original.png?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621884910&amp;frame=1&amp;s=78c66b5ff8ea70c5db920d154d5b6786">
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text=""
+                           data-caption="Catch sight of an animal's tracks and you might be well fed for a week. Animals are fast though so best to be sneaky"
+                           data-id="33638819">
+                        <figure>
+                          <img alt="" class="fit js-lazy-image"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/638/819/202002d0ee374fc0ec209b891311196d_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621896293&amp;auto=format&amp;gif-q=50&amp;q=92&amp;s=3ccc67e5a051a2cf0bb1c13b31e7e37b"
+                               src="https://ksr-ugc.imgix.net/assets/033/638/819/202002d0ee374fc0ec209b891311196d_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621896293&amp;auto=format&amp;frame=1&amp;q=92&amp;s=2a0da74faa5643ff35f2c648637d711d">
+                          <figcaption class="px2">Catch sight of an animal's tracks and you might be well fed for a
+                            week. Animals are fast though so best to be sneaky
+                          </figcaption>
+                        </figure>
+
+                      </div>
+
+
+                      <p><span class="bold">Track your prey</span> or lure them to you. All animals in <span
+                        class="text-italic">Wanderlost </span><span class="bold">leave footprints</span> behind which
+                        can give you a decent picture of the <span class="bold">local wildlife</span> if you can read
+                        the ground. Hunting &amp; tracking an animal isn't easy, they're fast and you could be gone for
+                        a day or more. Being adequately prepared, with a <span class="bold">leather waterskin</span> and
+                        some <span class="bold">dried meats</span>, can make the difference between a successful hunt
+                        and a failed one. Animals provide valuable <span class="bold">food</span>, <span class="bold">skins</span>,
+                        and other crafting supplies like <span class="bold">bones</span> and <span
+                          class="bold">animal</span> <span class="bold">fat</span>. Stalk your prey using a bow or
+                        rifle, or you can let your ingenuity do the work by <span class="bold">setting traps</span>.</p>
+                      <br>
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33636637">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/636/637/5c508ea9c9e4e8fe59143ed0631df810_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621885185&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=b6a11b391c1fc5f1e24b5ea981811a77"
+                               src="https://ksr-ugc.imgix.net/assets/033/636/637/5c508ea9c9e4e8fe59143ed0631df810_original.png?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621885185&amp;frame=1&amp;s=1eae2630153b59eb521a39060f65554f">
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text=""
+                           data-caption="Defending yourself from undead legions is just another day in the post-apocalypse"
+                           data-id="33610311">
+                        <figure>
+                          <img alt="" class="fit js-lazy-image"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/610/311/119c27adf6ec792308584c2ac0587fff_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621662821&amp;auto=format&amp;gif-q=50&amp;q=92&amp;s=3be80abe8fdabdc8b37fc65f37ad81b7"
+                               src="https://ksr-ugc.imgix.net/assets/033/610/311/119c27adf6ec792308584c2ac0587fff_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621662821&amp;auto=format&amp;frame=1&amp;q=92&amp;s=1091f446229116a5c94151f45887e0dd">
+                          <figcaption class="px2">Defending yourself from undead legions is just another day in the
+                            post-apocalypse
+                          </figcaption>
+                        </figure>
+
+                      </div>
+
+
+                      <p>An encounter with zombies can be <span class="bold">deadly</span>. Making sure you have the
+                        <span class="bold">right tools</span> and weapons to <span
+                          class="bold">suit your playstyle</span> is key. Each weapon has <span class="bold">advantages and disadvantages</span>
+                        so lining up your character's strengths with your weapon's strengths can make you a <span
+                          class="bold">deadly force</span> in post-apocalyptic America.</p>
+                      <br>
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33636674">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/636/674/96f4bc3d7ffeda98ccac4bcc6fd67107_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621885384&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=7e9494cf784e649a4b7f9f7473e53b72"
+                               src="https://ksr-ugc.imgix.net/assets/033/636/674/96f4bc3d7ffeda98ccac4bcc6fd67107_original.png?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621885384&amp;frame=1&amp;s=44c87d5b50a554b120dba95623f8c84c">
+                        </figure>
+
+                      </div>
+
+
+                      <p><span class="bold">Bub can't survive on good looks alone</span>. Here are some of the items,
+                        tools, and weapons that help Bub live to see another day:</p>
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33639576">
+                        <figure>
+                          <img alt="" class="fit js-lazy-image"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/639/576/fb760b6cdeffcca1f4b3875a67010abe_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621901852&amp;auto=format&amp;gif-q=50&amp;q=92&amp;s=7f829c7aff4f7f08bff972ed722e2514"
+                               src="https://ksr-ugc.imgix.net/assets/033/639/576/fb760b6cdeffcca1f4b3875a67010abe_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621901852&amp;auto=format&amp;frame=1&amp;q=92&amp;s=e1d0a8b0b60356938aac0ce0f437ae09">
+                        </figure>
+
+                      </div>
+
+
+                      <ul>
+                        <li>&nbsp;<span class="bold">Spears </span>let you maintain distance, but can be fragile</li>
+                        <li>&nbsp;<span class="bold">Blunt weapons</span> can stun zombies and sometimes even knock them
+                          back
+                        </li>
+                        <li>&nbsp;<span class="bold">Bladed</span> <span class="bold">weapons</span> slice through your
+                          enemies, striking more than one target
+                        </li>
+                        <li>&nbsp;<span class="bold">Bows </span>are stealthy and powerful, but can be slower to use&nbsp;
+                        </li>
+                        <li>&nbsp;<span class="bold">Guns </span>are unparalleled in destructive force, however, the
+                          noise will draw attention and ammo isn't cheap
+                        </li>
+                      </ul>
+                      <br>
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33636735">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/636/735/75aab370f58b5cd48e036fa2c34e6d22_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621885725&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=d21aa7550337f46343fb43012f313d5b"
+                               src="https://ksr-ugc.imgix.net/assets/033/636/735/75aab370f58b5cd48e036fa2c34e6d22_original.png?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621885725&amp;frame=1&amp;s=46127e00882fbf8770ab6f645f53a131">
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text=""
+                           data-caption="Spending time gathering resources provides the materials to craft better tools, build a fortified shelter, and procure lethal weapons. "
+                           data-id="33610177">
+                        <figure>
+                          <img alt="" class="fit js-lazy-image"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/610/177/9d597ca8ee92d3263eb1700abc29b9f2_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621660792&amp;auto=format&amp;gif-q=50&amp;q=92&amp;s=2925e72605d0043d11a84f4c76d99fc9"
+                               src="https://ksr-ugc.imgix.net/assets/033/610/177/9d597ca8ee92d3263eb1700abc29b9f2_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621660792&amp;auto=format&amp;frame=1&amp;q=92&amp;s=859da8cedd3f6f2e45e206166045de6e">
+                          <figcaption class="px2">Spending time gathering resources provides the materials to craft
+                            better tools, build a fortified shelter, and procure lethal weapons.
+                          </figcaption>
+                        </figure>
+
+                      </div>
+
+
+                      <p>Common resources like <span class="bold">wood </span>and <span class="bold">stone </span>are
+                        highly useful, but for more advanced crafting recipes you may have to scour the world for <span
+                          class="bold">rare biomes</span> that harbor crucial materials. For example, you can find <span
+                          class="bold">peat </span>and <span class="bold">bog-iron</span> in <span
+                          class="bold">the bog</span>. Diverse world biomes motivate exploration and can affect what
+                        makes the most successful <span class="bold">base location</span>.</p>
+                      <br>
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33637499">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/637/499/58005312f396ede5e01e4f97d73b1c40_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621889310&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=8b0e2316d37299d032113a7b4fbd728b"
+                               src="https://ksr-ugc.imgix.net/assets/033/637/499/58005312f396ede5e01e4f97d73b1c40_original.png?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621889310&amp;frame=1&amp;s=a403d2f82caa49689af38202ea2cf2ab">
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33610033">
+                        <figure>
+                          <img alt="" class="fit js-lazy-image"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/610/033/f4d0483cf1940a52a49d988ad38c3140_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621658788&amp;auto=format&amp;gif-q=50&amp;q=92&amp;s=44a887c51d26b3a07606b43c3aaa94b5"
+                               src="https://ksr-ugc.imgix.net/assets/033/610/033/f4d0483cf1940a52a49d988ad38c3140_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621658788&amp;auto=format&amp;frame=1&amp;q=92&amp;s=520e026a92bf9a7c7f3ba0a8cdfec802">
+                        </figure>
+
+                      </div>
+
+
+                      <p>Protect yourself from the elements and add an extra layer of safety between you and the attacks
+                        of the powerful undead. Equipment in <span class="text-italic">Wanderlost </span>has 4 main
+                        stats, <span class="bold">Armor</span>, <span class="bold">Insulation</span>, <span
+                          class="bold">Temperature</span>, and <span class="bold">Rain Protection.</span> Use the <span
+                          class="bold">hides</span> and resources that you collect to craft clothing and armor capable
+                        of keeping you <span class="bold">dry</span>, <span class="bold">warm</span>, and <span
+                          class="bold">safe </span>from attacks.</p>
+                      <br>
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33636832">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/636/832/3768496c962d549659209ce5ae2710d9_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621886209&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=7189bc69fd649597e4b8e95d5680f75c"
+                               src="https://ksr-ugc.imgix.net/assets/033/636/832/3768496c962d549659209ce5ae2710d9_original.png?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621886209&amp;frame=1&amp;s=c4b47aed286611152743fa3a2b7b41dd">
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text=""
+                           data-caption="A taste of the items that you might find in Wanderlost. Whether crafted or looted this is the stuff that will help you survive"
+                           data-id="33611041">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/611/041/538e9369ecb47d5d544935d66166816c_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621672192&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=6e5bb8ba086b2fc7e153c238043a282d"
+                               src="https://ksr-ugc.imgix.net/assets/033/611/041/538e9369ecb47d5d544935d66166816c_original.png?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621672192&amp;frame=1&amp;s=4c042c997b6456f81371f3a11b103793">
+                          <figcaption class="px2">A taste of the items that you might find in Wanderlost. Whether
+                            crafted or looted this is the stuff that will help you survive
+                          </figcaption>
+                        </figure>
+
+                      </div>
+
+
+                      <p>It's important to make use of the downtime in between hunting and looting expeditions. Use this
+                        precious time to <span class="bold">craft game arrows</span>, <span
+                          class="bold">weave cordage</span> for infrastructure, make <span
+                          class="bold">flesh hides</span> for tanning, <span class="bold">reload your weapons</span>,
+                        and more - preparation is key to survival!</p>
+                      <br>
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33638510">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/638/510/08b70188697f4d04fc1273af7d4bc92a_original.jpg?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621894512&amp;auto=format&amp;frame=1&amp;q=92&amp;s=eaf06ae2cf42a5c4d878fcfce2014704"
+                               src="https://ksr-ugc.imgix.net/assets/033/638/510/08b70188697f4d04fc1273af7d4bc92a_original.jpg?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621894512&amp;frame=1&amp;s=1cc48cef26ee925e915a0be3ff474ee2">
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33636857">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/636/857/257342273e5d9fc7d86f19552334fed4_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621886371&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=a7ac9e803bb4086afd2428b38353cd85"
+                               src="https://ksr-ugc.imgix.net/assets/033/636/857/257342273e5d9fc7d86f19552334fed4_original.png?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621886371&amp;frame=1&amp;s=9f87c824163023dbf68ea037ffc346dd">
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text=""
+                           data-caption="Explore a limitless world with unique biomes. Discover a wide variety of biome-specific resources and remember: the further you venture from your base, the higher the rewards will be"
+                           data-id="33609931">
+                        <figure>
+                          <img alt="" class="fit js-lazy-image"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/609/931/ea6006628658e6e91f7920f64a989295_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621657711&amp;auto=format&amp;gif-q=50&amp;q=92&amp;s=cd0b076225f64d1326f0f21321b90790"
+                               src="https://ksr-ugc.imgix.net/assets/033/609/931/ea6006628658e6e91f7920f64a989295_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621657711&amp;auto=format&amp;frame=1&amp;q=92&amp;s=92a8d0b0ad8360e4d2075708e2ddee57">
+                          <figcaption class="px2">Explore a limitless world with unique biomes. Discover a wide variety
+                            of biome-specific resources and remember: the further you venture from your base, the higher
+                            the rewards will be
+                          </figcaption>
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33639241">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/639/241/47483c93387a0f80e846341af8db66e0_original.jpg?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621899015&amp;auto=format&amp;frame=1&amp;q=92&amp;s=390a79ddc83cd2dbcf9fe34186da85cc"
+                               src="https://ksr-ugc.imgix.net/assets/033/639/241/47483c93387a0f80e846341af8db66e0_original.jpg?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621899015&amp;frame=1&amp;s=a60012bf5354f39bb772f3a57db3f345">
+                        </figure>
+
+                      </div>
+
+
+                      <br>
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33637428">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/637/428/4911cbe8b7c84f514558be1e8cafa23f_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621889071&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=68a28360725dbe8feabd17992ad22a0c"
+                               src="https://ksr-ugc.imgix.net/assets/033/637/428/4911cbe8b7c84f514558be1e8cafa23f_original.png?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621889071&amp;frame=1&amp;s=67c7b1d259762d305f0fe1bbe5906755">
+                        </figure>
+
+                      </div>
+
+
+                      <p>As big as the world is, you are certainly not alone. <span class="bold">Animals </span>in <span
+                        class="text-italic">Wanderlost</span> range from the common <span class="bold">squirrel </span>or
+                        <span class="bold">rabbit </span>in temperate biomes to the exotic, deadly <span class="bold">panther </span>of
+                        the rainforest or <span class="bold">alligator </span>of the swamp.</p>
+
+                      <div class="template asset" contenteditable="false" data-alt-text=""
+                           data-caption="Many creatures in Wanderlost can provide vital resources but best not to poke the literal bear "
+                           data-id="33609015">
+                        <figure>
+                          <img alt="" class="fit js-lazy-image"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/609/015/7832bb9aec576e8d9f4f94c636247a12_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621646504&amp;auto=format&amp;gif-q=50&amp;q=92&amp;s=29acb707702e01b472c97719c9d6dc3f"
+                               src="https://ksr-ugc.imgix.net/assets/033/609/015/7832bb9aec576e8d9f4f94c636247a12_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621646504&amp;auto=format&amp;frame=1&amp;q=92&amp;s=4744ec361a05c5d229c646647b99e6ea">
+                          <figcaption class="px2">Many creatures in Wanderlost can provide vital resources but best not
+                            to poke the literal bear
+                          </figcaption>
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33639980">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/639/980/4d3542cab0a781bf036c8fc17aa162a8_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621905626&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=5e296c7a7752afed5eca89d9d893276d"
+                               src="https://ksr-ugc.imgix.net/assets/033/639/980/4d3542cab0a781bf036c8fc17aa162a8_original.png?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621905626&amp;frame=1&amp;s=7c4102002241d57dbd5e84fb8bd6d1f4">
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33639886">
+                        <figure>
+                          <img alt="" class="fit js-lazy-image"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/639/886/96ec1fb3d6833221b56e639029a65cce_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621904679&amp;auto=format&amp;gif-q=50&amp;q=92&amp;s=b1209f9bedeefc7bf657c3ec7d381497"
+                               src="https://ksr-ugc.imgix.net/assets/033/639/886/96ec1fb3d6833221b56e639029a65cce_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621904679&amp;auto=format&amp;frame=1&amp;q=92&amp;s=8dbf13226efc62ccf21edea9bfcf30e5">
+                        </figure>
+
+                      </div>
+
+
+                      <p>Zombies in <span class="text-italic">Wanderlost </span>differ in more than appearance. Each
+                        zombie type has unique behaviors that significantly change the tactics and strategy of combat.
+                      </p>
+                      <ul>
+                        <li>&nbsp;<span class="bold">Basic Zombies</span> are stock-standard. Possessing average speed
+                          and capable of only close-ranged attacks, they might not seem threatening... until you're
+                          surrounded
+                        </li>
+                        <li>&nbsp;<span class="bold">Acid Zombies</span> are mercifully rare as they tend to linger in
+                          the Swamp biome and radioactive POIs. Their acid spit is fast, lethal, and long-ranged. Even
+                          if you avoid the spit, you'll have to contend with the puddle of acid left behind
+                        </li>
+                        <li>&nbsp;<span class="bold">Chubby Zombies</span> seem harmless at first glance but what they
+                          lack in speed they make up for in range and power. By slamming the ground with their fists,
+                          these zombies can send out a devastating shockwave
+                        </li>
+                        <li>&nbsp;<span class="bold">Grapple Zombies</span> are one of the least dangerous, yet most
+                          dreaded zombies you'll encounter. They may deal minimal damage but they'll jump on your back,
+                          leaving you slow and encumbered just long enough for their Zombie friends to close in
+                        </li>
+                      </ul>
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33637530">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/637/530/c14763081416074993fb48f9e9afa873_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621889477&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=dbc5f498de3d278c8fd86f1d0ec98f9d"
+                               src="https://ksr-ugc.imgix.net/assets/033/637/530/c14763081416074993fb48f9e9afa873_original.png?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621889477&amp;frame=1&amp;s=b34d05132d4dbeb2d3aa708e1bc259ba">
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text=""
+                           data-caption="Roads can be a reliable way to find Points of Interest but pathways to urban centers carry increased risks"
+                           data-id="33618209">
+                        <figure>
+                          <img alt="" class="fit js-lazy-image"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/618/209/e72cf2612813c5be2e1bea60a16acf92_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621727765&amp;auto=format&amp;gif-q=50&amp;q=92&amp;s=1f6e7f8179206d20d0a83826eedb4681"
+                               src="https://ksr-ugc.imgix.net/assets/033/618/209/e72cf2612813c5be2e1bea60a16acf92_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621727765&amp;auto=format&amp;frame=1&amp;q=92&amp;s=e5435411d3989761ce0affe08e83e628">
+                          <figcaption class="px2">Roads can be a reliable way to find Points of Interest but pathways to
+                            urban centers carry increased risks
+                          </figcaption>
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33624335">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/624/335/70397d317aa733c6f03b51a543a68e06_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621793997&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=d2bdde4dcbd089cf975a3d1c1619c178"
+                               src="https://ksr-ugc.imgix.net/assets/033/624/335/70397d317aa733c6f03b51a543a68e06_original.png?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621793997&amp;frame=1&amp;s=004c11fbb9bb3e6b473f90ed7f852953">
+                        </figure>
+
+                      </div>
+
+
+                      <p>Exploration involves great risk because the abandoned structures, towns, and cities of old
+                        America have the <span class="bold">highest zombie density</span>. Despite the risks, it may
+                        hold the <span class="bold">most valuable loot</span> in the game. After all, guns don't grow on
+                        trees.</p>
+                      <br>
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33637657">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/637/657/2adfe0b68b012fa9e292f55d223b7376_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621890068&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=d5d44f88b502c2ab7f3ac8b76cdfa2e4"
+                               src="https://ksr-ugc.imgix.net/assets/033/637/657/2adfe0b68b012fa9e292f55d223b7376_original.png?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621890068&amp;frame=1&amp;s=23b16fd351ffd83484e86fe7b0f9faaf">
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33610376">
+                        <figure>
+                          <img alt="" class="fit js-lazy-image"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/610/376/62cff25b653dd6680c622faa07d1e5e8_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621663743&amp;auto=format&amp;gif-q=50&amp;q=92&amp;s=be79bb9b117861eaf1b791acbe1af6e5"
+                               src="https://ksr-ugc.imgix.net/assets/033/610/376/62cff25b653dd6680c622faa07d1e5e8_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621663743&amp;auto=format&amp;frame=1&amp;q=92&amp;s=4cf5b0008fdbd37c66e865c827fe2662">
+                        </figure>
+
+                      </div>
+
+
+                      <p>While fighting zombies is necessary for survival, <span class="text-italic">Wanderlost </span>also
+                        has deep RPG mechanics. Each level-up yields primary attributes such as <span class="bold">strength</span>,
+                        <span class="bold">intelligence</span>, <span class="bold">constitution</span>, and <span
+                          class="bold">dexterity</span>. The way you build Bub determines his strengths and weaknesses.&nbsp;
+                      </p>
+                      <p>Are you an <span class="bold">assassin</span> who strikes quick and fatal blows before escaping
+                        into the darkness? Or perhaps a <span class="bold">rifle-toting gunslinger</span> capable of
+                        taking on an entire horde?&nbsp;You decide!</p>
+                      <br>
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33637688">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/637/688/28cb4b091458d75e15d00aa581b23928_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621890232&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=d6b7609940deb56d1fa1a730fcac7dd2"
+                               src="https://ksr-ugc.imgix.net/assets/033/637/688/28cb4b091458d75e15d00aa581b23928_original.png?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621890232&amp;frame=1&amp;s=ff36660a6e2f8450a4de6f9a1773b507">
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33610437">
+                        <figure>
+                          <img alt="" class="fit js-lazy-image"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/610/437/5bd90e9450da67602404b41b4eb846cd_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621664733&amp;auto=format&amp;gif-q=50&amp;q=92&amp;s=4e8601f03aa2308316316dd65a6328a6"
+                               src="https://ksr-ugc.imgix.net/assets/033/610/437/5bd90e9450da67602404b41b4eb846cd_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621664733&amp;auto=format&amp;frame=1&amp;q=92&amp;s=f2ebbf18db6e985c8291808e4c558a71">
+                        </figure>
+
+                      </div>
+
+
+                      <p><span class="bold">Halcyon </span>is one of the few survivor holdouts in post-apocalyptic
+                        America. You're likely to make some friends here as well as meet some important shopkeepers and
+                        quest-givers. Living, breathing humans are a bit hard to come by in the post-apocalypse so best
+                        to cherish the ones you've got.</p>
+                      <br>
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33637715">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/637/715/c3097f818bbb6e3d4b27b2619423aa5c_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621890354&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=a474e0edf7387f03443254f75f917009"
+                               src="https://ksr-ugc.imgix.net/assets/033/637/715/c3097f818bbb6e3d4b27b2619423aa5c_original.png?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621890354&amp;frame=1&amp;s=dd858f76153df68566cdef04fa2388d9">
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33638792">
+                        <figure>
+                          <img alt="" class="fit js-lazy-image"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/638/792/a0bd010e62d1c913d77074a2ff8bff14_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621896096&amp;auto=format&amp;gif-q=50&amp;q=92&amp;s=20abb8608d954a8378152851471744df"
+                               src="https://ksr-ugc.imgix.net/assets/033/638/792/a0bd010e62d1c913d77074a2ff8bff14_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621896096&amp;auto=format&amp;frame=1&amp;q=92&amp;s=493e596956e4525e6bb83da37dad2808">
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33640053">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/640/053/6dc676feac4fcb3df6f55215c693a64f_original.jpg?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621906250&amp;auto=format&amp;frame=1&amp;q=92&amp;s=97ea6572e6c9c5d4270f101ae9aa5112"
+                               src="https://ksr-ugc.imgix.net/assets/033/640/053/6dc676feac4fcb3df6f55215c693a64f_original.jpg?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621906250&amp;frame=1&amp;s=fe03c5ec146dca2d5be544f73f0b8b23">
+                        </figure>
+
+                      </div>
+
+
+                      <p><span class="bold">Homesteader Tier</span> and beyond receives <span
+                        class="bold">Pre-Alpha </span>access <span class="bold">after the campaign</span> ends!</p>
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33648266">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/648/266/9b5f8e694e511a75905e8103c79d1533_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621958820&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=3536c7ac218e9804f740a0c3d396fea3"
+                               src="https://ksr-ugc.imgix.net/assets/033/648/266/9b5f8e694e511a75905e8103c79d1533_original.png?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621958820&amp;frame=1&amp;s=02c7128efab28de31ade23b8579427d5">
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33638386">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/638/386/cf46709e758b67711df7a9858972178c_original.jpg?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621893783&amp;auto=format&amp;frame=1&amp;q=92&amp;s=ed3644cb64ae15da0b2e52798185182e"
+                               src="https://ksr-ugc.imgix.net/assets/033/638/386/cf46709e758b67711df7a9858972178c_original.jpg?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621893783&amp;frame=1&amp;s=428670d35d32cd34f2800aa17eb049ec">
+                        </figure>
+
+                      </div>
+
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33640061">
+                        <figure>
+                          <img alt="" class="fit lazyload"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/640/061/cce429c6e75e82efc72f5f4922b4b9c9_original.jpg?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621906294&amp;auto=format&amp;frame=1&amp;q=92&amp;s=409229574ee280e895577bc2ddbed064"
+                               src="https://ksr-ugc.imgix.net/assets/033/640/061/cce429c6e75e82efc72f5f4922b4b9c9_original.jpg?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621906294&amp;frame=1&amp;s=1eb71cd56783aaab6f6ca559b6ae3bce">
+                        </figure>
+
+                      </div>
+
+
+                      <br>
+
+                      <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                           data-id="33618944">
+                        <figure>
+                          <img alt="" class="fit js-lazy-image"
+                               data-src="https://ksr-ugc.imgix.net/assets/033/618/944/4c31a9a84e2b9ba8d35ca116dad0b709_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621734721&amp;auto=format&amp;gif-q=50&amp;q=92&amp;s=d4f1ea96f656fd62dc7a6a8ef52da375"
+                               src="https://ksr-ugc.imgix.net/assets/033/618/944/4c31a9a84e2b9ba8d35ca116dad0b709_original.gif?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621734721&amp;auto=format&amp;frame=1&amp;q=92&amp;s=c525f70b22dc5bd29273af6a077920cc">
+                        </figure>
+
+                      </div>
+
+
+                      <p><span class="bold">We are a bunch of hamsters in a trench coat</span>.&nbsp;</p>
+                      <p>Eli Segal is the programmer and designer for <span class="text-italic">Wanderlost</span>. He
+                        has been working on this project full-time for over a year with the help of a few talented
+                        freelancers for art and other aspects of the game. Eli would like to thank Max, Daniel, Orlando,
+                        Tomas, and Alex for all of their support and passion behind <span
+                          class="text-italic">Wanderlost</span>. With your help, Eli hopes to expand his team and make
+                        <span class="text-italic">Wanderlost</span> a game everyone can enjoy.</p>
+                      <br>
+                      <h1 class="page-anchor" id="h:follow-us">Follow us</h1>
+
+                      <a href="https://discord.gg/wanderlost" rel="noopener" target="_blank">
+                        <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                             data-id="33640064">
+                          <figure>
+                            <img alt="" class="fit lazyload"
+                                 data-src="https://ksr-ugc.imgix.net/assets/033/640/064/8e05b9b0f713099d9681b1db2ef1a347_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621906316&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=2e0b5eede6878ae923a90211b51b7498"
+                                 src="https://ksr-ugc.imgix.net/assets/033/640/064/8e05b9b0f713099d9681b1db2ef1a347_original.png?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621906316&amp;frame=1&amp;s=9470e6c1b0cf3c0d8860c09b00b9812d">
+                          </figure>
+
+                        </div>
+                      </a>
+
+                      <a href="https://store.steampowered.com/app/1403030/Wanderlost/" rel="noopener" target="_blank">
+                        <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                             data-id="33640067">
+                          <figure>
+                            <img alt="" class="fit lazyload"
+                                 data-src="https://ksr-ugc.imgix.net/assets/033/640/067/10cceaf82a8d2428f4d113bfd7f5df25_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621906344&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=289430a08bf956605d0ff1ad6253115c"
+                                 src="https://ksr-ugc.imgix.net/assets/033/640/067/10cceaf82a8d2428f4d113bfd7f5df25_original.png?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621906344&amp;frame=1&amp;s=96451ed7c42b67388d76556f3fe57158">
+                          </figure>
+
+                        </div>
+                      </a>
+
+                      <a href="https://twitter.com/3L1" rel="noopener" target="_blank">
+                        <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                             data-id="33640131">
+                          <figure>
+                            <img alt="" class="fit lazyload"
+                                 data-src="https://ksr-ugc.imgix.net/assets/033/640/131/8cadf0eec6309330a5acfaf23854cd50_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621906893&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=1cf06941e9fad77bd38c680d24186392"
+                                 src="https://ksr-ugc.imgix.net/assets/033/640/131/8cadf0eec6309330a5acfaf23854cd50_original.png?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621906893&amp;frame=1&amp;s=65bd60989ec1eebf268670c7ccc9b355">
+                          </figure>
+
+                        </div>
+                      </a>
+
+                      <a href="https://mailchi.mp/crytivo/wanderlost" rel="noopener" target="_blank">
+                        <div class="template asset" contenteditable="false" data-alt-text="" data-caption=""
+                             data-id="33640069">
+                          <figure>
+                            <img alt="" class="fit lazyload"
+                                 data-src="https://ksr-ugc.imgix.net/assets/033/640/069/7fd398999bd4910c4707a1d48a4c72ad_original.png?ixlib=rb-4.0.2&amp;w=680&amp;fit=max&amp;v=1621906363&amp;auto=format&amp;frame=1&amp;lossless=true&amp;s=4c2a3ddfebeb8030b8500659105b0a4b"
+                                 src="https://ksr-ugc.imgix.net/assets/033/640/069/7fd398999bd4910c4707a1d48a4c72ad_original.png?ixlib=rb-4.0.2&amp;auto=compress%2Cformat&amp;q=1&amp;w=680&amp;fit=max&amp;v=1621906363&amp;frame=1&amp;s=91adbc834686c268a79e360a4135f6a2">
+                          </figure>
+
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /.blog-main -->
+
+        <aside class="col-md-4 blog-sidebar">
+          <div class="project-detail-user">
+            <div class="d-flex justify-content-center">
+              <div class="project-detail-user-avatar">
+                <img [routerLink]="['/profile', projectDetails?.author?.id]" alt=""
+                     class="cursor-pointer"
+                     src="{{projectDetails.author.avatar}}">
+              </div>
+            </div>
+            <div class="p-4 mb-3 bg-light rounded project-detail-user-detail">
+              <h4 class="">{{projectDetails?.author?.fullName}}</h4>
+              <p class="project-detail-user-about">{{projectDetails?.author?.about}}</p>
+              <a [routerLink]="['/profile', projectDetails?.author?.id]" class="material-color text-decoration-none">See
+                more</a>
+            </div>
+          </div>
+
+          <!--          <div class="card mb-4 shadow-sm" *ngFor="let backOption of projectDetails?.backOptions">-->
+          <!--            <div class="card-header">-->
+          <!--              <h4 class="my-0 font-weight-normal"></h4>-->
+          <!--            </div>-->
+          <!--            <div class="card-body">-->
+          <!--              <h1 class="card-title pricing-card-title text-center">${{backOption?.pledge}}</h1>-->
+          <!--              <ul class="list-unstyled mt-3 text-center mb-4">-->
+          <!--                <li *ngFor="let reward of backOption?.rewards">{{reward}}</li>-->
+          <!--              </ul>-->
+          <!--              <button class="container-fluid mb-3" color="primary" mat-raised-button-->
+          <!--                      type="button">Select this reward-->
+          <!--              </button>-->
+          <!--            </div>-->
+          <!--          </div>-->
+          <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+              <h4 class="my-0 font-weight-normal"></h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title text-center">$20</h1>
+              <div class="body-100 dark-grey-500 lh3 text-prewrap mb4 mr3 mb-3">You will get one copy of the game at
+                release,
+                digital wallpapers, our original soundtrack, and your name in the credits as a thank you!
+              </div>
+              <ul class="type-14 ml3 soft-black medium mb2 pl2">
+                <li class="list-disc">🏅 Backer Title</li>
+                <li class="list-disc">💿 (1) Digital Game Copy on Steam</li>
+                <li class="list-disc">🖼️ Digital Wallpapers</li>
+                <li class="list-disc">✍️ Name in the Credits</li>
+                <li class="list-disc">🎵 Original Soundtrack</li>
+              </ul>
+              <button class="container-fluid mb-3" color="primary" mat-raised-button
+                      type="button">Select this reward
+              </button>
+            </div>
+          </div>
+          <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+              <h4 class="my-0 font-weight-normal"></h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title text-center">$40</h1>
+              <div class="body-100 dark-grey-500 lh3 text-prewrap mb4 mr3 mb-3">Receive Beta Access, your name on the
+                'Memorial to the Fallen' in the town square, an exclusive in-game backpack, and Discord
+                Backer title!
+              </div>
+              <ul class="type-14 ml3 soft-black medium mb2 pl2">
+                <li class="list-disc">🪓 (1) Beta Access Key on Steam</li>
+                <li class="list-disc">🏅 Backer Title</li>
+                <li class="list-disc">🖼️ Digital Wallpapers</li>
+                <li class="list-disc">✍️ Name in the Credits</li>
+                <li class="list-disc">👑 Early Supporter Title</li>
+                <li class="list-disc">🎒 Exclusive Backpack</li>
+                <li class="list-disc">🎵 Original Soundtrack</li>
+              </ul>
+              <button class="container-fluid mb-3" color="primary" mat-raised-button
+                      type="button">Select this reward
+              </button>
+            </div>
+          </div>
+          <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+              <h4 class="my-0 font-weight-normal"></h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title text-center">$100</h1>
+              <div class="body-100 dark-grey-500 lh3 text-prewrap mb4 mr3 mb-3">Own a Exclusive Medieval
+                Furniture Set for your home and an Artic Fox (Rare Animal Exclusive).
+              </div>
+              <ul class="type-14 ml3 soft-black medium mb2 pl2">
+                <li class="list-disc">🪑 Exclusive Furniture</li>
+                <li class="list-disc">🦊 Arctic Fox (Rare Animal Exclusive)</li>
+                <li class="list-disc">🥇 Golden Weapons (3) OR Sparkling Tools (2)</li>
+                <li class="list-disc">⚒️ (1) Alpha Access Key on Steam</li>
+                <li class="list-disc">🌱 Pre-Alpha Access After Campaign Ends</li>
+                <li class="list-disc">🏅 Backer Title</li>
+                <li class="list-disc">🖼️ Digital Wallpapers</li>
+                <li class="list-disc">✍️ Name in the Credits</li>
+                <li class="list-disc">👑 Early Supporter Title</li>
+                <li class="list-disc">🎒 Exclusive Backpack</li>
+                <li class="list-disc">📗 Digital Bushcraft Book</li>
+                <li class="list-disc">🎵 Original Soundtrack</li>
+              </ul>
+              <button class="container-fluid mb-3" color="primary" mat-raised-button
+                      type="button">Select this reward
+              </button>
+            </div>
+          </div>
+        </aside><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+    </mat-tab>
+
+    <mat-tab label="Comments">
+      <div class="container">
+        <div class="row project-comment-section">
+          <div class="col-md-8">
+            <div *ngFor="let comment of projectComments" class="media g-mb-30 media-comment">
+              <img [routerLink]="['/profile', projectDetails?.author?.id]"
+                   alt="image"
+                   class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15 cursor-pointer"
+                   src="{{comment?.author?.avatar}}">
+              <div class="media-body u-shadow-v18 g-bg-secondary px-4 pt-4">
+                <div class="g-mb-15 d-flex justify-content-between">
+                  <div>
+                    <h5 class="h5 g-color-gray-dark-v1 mb-0">{{comment?.author?.fullName}}</h5>
+                    <span class="g-color-gray-dark-v4 g-font-size-12">{{comment?.createdAt | date:'medium'}}</span>
+                  </div>
+                  <svg class="bi bi-x-square"
+                       fill="currentColor" height="16" viewBox="0 0 16 16" width="16"
+                       xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                    <path
+                      d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                  </svg>
+                </div>
+                <p class="mt-3">{{comment?.message}}</p>
+              </div>
+            </div>
+          </div>
+          <aside *ngIf="currentUser" class="col-md-4 blog-sidebar">
+            <form (ngSubmit)="saveComment()">
+              <mat-form-field class="example-full-width">
+                <mat-label>Leave a comment</mat-label>
+                <textarea [formControl]="commentFormControl" matInput placeholder="Ex. It makes me feel..."></textarea>
+              </mat-form-field>
+              <button [disabled]="noWhitespaceValidator(commentFormControl)" class="container-fluid mb-3"
+                      color="primary" mat-raised-button
+                      type="submit">Submit comment
+              </button>
+            </form>
+          </aside>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="FAQ">
+      <div class="project-faq">
+        <h3 class="mb-4">Frequently Asked Questions</h3>
+        <mat-accordion class="example-headers-align" multi>
+          <mat-expansion-panel *ngFor="let faq of projectDetails?.faqs">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{faq.question}}
+              </mat-panel-title>
+              <!--              <mat-panel-description>-->
+              <!--                Type your name and age-->
+              <!--              </mat-panel-description>-->
+            </mat-expansion-panel-header>
+            {{faq.answer}}
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+</main>

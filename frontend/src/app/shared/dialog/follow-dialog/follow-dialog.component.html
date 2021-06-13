@@ -1,0 +1,20 @@
+<h1 class="ml-3" mat-dialog-title>{{data.type === FOLLOWING ? 'Following' : 'Followers'}}</h1>
+<div mat-dialog-content>
+  <mat-list class="mb-1">
+    <mat-list-item
+      *ngFor="let user of data.type === FOLLOWING ? data.visitUserProfile.following : data.visitUserProfile.followers"
+      class="border-bottom h-auto py-2 cursor-pointer">
+      <img [routerLink]="['/profile', user.id]" alt="avatar" class="mr-4 avatar" mat-dialog-close src="{{user.avatar}}">
+      <div [routerLink]="['/profile', user.id]" class="d-flex flex-column mr-5" mat-dialog-close>
+        <p class="my-0">{{user.fullName}}</p>
+        <p class="small text-muted my-0">{{user.username}}</p>
+      </div>
+      <button (click)="onFollowButton(user)" *ngIf="isNotCurrentUser(user) && !isFollowerForCurrentUser(user)"
+              class="ml-auto" color="primary" mat-raised-button>Follow
+      </button>
+      <button (click)="onUnfollowButton(user)" *ngIf="isNotCurrentUser(user) && isFollowerForCurrentUser(user)"
+              class="ml-auto" color="warn" mat-raised-button>Unfollow
+      </button>
+    </mat-list-item>
+  </mat-list>
+</div>

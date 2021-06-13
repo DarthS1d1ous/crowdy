@@ -7,6 +7,7 @@ export class User {
               public createdAt: Date,
               public birthday: Date,
               public avatar: string,
+              public about: string,
               public roles: Role[]) {
   }
 }

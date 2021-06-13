@@ -7,6 +7,8 @@ import {map, switchMap} from "rxjs/operators";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Category} from "../../model/category";
 import {Project} from "../../model/project.model";
+import {ProjectDetails} from "../../model/dto/project-details";
+import {Comment} from "../../model/comment";
 
 @Injectable()
 export class ProjectEffects {
@@ -38,8 +40,37 @@ export class ProjectEffects {
     })
   ), {dispatch: false});
 
+  fetchProjectDetail = createEffect((): any => this.actions$.pipe(
+    ofType(ProjectsActions.FETCH_PROJECT_DETAIL),
+    switchMap((data: ProjectsActions.FetchProjectDetail) =>
+      this.http.get<ProjectDetails>(`http://localhost:8082/projectsDetails/${data.payload}`)),
+    map(projectDetails => {
+      console.log(projectDetails.createdAt)
+      return new ProjectsActions.SetProjectDetail(projectDetails);
+    })
+  ));
+
+  fetchProjectComments = createEffect((): any => this.actions$.pipe(
+    ofType(ProjectsActions.FETCH_PROJECT_COMMENTS),
+    switchMap((data: ProjectsActions.FetchProjectComments) =>
+      this.http.get<Comment[]>(`http://localhost:8082/projects/${data.payload}/comments`)),
+    map(comments => {
+      return new ProjectsActions.SetProjectComments(comments);
+    })
+  ));
+
+  saveProjectComment = createEffect((): any => this.actions$.pipe(
+    ofType(ProjectsActions.SAVE_PROJECT_COMMENT),
+    switchMap((data: ProjectsActions.SaveProjectComment) =>
+      this.http.post<Comment>((`http://localhost:8082/comments`), data.payload)),
+    map(comment => {
+      return new ProjectsActions.AddProjectComment(comment);
+    })
+  ));
+
+
   constructor(private actions$: Actions,
               private store: Store<fromApp.AppState>,
-              private http: HttpClient) {
+              private http: HttpClient,) {
   }
 }

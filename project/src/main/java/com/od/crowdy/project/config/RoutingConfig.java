@@ -26,7 +26,7 @@ public class RoutingConfig {
             .andRoute(GET("/projects/{" + ProjectHandler.PROJECT_ID + "}"), projectHandler::getProjectById)
             .andRoute(GET("/faqs/project/{" + ProjectHandler.PROJECT_ID + "}"), faqHandler::getFaqsByProjectId)
             .andRoute(
-                GET("/comments/project/{" + ProjectHandler.PROJECT_ID + "}"),
+                GET("/projects/{" + ProjectHandler.PROJECT_ID + "}/comments"),
                 commentHandler::getCommentsByProjectId
             )
             .andRoute(POST("/comments"), commentHandler::saveComment)
@@ -36,8 +36,12 @@ public class RoutingConfig {
                 backOptionHandler::getBackOptionsByProjectId
             )
             .andRoute(
-                GET("/projects/user/{" + ProjectHandler.USER_ID + "}"),
-                projectHandler::getProjectsByUserId
+                GET("/projects/created/users/{" + ProjectHandler.USER_ID + "}"),
+                projectHandler::getCreatedProjectsByUserId
+            )
+            .andRoute(
+                GET("/projects/backed/users/{" + ProjectHandler.USER_ID + "}"),
+                projectHandler::getBackedProjectsByUserId
             )
             .andRoute(
                 POST("/users/like/projects"),
@@ -46,6 +50,10 @@ public class RoutingConfig {
             .andRoute(
                 DELETE("/users/{" + ProjectHandler.USER_ID + "}/dislike/projects/{" + ProjectHandler.PROJECT_ID + "}"),
                 projectHandler::deleteProjectLike
+            )
+            .andRoute(
+                GET("/projectsDetails/{" + ProjectHandler.PROJECT_ID + "}"),
+                projectHandler::getProjectDetailsByProjectId
             );
     }
 }

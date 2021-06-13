@@ -1,4 +1,4 @@
-package com.od.crowdy.project.dto;
+package com.od.crowdy.project.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

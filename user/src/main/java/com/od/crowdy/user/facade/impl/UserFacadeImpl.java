@@ -1,8 +1,10 @@
 package com.od.crowdy.user.facade.impl;
 
 import com.od.crowdy.user.dto.UserDto;
+import com.od.crowdy.user.dto.UserProfileDto;
 import com.od.crowdy.user.facade.UserFacade;
 import com.od.crowdy.user.helper.UserHelper;
+import com.od.crowdy.user.request.FollowRequest;
 import com.od.crowdy.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -41,5 +43,39 @@ public class UserFacadeImpl implements UserFacade {
         return this.userService.getAuthorByProjectId(projectId)
             .map(UserDto::from)
             .flatMap(userHelper::fillUserRoles);
+    }
+
+    @Override
+    public Mono<UserProfileDto> getUserProfileByUserId(String userId) {
+        return this.userService.getUserById(userId)
+            .map(UserProfileDto::from)
+            .flatMap(this.userHelper::fillUserRoles)
+            .flatMap(this.userHelper::fillUserFollowers)
+            .flatMap(this.userHelper::fillUserFollowing)
+            .flatMap(this.userHelper::fillUserCreatedProjects)
+            .flatMap(this.userHelper::fillUserBackedProjects);
+    }
+
+    @Override
+    public Mono<UserProfileDto> saveUserFollower(Mono<FollowRequest> request) {
+        return request.flatMap(followRequest ->
+            this.userService.saveUserFollower(followRequest.getFollowerUserId(), followRequest.getFollowingUserId()))
+            .map(UserProfileDto::from)
+            .flatMap(this.userHelper::fillUserRoles)
+            .flatMap(this.userHelper::fillUserFollowers)
+            .flatMap(this.userHelper::fillUserFollowing)
+            .flatMap(this.userHelper::fillUserCreatedProjects)
+            .flatMap(this.userHelper::fillUserBackedProjects);
+    }
+
+    @Override
+    public Mono<UserProfileDto> deleteUserFollower(String followerId, String followingId) {
+        return this.userService.deleteUserFollower(followerId, followingId)
+            .map(UserProfileDto::from)
+            .flatMap(this.userHelper::fillUserRoles)
+            .flatMap(this.userHelper::fillUserFollowers)
+            .flatMap(this.userHelper::fillUserFollowing)
+            .flatMap(this.userHelper::fillUserCreatedProjects)
+            .flatMap(this.userHelper::fillUserBackedProjects);
     }
 }

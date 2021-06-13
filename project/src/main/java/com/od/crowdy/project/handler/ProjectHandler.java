@@ -26,10 +26,10 @@ public class ProjectHandler {
             );
     }
 
-    public Mono<ServerResponse> getProjectsByUserId(ServerRequest serverRequest) {
+    public Mono<ServerResponse> getCreatedProjectsByUserId(ServerRequest serverRequest) {
         return ok()
             .body(
-                projectFacade.getProjectByUserId(serverRequest.pathVariable(USER_ID)),
+                projectFacade.getCreatedProjectsByUserId(serverRequest.pathVariable(USER_ID)),
                 ProjectDto.class
             );
     }
@@ -48,6 +48,22 @@ public class ProjectHandler {
             .body(
                 this.projectFacade.deleteProjectLike(request.pathVariable(USER_ID), request.pathVariable(PROJECT_ID)),
                 Void.class
+            );
+    }
+
+    public Mono<ServerResponse> getBackedProjectsByUserId(ServerRequest serverRequest) {
+        return ok()
+            .body(
+                projectFacade.getBackedProjectsByUserId(serverRequest.pathVariable(USER_ID)),
+                ProjectDto.class
+            );
+    }
+
+    public Mono<ServerResponse> getProjectDetailsByProjectId(ServerRequest request) {
+        return ok()
+            .body(
+                projectFacade.getProjectDetailsByProjectId(request.pathVariable(PROJECT_ID)),
+                ProjectDto.class
             );
     }
 }

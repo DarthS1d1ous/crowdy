@@ -77,4 +77,42 @@ public class Neo4jUserRepository implements UserRepository {
             .mappedBy((typeSystem, record) -> this.userMapper.map(record))
             .one();
     }
+
+    @Override
+    public Flux<User> getFollowersByUserId(String userId) {
+        return this.neo4jClient.query(Queries.FIND_FOLLOWERS_BY_USER_ID_CYPHER)
+            .bind(userId).to("userId")
+            .fetchAs(User.class)
+            .mappedBy((typeSystem, record) -> this.userMapper.map(record))
+            .all();
+    }
+
+    @Override
+    public Flux<User> getFollowingByUserId(String userId) {
+        return this.neo4jClient.query(Queries.FIND_FOLLOWING_BY_USER_ID_CYPHER)
+            .bind(userId).to("userId")
+            .fetchAs(User.class)
+            .mappedBy((typeSystem, record) -> this.userMapper.map(record))
+            .all();
+    }
+
+    @Override
+    public Mono<User> saveUserFollower(String followerUserId, String followingUserId) {
+        return this.neo4jClient.query(Queries.SAVE_USER_FOLLOWER_CYPHER)
+            .bind(followerUserId).to("followerUserId")
+            .bind(followingUserId).to("followingUserId")
+            .fetchAs(User.class)
+            .mappedBy((typeSystem, record) -> this.userMapper.map(record))
+            .one();
+    }
+
+    @Override
+    public Mono<User> deleteUserFollower(String followerId, String followingId) {
+        return this.neo4jClient.query(Queries.DELETE_USER_FOLLOWER_CYPHER)
+            .bind(followerId).to("followerId")
+            .bind(followingId).to("followingId")
+            .fetchAs(User.class)
+            .mappedBy((typeSystem, record) -> this.userMapper.map(record))
+            .one();
+    }
 }

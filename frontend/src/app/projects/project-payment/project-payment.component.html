@@ -1,0 +1,268 @@
+<div class="container my-5">
+  <form (ngSubmit)="onSubmitPaymentForm()" [formGroup]="paymentForm"
+        [ngClass]="{'was-validated': paymentForm.invalid && submitPerformed}" class="needs-validation" novalidate="">
+    <div class="row">
+      <div class="col-md-4 order-md-2 mb-4">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Your posible rewards</span>
+        </h4>
+        <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal"></h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title text-center">$20</h1>
+            <div class="body-100 dark-grey-500 lh3 text-prewrap mb4 mr3 mb-3">You will get one copy of the game at
+              release,
+              digital wallpapers, our original soundtrack, and your name in the credits as a thank you!
+            </div>
+            <ul class="type-14 ml3 soft-black medium mb2 pl2">
+              <li class="list-disc">🏅 Backer Title</li>
+              <li class="list-disc">💿 (1) Digital Game Copy on Steam</li>
+              <li class="list-disc">🖼️ Digital Wallpapers</li>
+              <li class="list-disc">✍️ Name in the Credits</li>
+              <li class="list-disc">🎵 Original Soundtrack</li>
+            </ul>
+            <button class="container-fluid mb-3" color="primary" mat-raised-button
+                    type="button">Select this reward
+            </button>
+          </div>
+        </div>
+        <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal"></h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title text-center">$40</h1>
+            <div class="body-100 dark-grey-500 lh3 text-prewrap mb4 mr3 mb-3">Receive Beta Access, your name on the
+              'Memorial to the Fallen' in the town square, an exclusive in-game backpack, and Discord
+              Backer title!
+            </div>
+            <ul class="type-14 ml3 soft-black medium mb2 pl2">
+              <li class="list-disc">🪓 (1) Beta Access Key on Steam</li>
+              <li class="list-disc">🏅 Backer Title</li>
+              <li class="list-disc">🖼️ Digital Wallpapers</li>
+              <li class="list-disc">✍️ Name in the Credits</li>
+              <li class="list-disc">👑 Early Supporter Title</li>
+              <li class="list-disc">🎒 Exclusive Backpack</li>
+              <li class="list-disc">🎵 Original Soundtrack</li>
+            </ul>
+            <button class="container-fluid mb-3" color="primary" mat-raised-button
+                    type="button">Select this reward
+            </button>
+          </div>
+        </div>
+        <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal"></h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title text-center">$100</h1>
+            <div class="body-100 dark-grey-500 lh3 text-prewrap mb4 mr3 mb-3">Own a Exclusive Medieval
+              Furniture Set for your home and an Artic Fox (Rare Animal Exclusive).
+            </div>
+            <ul class="type-14 ml3 soft-black medium mb2 pl2">
+              <li class="list-disc">🪑 Exclusive Furniture</li>
+              <li class="list-disc">🦊 Arctic Fox (Rare Animal Exclusive)</li>
+              <li class="list-disc">🥇 Golden Weapons (3) OR Sparkling Tools (2)</li>
+              <li class="list-disc">⚒️ (1) Alpha Access Key on Steam</li>
+              <li class="list-disc">🌱 Pre-Alpha Access After Campaign Ends</li>
+              <li class="list-disc">🏅 Backer Title</li>
+              <li class="list-disc">🖼️ Digital Wallpapers</li>
+              <li class="list-disc">✍️ Name in the Credits</li>
+              <li class="list-disc">👑 Early Supporter Title</li>
+              <li class="list-disc">🎒 Exclusive Backpack</li>
+              <li class="list-disc">📗 Digital Bushcraft Book</li>
+              <li class="list-disc">🎵 Original Soundtrack</li>
+            </ul>
+            <button class="container-fluid mb-3" color="primary" mat-raised-button
+                    type="button">Select this reward
+            </button>
+          </div>
+        </div>
+        <div *ngFor="let backOption of projectDetails?.backOptions" class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal"></h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title text-center">${{backOption?.pledge}}</h1>
+            <ul class="list-unstyled mt-3 text-center mb-4">
+              <li *ngFor="let reward of backOption?.rewards">{{reward}}</li>
+            </ul>
+            <button class="container-fluid mb-3" color="primary" mat-raised-button
+                    type="button">Select this reward
+            </button>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-8 order-md-1">
+        <h4 class="mb-3">Billing address</h4>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstName">First name</label>
+            <input class="form-control" formControlName="firstname" id="firstName" placeholder="" required=""
+                   type="text"
+                   value="">
+            <div class="invalid-feedback">
+              Valid first name is required.
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="lastName">Last name</label>
+            <input class="form-control" formControlName="lastname" id="lastName" placeholder="" required="" type="text"
+                   value="">
+            <div class="invalid-feedback">
+              Valid last name is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="username">Username</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">@</span>
+            </div>
+            <input class="form-control" formControlName="username" id="username" placeholder="Username" required=""
+                   type="text">
+            <div class="invalid-feedback" style="width: 100%;">
+              Your username is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email">Email <span class="text-muted">(Optional)</span></label>
+          <input class="form-control" formControlName="email" id="email" placeholder="you@example.com" type="email">
+          <div class="invalid-feedback">
+            Please enter a valid email address for shipping updates.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="address">Address</label>
+          <input class="form-control" formControlName="address" id="address" placeholder="1234 Main St" required=""
+                 type="text">
+          <div class="invalid-feedback">
+            Please enter your shipping address.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+          <input class="form-control" formControlName="address2" id="address2" placeholder="Apartment or suite"
+                 type="text">
+        </div>
+
+        <div class="row">
+          <div class="col-md-5 mb-3">
+            <label for="country">Country</label>
+            <select class="custom-select d-block w-100" formControlName="country" id="country" required="">
+              <option value="">Choose...</option>
+              <option>United States</option>
+            </select>
+            <div class="invalid-feedback">
+              Please select a valid country.
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="state">State</label>
+            <select class="custom-select d-block w-100" formControlName="city" id="state" required="">
+              <option value="">Choose...</option>
+              <option>California</option>
+            </select>
+            <div class="invalid-feedback">
+              Please provide a valid state.
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="zip">Zip</label>
+            <input class="form-control" formControlName="zip" id="zip" placeholder="" required="" type="text">
+            <div class="invalid-feedback">
+              Zip code required.
+            </div>
+          </div>
+        </div>
+        <hr class="mb-4">
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" formControlName="saveInfo" id="save-info" type="checkbox">
+          <label class="custom-control-label" for="save-info">Save this information for next time</label>
+        </div>
+        <hr class="mb-4">
+
+        <h4 class="mb-3">Payment</h4>
+
+        <div class="d-block my-3">
+          <div class="custom-control custom-radio">
+            <input checked="" class="custom-control-input" formControlName="paymentMethod" id="credit"
+                   name="paymentMethod" required="" type="radio">
+            <label class="custom-control-label" for="credit">Credit card</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input class="custom-control-input" formControlName="paymentMethod" id="debit" name="paymentMethod"
+                   required="" type="radio">
+            <label class="custom-control-label" for="debit">Debit card</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input class="custom-control-input" formControlName="paymentMethod" id="paypal" name="paymentMethod"
+                   required="" type="radio">
+            <label class="custom-control-label" for="paypal">PayPal</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="cc-name">Name on card</label>
+            <input class="form-control" formControlName="ccName" id="cc-name" placeholder="" required="" type="text">
+            <small class="text-muted">Full name as displayed on card</small>
+            <div class="invalid-feedback">
+              Name on card is required
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="cc-number">Credit card number</label>
+            <input class="form-control" formControlName="ccNumber" id="cc-number" placeholder="" required=""
+                   type="text">
+            <div class="invalid-feedback">
+              Credit card number is required
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 mb-3">
+            <label for="cc-expiration">Expiration</label>
+            <input class="form-control" formControlName="ccExpiration" id="cc-expiration" placeholder="" required=""
+                   type="text">
+            <div class="invalid-feedback">
+              Expiration date required
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="cc-cvv">CVV</label>
+            <input class="form-control" formControlName="ccCvv" id="cc-cvv" placeholder="" required="" type="text">
+            <div class="invalid-feedback">
+              Security code required
+            </div>
+          </div>
+        </div>
+        <div class="pledge">
+          <h5 class="pl-3 mt-4">Pledge without a reward</h5>
+          <mat-form-field appearance="standard" class="container-fluid mb-2">
+            <mat-label>Amount</mat-label>
+            <input class="example-right-align" formControlName="amount" matInput required="" type="number">
+            <span matPrefix>$&nbsp;</span>
+            <span matSuffix>.00</span>
+            <div class="invalid-feedback">
+              Amount is required.
+            </div>
+          </mat-form-field>
+        </div>
+        <hr class="mb-4">
+        <button class="container-fluid mt-auto" color="primary" mat-raised-button type="submit">
+          Continue to checkout
+        </button>
+        <!--        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>-->
+      </div>
+    </div>
+  </form>
+</div>

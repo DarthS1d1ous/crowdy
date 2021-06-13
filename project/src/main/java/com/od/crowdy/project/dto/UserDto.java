@@ -1,5 +1,6 @@
 package com.od.crowdy.project.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.od.crowdy.project.domain.neo4j.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,9 +18,12 @@ public class UserDto {
     private String id;
     private String username;
     private String fullName;
+    @JsonFormat(pattern = "MM/dd/yyyy")
     private LocalDate createdAt;
+    @JsonFormat(pattern = "MM/dd/yyyy")
     private LocalDate birthday;
     private String avatar;
+    private String about;
     private List<RoleDto> roles;
 
 
@@ -31,6 +35,7 @@ public class UserDto {
             .createdAt(user.getCreatedAt())
             .birthday(user.getBirthday())
             .avatar(user.getAvatar())
+            .about(user.getAbout())
             .build();
     }
 

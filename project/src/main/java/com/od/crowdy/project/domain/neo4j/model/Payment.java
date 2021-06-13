@@ -10,7 +10,7 @@ import org.neo4j.springframework.data.core.schema.Node;
 import org.neo4j.springframework.data.core.support.UUIDStringGenerator;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -24,5 +24,5 @@ public class Payment {
     private String id;
 
     private BigDecimal amount;
-    private LocalDateTime createdAt;
+    private LocalDate createdAt;
 }

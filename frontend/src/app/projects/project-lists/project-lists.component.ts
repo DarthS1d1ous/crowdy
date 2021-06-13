@@ -15,4 +15,8 @@ export class ProjectListsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  filterCategories(): Category[] {
+    return this.allCategories.slice().filter(value => value.projects.length !== 0);
+  }
+
 }

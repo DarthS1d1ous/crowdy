@@ -20,7 +20,7 @@ export class ProjectSearchComponent implements OnInit, OnDestroy {
   searchText = '';
   value = 'Clear me';
 
-  categoryList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+  categoryList: string[] = ['Design', 'Games', 'Technology', 'Comics', 'Fashion', 'Music', 'Apps'];
 
   searchForm: FormGroup;
 
@@ -53,7 +53,8 @@ export class ProjectSearchComponent implements OnInit, OnDestroy {
   }
 
   getFoundProjects(): Project[] {
-    return this.allCategories.flatMap(value => value.projects);
+    return this.allCategories.filter(value1 => value1.name === 'Design')
+      .flatMap(value => value.projects);
   }
 
   submitSearchForm(): void {

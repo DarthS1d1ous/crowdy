@@ -1,0 +1,176 @@
+<div class="container project-create">
+  <form>
+    <div class="row justify-content-between">
+      <div class="col-md-5">
+        <h2>Start with the basics</h2>
+        <p>Make it easy for people to learn about your project.</p>
+      </div>
+      <div class="col-md-3 m-auto">
+        <button class="container-fluid" color="primary"
+                mat-raised-button
+                type="submit">Send to rewiev
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <h5>Project title</h5>
+        <p>Write a clear, brief title that helps people quickly understand the gist of your project.</p>
+      </div>
+      <div class="col-md-7">
+        <mat-form-field class="w-100">
+          <mat-label>Title</mat-label>
+          <input matInput placeholder="Queen of Pain: A Roller Derby Documentary">
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-label>Subtitle</mat-label>
+          <input matInput placeholder="Queen of Pain: A Roller Derby Documentary">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <h5>Project category</h5>
+        <p>Choose the category that most closely aligns with your project.</p>
+        <p>Think of where backers may look to find it. Reach a more specific community by also choosing a
+          subcategory.</p>
+        <p>You’ll be able to change the category and subcategory even after your project is live.</p>
+      </div>
+      <div class="col-md-7">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Category</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let category of [1,2,5]" [value]="category">{{category}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Subcategories (optional)</mat-label>
+          <mat-select multiple>
+            <mat-option *ngFor="let category of [1,2,5]" [value]="category">{{category}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <h5>Project main image</h5>
+        <p>Add an image that clearly represents your project. Choose one that looks good at different sizes—it’ll appear
+          on your project page, across the Kickstarter website and mobile apps, and (when shared) on social
+          channels.</p>
+        <p>Your image should be at least 1024x576 pixels. It will be cropped to a 16:9 ratio.</p>
+        <p>Avoid images with banners, badges, or text—they are illegible at smaller sizes, can be penalized by the
+          Facebook algorithm, and decrease your chances of getting Kickstarter homepage and newsletter features.</p>
+      </div>
+      <div class="col-md-7">
+        <div id="__size_103">
+          <label class="relative pointer w100p h100p">
+            <!--            <div class="imageContainer">-->
+            <!--              <img [src]="url" class="projectImage">-->
+            <!--              <button class="input-image-button" color="primary" mat-raised-button *ngIf="url" type="button">Submit comment</button>-->
+            <!--            </div>-->
+            <div
+              class="hide block-md bg-grey-100 hover-border-ksr-green-500 border border-dashed radius2px w100p h100p transition-all relative border-grey-500">
+              <input (change)="onSelectFile($event)" class="absolute t0 l0 w100p h100p z-1 keyboard-focusable"
+                     tabindex="0"
+                     type="file">
+              <div class="flex flex-column items-center justify-center w100p h100p text-center">
+                <div class="w11 h11 mb3 shadow-2 radius100p bg-whited d-flex justify-content-center align-items-center">
+                  <svg class="bi bi-card-image" fill="currentColor" height="24" viewBox="0 0 16 16"
+                       width="24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                    <path
+                      d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z"/>
+                  </svg>
+                </div>
+                <div class="font-size-14">
+                  <span>
+                  <span class="type-13 type-14-md soft-black book"><span class="hide block-md">Drop an image here, or select a file.</span>
+                    <span class="block hide-md">Upload an image</span>
+                  </span>
+                  </span>
+                  <span class="type-12 block dark-grey-500 book">It must be a JPG, PNG, GIF, TIFF, or BMP, no larger than 200 MB.</span>
+                </div>
+              </div>
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <h5>Another main images</h5>
+        <p>Add an image that clearly represents your project. Choose one that looks good at different sizes—it’ll appear
+          on your project page, across the Kickstarter website and mobile apps, and (when shared) on social
+          channels.</p>
+        <p>Your image should be at least 1024x576 pixels. It will be cropped to a 16:9 ratio.</p>
+        <p>Avoid images with banners, badges, or text—they are illegible at smaller sizes, can be penalized by the
+          Facebook algorithm, and decrease your chances of getting Kickstarter homepage and newsletter features.</p>
+      </div>
+      <div class="col-md-7">
+        <div id="__size_104">
+          <label class="relative pointer w100p h100p">
+            <!--            <div class="imageContainer">-->
+            <!--              <img [src]="url" class="projectImage">-->
+            <!--              <button class="input-image-button" color="primary" mat-raised-button *ngIf="url" type="button">Submit comment</button>-->
+            <!--            </div>-->
+            <div
+              class="hide block-md bg-grey-100 hover-border-ksr-green-500 border border-dashed radius2px w100p h100p transition-all relative border-grey-500">
+              <input (change)="onSelectFile($event)" class="absolute t0 l0 w100p h100p z-1 keyboard-focusable"
+                     tabindex="0"
+                     type="file">
+              <div class="flex flex-column items-center justify-center w100p h100p text-center">
+                <div class="w11 h11 mb3 shadow-2 radius100p bg-whited d-flex justify-content-center align-items-center">
+                  <svg class="bi bi-card-image" fill="currentColor" height="24" viewBox="0 0 16 16"
+                       width="24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                    <path
+                      d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z"/>
+                  </svg>
+                </div>
+                <div class="font-size-14">
+                  <span>
+                  <span class="type-13 type-14-md soft-black book"><span class="hide block-md">Drop an image here, or select a file.</span>
+                    <span class="block hide-md">Upload an image</span>
+                  </span>
+                  </span>
+                  <span class="type-12 block dark-grey-500 book">It must be a JPG, PNG, GIF, TIFF, or BMP, no larger than 200 MB.</span>
+                </div>
+              </div>
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h5>Project description</h5>
+        <p>Describe what you're raising funds to do, why you care about it, how you plan to make it happen, and who you
+          are. Your description should tell backers everything they need to know. If possible, include images to show
+          them what your project is all about and what rewards look like.</p>
+      </div>
+      <div class="col-md-12">
+        <mat-form-field appearance="outline" class="container-fluid">
+          <!--          <mat-label>Leave a comment</mat-label>-->
+          <textarea class="height-100" matInput></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <h5>Target launch date</h5>
+        <p>Enter a date when you plan to launch—you can always return to this after you’ve built out more of your
+          project page.</p>
+        <p>We won’t automatically launch your project.</p>
+      </div>
+      <div class="col-md-7 date-project-create">
+        <mat-form-field appearance="standard" class="mb-3 d-flex">
+          <mat-label>Choose a date</mat-label>
+          <input [matDatepicker]="picker" matInput>
+          <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>
+
