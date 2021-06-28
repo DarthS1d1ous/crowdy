@@ -1,9 +1,9 @@
 spring:
   application:
-    name: eureka-discovery-service
+    name: ${SPRING_APPLICATION_NAME:eureka-service}
 
 server:
-  port: 8761
+  port: ${SERVER_PORT:8761}
 
 
 eureka:

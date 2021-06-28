@@ -14,7 +14,5 @@ spring:
 eureka:
   client:
     registryFetchIntervalSeconds: 1
-    service-url:
-      defaulyZone: http://localhost:8761/eureka
-
-frontend:uri: 'http://localhost:4200'
+    serviceUrl:
+      defaultZone: http://${EUREKA_SERVICE_NAME:localhost}:8761
