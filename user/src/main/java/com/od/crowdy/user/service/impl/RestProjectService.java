@@ -14,12 +14,12 @@ import reactor.core.publisher.Flux;
 public class RestProjectService implements ProjectService {
     private final WebClient webClient;
 
-    @Value("${projectservice.uri}")
-    private String projectServiceUri;
+    @Value("${gateway.service.uri}")
+    private String gatewayServiceUri;
 
     public Flux<ProjectDto> getCreatedProjectsByUserId(String userId) {
         return this.webClient.get()
-            .uri(this.projectServiceUri + "/projects/created/users/" + userId)
+            .uri(this.gatewayServiceUri + "/projects/created/users/" + userId)
             .accept(MediaType.APPLICATION_JSON)
             .retrieve()
             .bodyToFlux(ProjectDto.class);
@@ -27,7 +27,7 @@ public class RestProjectService implements ProjectService {
 
     public Flux<ProjectDto> getBackedProjectsByUserId(String userId) {
         return this.webClient.get()
-            .uri(this.projectServiceUri + "/projects/backed/users/" + userId)
+            .uri(this.gatewayServiceUri + "/projects/backed/users/" + userId)
             .accept(MediaType.APPLICATION_JSON)
             .retrieve()
             .bodyToFlux(ProjectDto.class);

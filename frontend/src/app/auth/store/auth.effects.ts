@@ -56,7 +56,7 @@ export class AuthEffects {
     switchMap((authData: AuthActions.SignupStart) => {
       console.log('authSignup effect');
       console.log(authData.payload)
-      return this.http.post<User>('http://localhost:8081/register', authData.payload)
+      return this.http.post<User>('http://localhost:8090/register', authData.payload)
         .pipe(
           map(resData => {
               if (resData) {
@@ -77,7 +77,7 @@ export class AuthEffects {
     switchMap((authData: AuthActions.LoginStart) => {
       console.log('authLogin effect');
       return this.http.post<User>(
-        'http://localhost:8081/login',
+        'http://localhost:8090/login',
         {
           username: authData.payload.username,
           password: authData.payload.password

@@ -1,5 +1,7 @@
 package com.od.crowdy.project.handler;
 
+import com.od.crowdy.project.cache.ProjectCacheService;
+import com.od.crowdy.project.dto.ProjectDetailsDto;
 import com.od.crowdy.project.dto.ProjectDto;
 import com.od.crowdy.project.facade.ProjectFacade;
 import com.od.crowdy.project.request.LikeRequest;
@@ -17,6 +19,7 @@ public class ProjectHandler {
     public final static String PROJECT_ID = "projectId";
     public final static String USER_ID = "userId";
     private final ProjectFacade projectFacade;
+    private final ProjectCacheService projectCacheService;
 
     public Mono<ServerResponse> getProjectById(ServerRequest serverRequest) {
         return ok()
@@ -62,8 +65,8 @@ public class ProjectHandler {
     public Mono<ServerResponse> getProjectDetailsByProjectId(ServerRequest request) {
         return ok()
             .body(
-                projectFacade.getProjectDetailsByProjectId(request.pathVariable(PROJECT_ID)),
-                ProjectDto.class
+                this.projectCacheService.getProjectDetailsByProjectId(request.pathVariable(PROJECT_ID)),
+                ProjectDetailsDto.class
             );
     }
 }

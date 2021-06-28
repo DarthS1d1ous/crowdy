@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: eureka-discovery-service
+
+server:
+  port: 8761
+
+
+eureka:
+  #  instance:
+  #    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${random.value}
+  server:
+    evictionIntervalTimerInMs: 3000
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka

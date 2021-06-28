@@ -14,7 +14,7 @@ import {Comment} from "../../model/comment";
 export class ProjectEffects {
   fetchAllCategories = createEffect((): any => this.actions$.pipe(
     ofType(ProjectsActions.FETCH_ALL_CATEGORIES),
-    switchMap(() => this.http.get<Category[]>('http://localhost:8082/categories')),
+    switchMap(() => this.http.get<Category[]>('http://localhost:8090/categories')),
     map(categories => {
       console.log(categories);
       return new ProjectsActions.SetAllCategories(categories);
@@ -26,7 +26,7 @@ export class ProjectEffects {
     switchMap((data: ProjectsActions.SaveProjectLike) => {
       console.log(data)
       return this.http.post<Project>(
-        `http://localhost:8082/users/like/projects`, data.payload)
+        `http://localhost:8090/users/like/projects`, data.payload)
     })
   ), {dispatch: false});
 
@@ -35,7 +35,7 @@ export class ProjectEffects {
     switchMap((data: ProjectsActions.SaveProjectLike) => {
       console.log(data)
       return this.http.delete<Project>(
-        `http://localhost:8082/users/${data.payload.userId}/dislike/projects/${data.payload.projectId}`,
+        `http://localhost:8090/users/${data.payload.userId}/dislike/projects/${data.payload.projectId}`,
         {headers: new HttpHeaders({'Access-Control-Allow-Origin': '*'})})
     })
   ), {dispatch: false});
@@ -43,7 +43,7 @@ export class ProjectEffects {
   fetchProjectDetail = createEffect((): any => this.actions$.pipe(
     ofType(ProjectsActions.FETCH_PROJECT_DETAIL),
     switchMap((data: ProjectsActions.FetchProjectDetail) =>
-      this.http.get<ProjectDetails>(`http://localhost:8082/projectsDetails/${data.payload}`)),
+      this.http.get<ProjectDetails>(`http://localhost:8090/projectsDetails/${data.payload}`)),
     map(projectDetails => {
       console.log(projectDetails.createdAt)
       return new ProjectsActions.SetProjectDetail(projectDetails);
@@ -53,7 +53,7 @@ export class ProjectEffects {
   fetchProjectComments = createEffect((): any => this.actions$.pipe(
     ofType(ProjectsActions.FETCH_PROJECT_COMMENTS),
     switchMap((data: ProjectsActions.FetchProjectComments) =>
-      this.http.get<Comment[]>(`http://localhost:8082/projects/${data.payload}/comments`)),
+      this.http.get<Comment[]>(`http://localhost:8090/projects/${data.payload}/comments`)),
     map(comments => {
       return new ProjectsActions.SetProjectComments(comments);
     })
@@ -62,7 +62,7 @@ export class ProjectEffects {
   saveProjectComment = createEffect((): any => this.actions$.pipe(
     ofType(ProjectsActions.SAVE_PROJECT_COMMENT),
     switchMap((data: ProjectsActions.SaveProjectComment) =>
-      this.http.post<Comment>((`http://localhost:8082/comments`), data.payload)),
+      this.http.post<Comment>((`http://localhost:8090/comments`), data.payload)),
     map(comment => {
       return new ProjectsActions.AddProjectComment(comment);
     })

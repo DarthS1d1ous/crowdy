@@ -1,0 +1,20 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    loadbalancer:
+      cache:
+        ttl: 1s
+      ribbon:
+        enabled: false
+
+eureka:
+  client:
+    registryFetchIntervalSeconds: 1
+    service-url:
+      defaulyZone: http://localhost:8761/eureka
+
+frontend:uri: 'http://localhost:4200'

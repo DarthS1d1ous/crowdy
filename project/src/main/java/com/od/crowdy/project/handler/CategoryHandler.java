@@ -1,5 +1,6 @@
 package com.od.crowdy.project.handler;
 
+import com.od.crowdy.project.cache.CategoryCacheService;
 import com.od.crowdy.project.dto.CategoryDto;
 import com.od.crowdy.project.facade.CategoryFacade;
 import lombok.RequiredArgsConstructor;
@@ -14,9 +15,10 @@ import static org.springframework.web.reactive.function.server.ServerResponse.ok
 @RequiredArgsConstructor
 public class CategoryHandler {
     private final CategoryFacade categoryFacade;
+    private final CategoryCacheService categoryCacheService;
 
     public Mono<ServerResponse> getCategories(ServerRequest serverRequest) {
         return ok()
-            .body(categoryFacade.getAllCategories(), CategoryDto.class);
+            .body(this.categoryFacade.getAllCategories(), CategoryDto.class);
     }
 }

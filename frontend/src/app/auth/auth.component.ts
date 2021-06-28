@@ -114,7 +114,7 @@ export class AuthComponent implements OnInit {
   }
 
   login(): void {
-    this.httpClient.post<any>('http://localhost:8081/login', {
+    this.httpClient.post<any>('http://localhost:8090/login', {
       username: 'denis2000',
       password: 'denis2000'
     }).subscribe(authResponse => {

@@ -2,6 +2,7 @@ package com.od.crowdy.project.config;
 
 import com.od.crowdy.project.handler.*;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RouterFunction;
@@ -11,6 +12,7 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
 @Configuration
+@Log4j2
 @RequiredArgsConstructor
 public class RoutingConfig {
 
