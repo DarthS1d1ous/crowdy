@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @Log4j2
 @EnableEurekaClient
 public class ProjectApplication {
+
     public static void main(String[] args) {
         SpringApplication.run(ProjectApplication.class, args);
     }
@@ -21,5 +22,4 @@ public class ProjectApplication {
     public void serviceStarted() {
         log.info("Server has started! {}", LocalDateTime.now());
     }
-
 }
