@@ -6,14 +6,15 @@ services:
     container_name: redis
     ports:
       - 6379:6379
+    restart: on-failure
   neo4j:
     image: neo4j:latest
     container_name: neo4j
     ports:
       - 7474:7474
       - 7687:7687
-    #    volumes:
-    #      - "./neo4j/data:/data"
+    volumes:
+      - "./neo4j/data:/data"
     restart: on-failure
   # --------------- SERVICES  ---------------
   eureka-service:
@@ -87,9 +88,11 @@ services:
       - project-service
       - user-service
     restart: on-failure
-#  frontend:
-#    build:
-#      context: frontend
-#    ports:
-#      - 4200:4200
-#    restart: always
+  # --------------- FRONTEND  ---------------
+  frontend:
+    build:
+      context: frontend
+    container_name: frontend
+    ports:
+      - 4201:4200
+    restart: on-failure

@@ -7,8 +7,6 @@ server:
 
 
 eureka:
-  #  instance:
-  #    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${random.value}
   server:
     evictionIntervalTimerInMs: 3000
   client:

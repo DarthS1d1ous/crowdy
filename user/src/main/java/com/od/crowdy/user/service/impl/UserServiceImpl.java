@@ -5,9 +5,7 @@ import com.od.crowdy.user.domain.neo4j.repository.UserRepository;
 import com.od.crowdy.user.request.AuthRequest;
 import com.od.crowdy.user.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -37,7 +35,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public Mono<User> login(AuthRequest authRequest) {
         return this.userRepository.getUserByUsername(authRequest.getUsername())
-            .switchIfEmpty(Mono.error(new ResponseStatusException(HttpStatus.OK, "12345")))
             .flatMap(user -> verifyPassword(authRequest, user));
     }
 
@@ -84,6 +81,6 @@ public class UserServiceImpl implements UserService {
     private Mono<User> verifyPassword(AuthRequest authReq, User user) {
         return authReq.getPassword().equals(user.getPassword())
             ? Mono.just(user)
-            : Mono.error(new ResponseStatusException(HttpStatus.BAD_REQUEST, "asddf"));
+            : Mono.empty();
     }
 }

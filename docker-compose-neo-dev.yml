@@ -1,12 +1,9 @@
-version: "3.3"
+version: "3.4"
 services:
   # --------------- DATABASES  ---------------
-  neo4j:
-    image: neo4j:latest
-    container_name: neo4j
+  frontend:
+    build:
+      context: frontend
     ports:
-      - 7474:7474
-      - 7687:7687
-    volumes:
-      - "./neo4j/data:/data"
-    restart: on-failure
+      - 4200:4200
+    restart: always
