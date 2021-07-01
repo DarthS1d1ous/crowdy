@@ -1,9 +1,11 @@
 ## Getting Started
 
-To launch Crowdy just use this command:  
+To launch Crowdy use this command:  
 
 `docker-compose up -d`
 
-For local development purposes use this command, which launches only Neo4j database:  
-
-`docker-compose -f docker-compose-neo-dev.yml up -d`
+That go to **neo4j/importdata/neo4j.cyp** and copy all the data.
+Open http://localhost:7474/ and enter 
+login: **neo4j**
+password: **root** 
+Paste all copied data.

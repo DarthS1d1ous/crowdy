@@ -1,9 +1,0 @@
-version: "3.4"
-services:
-  # --------------- DATABASES  ---------------
-  frontend:
-    build:
-      context: frontend
-    ports:
-      - 4200:4200
-    restart: always
